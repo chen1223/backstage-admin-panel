@@ -37,6 +37,16 @@ button {
     border: 2px solid $mainColor;
   }
 }
+/*** Page Layout ***/
+.layout {
+  display: flex;
+  position: relative;
+  .content-wrapper {
+    flex: 1;
+    background-color: #efefef;
+    color: #333;
+  }
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){

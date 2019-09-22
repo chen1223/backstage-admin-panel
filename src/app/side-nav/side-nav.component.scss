@@ -1,0 +1,60 @@
+@import '../../shared/color.scss';
+:host {
+  background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
+  min-height: 100vh;
+  height: 100%;
+  width: 200px;
+}
+.nav-wrapper {
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+/*** Brand logo ***/
+.inner-brand-wrapper {
+  display: flex;
+  .logo {
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+    margin-left: -5px;
+    margin-right: 5px;
+  }
+  .brand-title {
+    margin: auto 0;
+    font-size: 1.4rem;
+    color: $white;
+  }
+}
+/*** Menu wrapper ***/
+.menu-wrapper {
+  margin-top: 2rem;
+  color: $white;
+  .menu-text {
+    font-size: 1.2rem;
+  }
+}
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  .menu-item {
+    margin: 20px 0;
+    .menu-link {
+      color: $white;
+      font-size: 1.4rem;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .4;
+      &.active {
+        opacity: 1;
+      }
+      &:hover {
+        color: #bbb;
+        opacity: 1;
+      }
+    }
+    .menu-link .menu-title {
+      margin-left: 20px;
+    }
+  }
+}
