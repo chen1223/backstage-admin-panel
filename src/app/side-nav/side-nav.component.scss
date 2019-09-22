@@ -31,6 +31,7 @@
   color: $white;
   .menu-text {
     font-size: 1.2rem;
+    color: $lightMainColor;
   }
 }
 .menu {
@@ -40,16 +41,16 @@
   .menu-item {
     margin: 20px 0;
     .menu-link {
-      color: $white;
+      color: $lightMainColor;
       font-size: 1.4rem;
       text-decoration: none;
       cursor: pointer;
       opacity: .4;
       &.active {
         opacity: 1;
+        color: $white;
       }
       &:hover {
-        color: #bbb;
         opacity: 1;
       }
     }
