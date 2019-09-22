@@ -1,0 +1,485 @@
+@import '../../shared/color.scss';
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  .left-container,
+  .right-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  .left-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+  }
+}
+.left-container {
+  .title-wrapper {
+    grid-column: 1/last-line;
+    grid-row: 2/4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    .title {
+      font-size: 3rem;
+      font-size: 3vw;
+      font-weight: normal;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .sub-title {
+      font-size: 2rem;
+      font-size: 2vw;
+      font-weight: normal;
+      color: #bbb;
+      margin: 0;
+    }
+  }
+  .img-wrapper {
+    grid-column: 1/last-line;
+    grid-row: 5/last-line;
+    text-align: center;
+    img {
+      width: 80%;
+      max-width: 80%;
+      height: auto;
+      opacity: .6;
+    }
+  }
+}
+
+/*** Form control section ***/
+.login-form {
+  grid-column: 1/last-line;
+  grid-row: 3/8;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  .greeting {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.5rem;
+    font-size: 2.5vw;
+    margin-bottom: 2rem;
+    color: #10223E;
+  }
+  .login-row {
+    margin: 10px auto;
+    width: 80%;
+    max-width: 350px;
+    &:nth-child(4) {
+      text-align: right;
+    }
+  }
+}
+
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape){
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+  .left-container {
+    .title-wrapper {
+      .title {
+        font-size: 16px;
+      }
+      .sub-title {
+        font-size: 14px;
+        margin-top: 2px;
+      }
+    }
+    .img-wrapper {
+      grid-row: 6/last-line;
+    }
+  }
+  .login-form {
+    grid-row: 3/9;
+    .greeting {
+      font-size: 18px;
+    }
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape){
+  .left-container {
+    .title-wrapper {
+      grid-row: 2/6;
+      .title {
+        font-size: 14px;
+      }
+      .sub-title {
+        font-size: 10px;
+        margin-top: 2px;
+      }
+    }
+    .img-wrapper {
+      grid-row: 7/last-line;
+    }
+  }
+  .login-form {
+    grid-row: 3/9;
+    .greeting {
+      font-size: 18px;
+    }
+  }
+
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait){
+  .login-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    .left-container,
+    .right-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+    .left-container {
+      background: none;
+      .title-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 2/4;
+        .title {
+          font-size: 4rem;
+        }
+        .sub-title {
+          font-size: 2.5rem;
+          margin-top: 5px;
+        }
+      }
+      .img-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 9/last-line;
+        picture {
+          width: 100%;
+          height: 100%;
+          display: flex;
+        }
+        img {
+          height: 75%;
+          max-height: 75%;
+          width: auto;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+    .login-form {
+      grid-row: 4/11;
+      grid-column: 1/last-line;
+      .greeting {
+        display: none;
+      }
+      .login-row {
+        margin: 30px auto;
+        max-width: 700px;
+      }
+    }
+  }
+  button {
+    color: white;
+    width: 45%;
+    &:hover {
+      background: white;
+      color: $mainColor;
+    }
+  }
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
+  .login-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    .left-container,
+    .right-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+    .left-container {
+      background: none;
+      .title-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 2/4;
+        .title {
+          font-size: 4rem;
+        }
+        .sub-title {
+          font-size: 2.5rem;
+          margin-top: 5px;
+        }
+      }
+      .img-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 9/last-line;
+        picture {
+          width: 100%;
+          height: 100%;
+          display: flex;
+        }
+        img {
+          height: 75%;
+          max-height: 75%;
+          width: auto;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+    .login-form {
+      grid-row: 4/11;
+      grid-column: 1/last-line;
+      .greeting {
+        display: none;
+      }
+      .login-row {
+        margin: 20px auto;
+        max-width: 600px;
+      }
+    }
+  }
+  button {
+    color: white;
+    width: 45%;
+    &:hover {
+      background: white;
+      color: $mainColor;
+    }
+  }
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
+  .login-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    .left-container,
+    .right-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+    .left-container {
+      background: none;
+      .title-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 2/4;
+        .title {
+          font-size: 2.5rem;
+        }
+        .sub-title {
+          font-size: 1.8rem;
+          margin-top: 5px;
+        }
+      }
+      .img-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 9/last-line;
+        picture {
+          width: 100%;
+          height: 100%;
+          display: flex;
+        }
+        img {
+          height: 75%;
+          max-height: 75%;
+          width: auto;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+    .login-form {
+      grid-row: 4/11;
+      grid-column: 1/last-line;
+      .greeting {
+        display: none;
+      }
+      .login-row {
+        margin: 20px auto;
+        max-width: 500px;
+      }
+    }
+  }
+  button {
+    color: white;
+    width: 40%;
+    &:hover {
+      background: white;
+      color: $mainColor;
+    }
+  }
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
+  .login-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    .left-container,
+    .right-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+    .left-container {
+      background: none;
+      .title-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 2/4;
+        .title {
+          font-size: 2rem;
+        }
+        .sub-title {
+          font-size: 1.4rem;
+          margin-top: 5px;
+        }
+      }
+      .img-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 9/last-line;
+        picture {
+          width: 100%;
+          height: 100%;
+          display: flex;
+        }
+        img {
+          height: 75%;
+          max-height: 75%;
+          width: auto;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+    .login-form {
+      grid-row: 4/11;
+      grid-column: 1/last-line;
+      .greeting {
+        display: none;
+      }
+    }
+  }
+  button {
+    color: white;
+    &:hover {
+      background: white;
+      color: $mainColor;
+    }
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait){
+  .login-container {
+    background: linear-gradient(to bottom, #1f447b, #060e19);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    .left-container,
+    .right-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+    .left-container {
+      background: none;
+      .title-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 2/4;
+        .title {
+          font-size: 22px;
+        }
+        .sub-title {
+          font-size: 18px;
+          margin-top: 5px;
+        }
+      }
+      .img-wrapper {
+        grid-column: 1/last-line;
+        grid-row: 9/last-line;
+        picture {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          display: flex;
+        }
+        img {
+          height: 70%;
+          max-height: 70%;
+          width: auto;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+    .login-form {
+      grid-row: 4/11;
+      grid-column: 1/last-line;
+      .greeting {
+        display: none;
+      }
+    }
+  }
+  button {
+    color: white;
+    &:hover {
+      background: white;
+      color: $mainColor;
+    }
+  }
+}

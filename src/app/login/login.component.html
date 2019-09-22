@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="left-container">
+    <!-- Title Wrapper -->
+    <div class="title-wrapper">
+      <h1 class="title">Brian Chen - Filmmaker</h1>
+      <h2 class="sub-title">The Backstage Admin Panel</h2>
+    </div><!-- End of title wrapper -->
+    <!-- Image wrapper -->
+    <div class="img-wrapper">
+      <picture>
+        <source srcset="/assets/img/reel.webp">
+        <source srcset="/assets/img/reel.png">
+        <img src="/assets/img/reel.png" alt="reel">
+      </picture>
+    </div><!-- End of image wrapper -->
+  </div>
+  <div class="right-container">
+    <form class="login-form" [formGroup]="loginForm">
+      <h3 class="greeting">Welcome Back</h3>
+      <div class="login-row">
+        <input formControlName="username" type="text" placeholder="Username" maxlength="40">
+      </div>
+      <div class="login-row">
+        <input formControlName="password" type="password" placeholder="Password" maxlength="80">
+      </div>
+      <div class="login-row">
+        <button class="btn">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
