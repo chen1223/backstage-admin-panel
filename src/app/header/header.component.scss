@@ -10,11 +10,6 @@
     display: flex;
     align-items: center;
     background: $gradientFrom;
-    .brand-logo {
-      width: 50px;
-      height: 50px;
-      display: none;
-    }
     .header-title {
       font-size: 1.8rem;
       font-weight: 550;
@@ -26,5 +21,207 @@
       color: #ccc;
       font-weight: 550;
     }
+    .logout-wrapper {
+      margin-left: auto;
+      margin-right: 10px;
+      .toggle {
+        display: none;
+        outline: none;
+        color: $white;
+        font-size: 1.2rem;
+        position: relative;
+      }
+    }
+    .logout-btn {
+      color: $white;
+      font-size: 1.2rem;
+      display: flex;
+      border: none;
+      min-width: unset;
+      font-weight: normal;
+      padding: 0;
+      outline: none;
+    }
+    .log-out {
+      &.--icon {
+        margin: auto 0;
+        margin-right: 5px;
+      }
+      &.--text {
+        margin: auto 0;
+        margin-top: -1px;
+      }
+    }
   }
+}
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape) {
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape) {
+  .header-wrapper {
+    .inner-header-wrapper {
+      .header-title {
+        font-size: 1.6rem;
+      }
+      .sub-title {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape) {
+  .header-wrapper {
+    .inner-header-wrapper {
+      .header-title {
+        font-size: 1.4rem;
+      }
+      .sub-title {
+        font-size: 0.8rem;
+      }
+      .logout-wrapper {
+        position: relative;
+        margin-right: 0;
+        .toggle {
+          display: block;
+          z-index: 2;
+        }
+      }
+      .logout-wrapper .logout-dropdown {
+        width: 120px;
+        background: $mainColor;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: -10px;
+        top: -30px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        &.opened {
+          top: 160%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape) {
+  .header-wrapper {
+    .inner-header-wrapper {
+      .brand-wrapper {
+        display: flex;
+      }
+      .brand-text-wrapper {
+        margin: auto;
+      }
+      .header-title {
+        font-size: 1.4rem;
+      }
+      .sub-title {
+        font-size: 0.8rem;
+        display: block;
+        margin-top: 3px;
+        margin-left: 3px;
+      }
+      .logout-wrapper {
+        position: relative;
+        margin-right: 0;
+        .toggle {
+          display: block;
+          z-index: 2;
+        }
+      }
+      .logout-wrapper .logout-dropdown {
+        width: 120px;
+        background: $mainColor;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: -10px;
+        top: -30px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        &.opened {
+          top: 160%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape) {
+  .header-wrapper {
+    .inner-header-wrapper {
+      .brand-wrapper {
+        display: flex;
+      }
+      .brand-text-wrapper {
+        margin: auto;
+      }
+      .header-title {
+        font-size: 1.4rem;
+      }
+      .sub-title {
+        font-size: 0.8rem;
+        display: block;
+        margin-top: 3px;
+        margin-left: 3px;
+      }
+      .logout-wrapper {
+        position: relative;
+        margin-right: 0;
+        .toggle {
+          display: block;
+          z-index: 2;
+        }
+      }
+      .logout-wrapper .logout-dropdown {
+        width: 120px;
+        background: $mainColor;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: -10px;
+        top: -30px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        &.opened {
+          top: 240%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait) {
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait) {
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
+
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait) {
+
 }

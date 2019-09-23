@@ -59,3 +59,172 @@
     }
   }
 }
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape) {
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape) {
+  .menu-wrapper {
+    .menu-text {
+      font-size: 1rem;
+    }
+  }
+  .menu {
+    .menu-item {
+      .menu-link {
+        font-size: 1.2rem;
+      }
+      .menu-link .menu-title {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape) {
+  :host {
+    width: 80px;
+  }
+  .inner-brand-wrapper {
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-title {
+      display: none;
+    }
+  }
+  .menu-wrapper {
+    text-align: center;
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  .menu {
+    .menu-item {
+      margin: 25px 0;
+      .menu-link {
+        font-size: 1.2rem;
+        text-align: center;
+        display: inline-block;
+      }
+      .menu-link .menu-title {
+        margin-left: 0;
+        margin-top: 3px;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape) {
+  :host {
+    width: 80px;
+    transition: margin .35s ease-in-out;
+    margin-left: 0;
+    &.nav-down {
+      margin-left: -80px;
+    }
+  }
+  .inner-brand-wrapper {
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-title {
+      display: none;
+    }
+  }
+  .menu-wrapper {
+    text-align: center;
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  .menu {
+    .menu-item {
+      margin: 25px 0;
+      .menu-link {
+        font-size: 1.2rem;
+        text-align: center;
+        display: inline-block;
+      }
+      .menu-link .menu-title {
+        margin-left: 0;
+        margin-top: 3px;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape) {
+  :host {
+    width: 80px;
+    transition: margin .35s ease-in-out;
+    margin-left: 0;
+    &.nav-down {
+      margin-left: -80px;
+    }
+  }
+  .inner-brand-wrapper {
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-title {
+      display: none;
+    }
+  }
+  .menu-wrapper {
+    text-align: center;
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  .menu {
+    .menu-item {
+      margin: 25px 0;
+      .menu-link {
+        font-size: 1.2rem;
+        text-align: center;
+        display: inline-block;
+      }
+      .menu-link .menu-title {
+        margin-left: 0;
+        margin-top: 3px;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait) {
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait) {
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
+
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait) {
+
+}

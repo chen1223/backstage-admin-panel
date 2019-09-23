@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  menuStatus: string = 'collapsed';
+
   constructor() { }
 
+
+
   ngOnInit() {
+
+  }
+
+  // On user clicks log out
+  onLogout(): void {
+
+  }
+
+  // On toggle menu
+  toggleMenu(): void {
+    this.menuStatus = this.menuStatus === 'collapsed' ? 'opened' : 'collapsed';
   }
 
 }

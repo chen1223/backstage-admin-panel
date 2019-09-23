@@ -21,6 +21,12 @@ input {
 }
 
 button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  min-width: unset;
+}
+.btn {
   padding: 8px 10px;
   background: none;
   border: 2px solid #888;
@@ -66,7 +72,7 @@ button {
     padding: 5px 8px;
     font-size: 14px;
   }
-  button {
+  .btn {
     min-width: 100px;
     padding: 5px 8px;
     font-size: 16px;
@@ -78,7 +84,7 @@ button {
     padding: 5px 8px;
     font-size: 14px;
   }
-  button {
+  .btn {
     min-width: 100px;
     padding: 5px 8px;
     font-size: 16px;
@@ -87,13 +93,13 @@ button {
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: portrait){
-  input, button {
+  input, .btn {
     font-size: 2rem;
   }
 }
 /***** MD Devices*****/
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
-  input, button {
+  input, .btn {
     font-size: 2rem;
   }
 }
@@ -106,7 +112,7 @@ button {
   input {
     padding: 5px 8px;
   }
-  button {
+  .btn {
     min-width: 150px;
     padding: 5px 8px;
   }
@@ -118,7 +124,7 @@ button {
     padding: 5px 8px;
     font-size: 14px;
   }
-  button {
+  .btn {
     min-width: 100px;
     padding: 5px 8px;
     font-size: 16px;

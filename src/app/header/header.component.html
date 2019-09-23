@@ -1,7 +1,22 @@
 <div class="header-wrapper">
   <div class="inner-header-wrapper">
-    <img src="/assets/img/logo.png" alt="brand logo" class="brand-logo">
-    <span class="header-title">Brian Chen - Filmmaker</span>
-    <span class="sub-title">The Backstage Admin Panel</span>
+    <div class="brand-wrapper">
+      <div class="brand-text-wrapper">
+        <span class="header-title">Brian Chen - Filmmaker</span>
+        <span class="sub-title">The Backstage Admin Panel</span>
+      </div>
+    </div>
+    <div class="logout-wrapper">
+      <button class="toggle" (click)="toggleMenu()" type="button" aria-label="toggle menu">
+        <fa-icon *ngIf="menuStatus === 'collapsed'" class="toggle-icon --bars" type="button" [icon]="['fa', 'bars']"></fa-icon>
+        <fa-icon *ngIf="menuStatus === 'opened'" class="toggle-icon --times" type="button" [icon]="['fa', 'times']"></fa-icon>
+      </button>
+      <div class="logout-dropdown" [ngClass]="{ 'opened': menuStatus === 'opened' }">
+        <button class="logout-btn" type="button" (click)="onLogout()" aria-label="log out">
+          <fa-icon class="log-out --icon" [icon]="['fa', 'sign-out-alt']"></fa-icon>
+          <span class="log-out --text">Log out</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

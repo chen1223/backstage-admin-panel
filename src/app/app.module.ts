@@ -14,7 +14,10 @@ import { faUser,
          faUserTie,
          faFilm,
          faVideo,
-         faPenFancy } from '@fortawesome/free-solid-svg-icons';
+         faPenFancy,
+         faSignOutAlt,
+         faBars,
+         faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,7 @@ import { faUser,
 })
 export class AppModule {
   constructor() {
-    [faUser, faUserTie, faFilm, faVideo, faPenFancy].forEach(icon => {
+    [faUser, faUserTie, faFilm, faVideo, faPenFancy, faSignOutAlt, faBars, faTimes].forEach(icon => {
       library.add(icon);
     });
   }
