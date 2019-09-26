@@ -29,7 +29,7 @@ export class SideNavComponent implements OnInit, AfterViewInit, OnDestroy {
         this.hasScrolled();
         this.didScroll = false;
       }
-    }, 250);
+    }, 200);
   }
 
   hasScrolled() {

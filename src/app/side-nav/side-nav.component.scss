@@ -213,18 +213,178 @@
 }
 /***** MD Devices*****/
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait) {
-
+  :host {
+    width: 80px;
+  }
+  .inner-brand-wrapper {
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-title {
+      display: none;
+    }
+  }
+  .menu-wrapper {
+    text-align: center;
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  .menu {
+    .menu-item {
+      margin: 25px 0;
+      .menu-link {
+        font-size: 1.2rem;
+        text-align: center;
+        display: inline-block;
+      }
+      .menu-link .menu-title {
+        margin-left: 0;
+        margin-top: 3px;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
-
+  :host {
+    width: 80px;
+  }
+  .inner-brand-wrapper {
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand-title {
+      display: none;
+    }
+  }
+  .menu-wrapper {
+    text-align: center;
+    .menu-text {
+      font-size: 14px;
+    }
+  }
+  .menu {
+    .menu-item {
+      margin: 25px 0;
+      .menu-link {
+        font-size: 1.2rem;
+        text-align: center;
+        display: inline-block;
+      }
+      .menu-link .menu-title {
+        margin-left: 0;
+        margin-top: 3px;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
 
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
-
+  :host {
+    position: fixed;
+    bottom: 0;
+    min-height: unset;
+    height: 60px;
+    height: 12vh;
+    max-height: 60px;
+    width: 100%;
+    margin-bottom: 0;
+    transition: margin .2s ease-in-out;
+    &.nav-down {
+      margin-bottom: -100%;
+    }
+  }
+  .nav-wrapper {
+    display: flex;
+    padding: 10px;
+    .brand-wrapper {
+      display: none;
+    }
+    .menu-wrapper {
+      flex: 1;
+    }
+  }
+  .menu-wrapper {
+    margin-top: 0;
+    .menu-text {
+      display: none;
+    }
+  }
+  .menu {
+    margin: auto 0;
+    display: flex;
+    justify-content: space-around;
+    .menu-item {
+      margin: auto 5px;
+      text-align: center;
+      .menu-link {
+        font-size: 1.4rem;
+        .menu-title {
+          font-size: 12px;
+          margin: 0;
+          margin-top: 2px;
+          display: block;
+        }
+      }
+    }
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait) {
-
+  :host {
+    position: fixed;
+    bottom: 0;
+    min-height: unset;
+    height: 60px;
+    height: 12vh;
+    max-height: 60px;
+    width: 100%;
+    margin-bottom: 0;
+    transition: margin .2s ease-in-out;
+    &.nav-down {
+      margin-bottom: -100%;
+    }
+  }
+  .nav-wrapper {
+    display: flex;
+    padding: 10px;
+    .brand-wrapper {
+      display: none;
+    }
+    .menu-wrapper {
+      flex: 1;
+    }
+  }
+  .menu-wrapper {
+    margin-top: 0;
+    .menu-text {
+      display: none;
+    }
+  }
+  .menu {
+    margin: auto 0;
+    display: flex;
+    justify-content: space-between;
+    .menu-item {
+      margin: auto 5px;
+      text-align: center;
+      .menu-link {
+        font-size: 1.2rem;
+        .menu-title {
+          font-size: 10px;
+          margin: 0;
+          margin-top: 2px;
+          display: block;
+        }
+      }
+    }
+  }
 }

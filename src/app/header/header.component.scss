@@ -214,14 +214,122 @@
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
-
+  .header-wrapper {
+    .inner-header-wrapper {
+      .header-title {
+        font-size: 1.6rem;
+      }
+      .sub-title {
+        font-size: 0.9rem;
+      }
+    }
+  }
 
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+  :host.nav-up .header-wrapper {
+    position: sticky;
+    top: 0;
+  }
+  .header-wrapper {
+    margin-top: 0;
+    transition: margin .35s ease-in-out;
+    .inner-header-wrapper {
+      .brand-wrapper {
+        display: flex;
+      }
+      .brand-text-wrapper {
+        margin: auto;
+      }
+      .header-title {
+        font-size: 1.6rem;
+      }
+      .sub-title {
+        font-size: 1rem;
+        display: block;
+        margin-top: 3px;
+        margin-left: 3px;
+      }
+      .logout-wrapper {
+        position: relative;
+        margin-right: 0;
+        .toggle {
+          display: block;
+          z-index: 2;
+          font-size: 1.4rem;
+        }
+      }
+      .logout-wrapper .logout-dropdown {
+        width: 120px;
+        background: $mainColor;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: -10px;
+        top: -30px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        &.opened {
+          top: 180%;
+          opacity: 1;
+        }
+      }
+    }
+  }
 
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait) {
+  :host.nav-up .header-wrapper {
+    position: sticky;
+    top: 0;
+  }
+  .header-wrapper {
+    margin-top: 0;
+    transition: margin .35s ease-in-out;
+    .inner-header-wrapper {
+      .brand-wrapper {
+        display: flex;
+      }
+      .brand-text-wrapper {
+        margin: auto;
+      }
+      .header-title {
+        font-size: 1.4rem;
+      }
+      .sub-title {
+        font-size: 0.8rem;
+        display: block;
+        margin-top: 3px;
+        margin-left: 3px;
+      }
+      .logout-wrapper {
+        position: relative;
+        margin-right: 0;
+        .toggle {
+          display: block;
+          z-index: 2;
+        }
+      }
+      .logout-wrapper .logout-dropdown {
+        width: 120px;
+        background: $mainColor;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        right: -10px;
+        top: -30px;
+        transition: all .2s ease-in;
+        opacity: 0;
+        &.opened {
+          top: 240%;
+          opacity: 1;
+        }
+      }
+    }
+  }
 
 }
