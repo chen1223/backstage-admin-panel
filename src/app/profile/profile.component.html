@@ -27,23 +27,23 @@
     <div class="profile-detail">
       <!-- Firstname -->
       <div class="ctrl-row required">
-        <label for="firstname" class="ctrl-label">Firstname</label>
-        <input type="text" id="firstname" class="ctrl" formControlName="firstname">
+        <label for="firstname" class="ctrl-label --profile">Firstname</label>
+        <input type="text" id="firstname" class="ctrl profile" formControlName="firstname">
       </div><!-- End of firstname -->
       <!-- Lastname -->
       <div class="ctrl-row required">
-        <label for="lastname" class="ctrl-label">Lastname</label>
-        <input type="text" id="lastname" class="ctrl" formControlName="lastname">
+        <label for="lastname" class="ctrl-label --profile">Lastname</label>
+        <input type="text" id="lastname" class="ctrl profile" formControlName="lastname">
       </div><!-- End of lastname -->
       <!-- Email -->
       <div class="ctrl-row required">
-        <label for="email" class="ctrl-label">E-mail</label>
-        <input type="text" id="email" class="ctrl" formControlName="email">
+        <label for="email" class="ctrl-label --profile">E-mail</label>
+        <input type="text" id="email" class="ctrl profile" formControlName="email">
       </div><!-- End of email -->
       <!-- Resume Link -->
       <div class="ctrl-row required">
-        <label for="resumeLink" class="ctrl-label">Resume</label>
-        <div class="upload-wrapper input ctrl">
+        <label for="resumeLink" class="ctrl-label --profile">Resume</label>
+        <div class="upload-wrapper input ctrl profile">
           <fa-icon class="upload-icon" [icon]="['fa','upload']"></fa-icon>
           <input type="file" id="resumeLink" class="--upload-ctrl" formControlName="resumeLink" accept=".pdf">
         </div>
@@ -55,11 +55,52 @@
   <section class="social-section">
     <!-- Facebook Setting -->
     <div class="social-row">
-      <label for="facebook" class="social-label">Facebook profile link</label>
+      <label for="facebook" class="ctrl-label --social">Facebook profile link</label>
       <label class="toggler">
         <input type="checkbox" class="toggler-ctrl">
-        <span class="toggle"></span>
+        <span class="slider"></span>
       </label>
-    </div>
+      <input id="facebook" type="text" class="ctrl --social">
+    </div><!-- End of facebook setting -->
+    <!-- Vimeo Setting -->
+    <div class="social-row">
+      <label for="vimeo" class="ctrl-label --social">Vimeo profile link</label>
+      <label class="toggler">
+        <input type="checkbox" class="toggler-ctrl">
+        <span class="slider"></span>
+      </label>
+      <input id="vimeo" type="text" class="ctrl --social">
+    </div><!-- End of vimeo setting -->
+    <!-- Youtube Setting -->
+    <div class="social-row">
+      <label for="youtube" class="ctrl-label --social">Youtube profile link</label>
+      <label class="toggler">
+        <input type="checkbox" class="toggler-ctrl">
+        <span class="slider"></span>
+      </label>
+      <input id="youtube" type="text" class="ctrl --social">
+    </div><!-- End of youtube setting -->
+    <!-- Instagram Setting -->
+    <div class="social-row">
+      <label for="instagram" class="ctrl-label --social">Instagram profile link</label>
+      <label class="toggler">
+        <input type="checkbox" class="toggler-ctrl">
+        <span class="slider"></span>
+      </label>
+      <input id="instagram" type="text" class="ctrl --social">
+    </div><!-- End of instagram setting -->
   </section><!-- End of social section -->
+  <!-- About Section -->
+  <section class="about-section">
+    <!-- Introduction -->
+    <div class="about-row">
+      <label for="intro" class="ctrl-label">Introduction</label>
+      <textarea id="intro" cols="30" rows="5" class="ctrl --about"></textarea>
+    </div><!-- End of introduction -->
+    <!-- Contact me -->
+    <div class="about-row">
+      <label for="contact" class="ctrl-label">Contact me</label>
+      <textarea id="contact" cols="30" rows="5" class="ctrl --about"></textarea>
+    </div><!-- End of contact me -->
+  </section><!-- End of about section -->
 </form>
