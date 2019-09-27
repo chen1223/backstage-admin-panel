@@ -1,3 +1,4 @@
+import { VideoModule } from './video/video.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,9 @@ import { faUser,
          faSignOutAlt,
          faBars,
          faTimes } from '@fortawesome/free-solid-svg-icons';
+import { ContainerComponent } from './container/container.component';
+import { RoleManagementComponent } from './role-management/role-management.component';
+import { ReelManagementComponent } from './reel-management/reel-management.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { faUser,
     LoginComponent,
     ProfileComponent,
     SideNavComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContainerComponent,
+    RoleManagementComponent,
+    ReelManagementComponent
   ],
   imports: [
     BrowserModule,
