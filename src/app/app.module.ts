@@ -18,7 +18,10 @@ import { faUser,
          faPenFancy,
          faSignOutAlt,
          faBars,
-         faTimes } from '@fortawesome/free-solid-svg-icons';
+         faTimes,
+         faPen,
+         faUserAlt,
+         faUpload } from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from './container/container.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { ReelManagementComponent } from './reel-management/reel-management.component';
@@ -46,7 +49,10 @@ import { ReelManagementComponent } from './reel-management/reel-management.compo
 })
 export class AppModule {
   constructor() {
-    [faUser, faUserTie, faFilm, faVideo, faPenFancy, faSignOutAlt, faBars, faTimes].forEach(icon => {
+    [faUser, faUserTie, faFilm,
+     faVideo, faPenFancy, faSignOutAlt,
+     faBars, faTimes, faPen,
+     faUserAlt, faUpload].forEach(icon => {
       library.add(icon);
     });
   }

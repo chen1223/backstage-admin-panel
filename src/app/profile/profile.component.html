@@ -1,4 +1,65 @@
+<form class="profile-form" [formGroup]="profileForm">
+  <!-- Action Row -->
+  <div class="action-row">
+    <fa-icon *ngIf="mode === 'view'" class="action-btn --icon" [icon]="['fa', 'pen']" aria-label="Edit"></fa-icon>
+    <button *ngIf="mode === 'edit'" class="btn --md action-btn" type="button" aria-label="Save">Save</button>
+  </div><!-- End of action row -->
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <!-- Avatar -->
+    <div class="profile-avatar">
+      <button class="upload-avatar" type="button" aria-label="Upload profile picture">
+        <input class="avatar-ctrl" type="file" accept="image/png, image/jpeg">
+        <fa-icon
+          *ngIf="!profileForm.get('profileLink').value"
+          class="avatar --placeholder"
+          [icon]="['fa', 'user-alt']"
+          aria-label="avatar icon">
+        </fa-icon>
+        <img
+          *ngIf="profileForm.get('profileLink').value"
+          [src]="profileForm.get('profileLink').value"
+          class="avatar --img"
+          alt="profile picture">
+      </button>
+    </div><!-- End of avatar -->
+    <!-- Profile Detail -->
+    <div class="profile-detail">
+      <!-- Firstname -->
+      <div class="ctrl-row required">
+        <label for="firstname" class="ctrl-label">Firstname</label>
+        <input type="text" id="firstname" class="ctrl" formControlName="firstname">
+      </div><!-- End of firstname -->
+      <!-- Lastname -->
+      <div class="ctrl-row required">
+        <label for="lastname" class="ctrl-label">Lastname</label>
+        <input type="text" id="lastname" class="ctrl" formControlName="lastname">
+      </div><!-- End of lastname -->
+      <!-- Email -->
+      <div class="ctrl-row required">
+        <label for="email" class="ctrl-label">E-mail</label>
+        <input type="text" id="email" class="ctrl" formControlName="email">
+      </div><!-- End of email -->
+      <!-- Resume Link -->
+      <div class="ctrl-row required">
+        <label for="resumeLink" class="ctrl-label">Resume</label>
+        <div class="upload-wrapper input ctrl">
+          <fa-icon class="upload-icon" [icon]="['fa','upload']"></fa-icon>
+          <input type="file" id="resumeLink" class="--upload-ctrl" formControlName="resumeLink" accept=".pdf">
+        </div>
+      </div><!-- End of resume link -->
+    </div><!-- End of profile detail -->
+  </section><!-- End of profile section -->
 
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
+  <!-- Social Section -->
+  <section class="social-section">
+    <!-- Facebook Setting -->
+    <div class="social-row">
+      <label for="facebook" class="social-label">Facebook profile link</label>
+      <label class="toggler">
+        <input type="checkbox" class="toggler-ctrl">
+        <span class="toggle"></span>
+      </label>
+    </div>
+  </section><!-- End of social section -->
+</form>

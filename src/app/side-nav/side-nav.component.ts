@@ -56,7 +56,9 @@ export class SideNavComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     const header = <HTMLDivElement> document.querySelector('.header');
-    this.headerHeight = header.offsetHeight;
+    if (header) {
+      this.headerHeight = header.offsetHeight;
+    }
   }
 
   ngOnDestroy() {
