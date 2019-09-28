@@ -24,7 +24,7 @@
 .role-section {
   margin-top: 3rem;
   .role-wrapper {
-    margin-top: 5rem;
+    margin-top: 3rem;
     position: relative;
   }
   .remove-btn {
@@ -101,30 +101,198 @@
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
-
+  .new-btn {
+    .new-btn-icon {
+      font-size: 1.5rem;
+    }
+    .new-btn-text {
+      font-size: 1rem;
+    }
+  }
+  .role-section {
+    .remove-btn {
+      top: -1%;
+      font-size: 1.5rem;
+    }
+    .ctrl-row {
+      &.--title {
+        max-width: unset;
+      }
+    }
+    .ctrl-row-wrapper {
+      display: block;
+      .ctrl-row {
+        margin-right: 0;
+      }
+    }
+  }
+  .img-wrapper {
+    display: block;
+    .inner-img-wrapper {
+      margin: 10px 0;
+      width: 100%;
+      &.empty {
+        height: 80vh;
+      }
+    }
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: landscape){
+  .new-btn {
+    .new-btn-icon {
+      font-size: 1.5rem;
+    }
+    .new-btn-text {
+      font-size: 1rem;
+    }
+  }
+  .role-section {
+    margin-top: 2rem;
+    .remove-btn {
+      font-size: 1.5rem;
+      top: -1%;
+    }
+    .role-wrapper {
+      margin-top: 2rem;
+    }
+    .ctrl-row {
+      &.--title {
+        max-width: unset;
+      }
+    }
+    .ctrl-row-wrapper {
+      display: block;
+      .ctrl-row {
+        margin-right: 0;
+      }
+    }
+  }
+  .img-wrapper {
+    display: block;
+    .inner-img-wrapper {
+      margin: 10px 0;
+      width: 100%;
+      &.empty {
+        height: 80vh;
+      }
+    }
+  }
 
 }
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
-@media (min-width: 1200px) and (orientation: portrait){
+@media (min-width: 1200px) and (orientation: portrait) {
 
 }
 /***** MD Devices*****/
-@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait) {
 
 }
 /***** SM Devices *****/
-@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait) {
+  .role-section {
+    .ctrl-row {
+      &.--title {
+        max-width: unset;
+      }
+    }
+    .remove-btn {
+      font-size: 1.5rem;
+      top: -2%;
+    }
+    .ctrl-row-wrapper {
+      display: block;
+      .ctrl-row {
+        margin-right: 0;
+      }
+    }
+  }
+  .img-wrapper {
+    .inner-img-wrapper {
+      margin: 10px 0;
+      &.empty {
+        height: 20vh;
+      }
+    }
+  }
 
 }
 /***** XS Devices *****/
-@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+  .new-btn {
+    .new-btn-icon {
+      font-size: 1.5rem;
+    }
+    .new-btn-text {
+      font-size: 1rem;
+    }
+  }
+  .role-section {
+    .ctrl-row {
+      &.--title {
+        max-width: unset;
+      }
+    }
+    .remove-btn {
+      font-size: 1.5rem;
+      top: -1%;
+    }
+    .ctrl-row-wrapper {
+      display: block;
+      .ctrl-row {
+        margin-right: 0;
+      }
+    }
+  }
+  .img-wrapper {
+    display: block;
+    .inner-img-wrapper {
+      margin: 10px 0;
+      width: 100%;
+      &.empty {
+        height: 40vh;
+      }
+    }
+  }
 
 }
 /***** XXS Devices *****/
-@media (max-width: 479px) and (orientation: portrait){
+@media (max-width: 479px) and (orientation: portrait) {
+  .new-btn {
+    .new-btn-icon {
+      font-size: 1.5rem;
+    }
+    .new-btn-text {
+      font-size: 1rem;
+    }
+  }
+  .role-section {
+    .ctrl-row {
+      &.--title {
+        max-width: unset;
+      }
+    }
+    .remove-btn {
+      font-size: 1.5rem;
+      top: -1%;
+    }
+    .ctrl-row-wrapper {
+      display: block;
+      .ctrl-row {
+        margin-right: 0;
+      }
+    }
+  }
+  .img-wrapper {
+    display: block;
+    .inner-img-wrapper {
+      margin: 10px 0;
+      width: 100%;
+      &.empty {
+        height: 40vh;
+      }
+    }
+  }
 
 }
