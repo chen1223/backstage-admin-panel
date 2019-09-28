@@ -2,8 +2,8 @@
 :host {
   background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
   min-height: 100vh;
-  min-height: 100%;
   width: 200px;
+  z-index: 10;
 }
 .nav-wrapper {
   padding: 15px 20px;

@@ -16,9 +16,6 @@
     }
   }
 }
-.ctrl-label {
-  text-transform: capitalize;
-}
 .profile-section {
   display: flex;
   align-items: center;
@@ -42,12 +39,14 @@
   text-align: center;
 }
 .upload-avatar {
-  height: 285px;
   width: 100%;
   border: 2px solid #888;
   position: relative;
   padding: 0;
   box-sizing: border-box;
+  &.fixed-height {
+    height: 260px;
+  }
   cursor: pointer;
   .avatar-ctrl {
     position: absolute;
@@ -57,9 +56,10 @@
     left: 0;
     opacity: 0;
     cursor: pointer;
+    z-index: 1;
   }
   .--placeholder {
-    font-size: 13rem;
+    font-size: 12rem;
     color: gray;
     display: block;
     margin-top: auto;
@@ -69,8 +69,10 @@
     right: 0;
   }
   .--img {
-    height: 100%;
-    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
 .ctrl-row {
@@ -127,5 +129,287 @@
   margin-top: 3rem;
   .about-row {
     margin: 20px 0;
+  }
+}
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
+  .profile-section {
+    display: block;
+    .profile-avatar {
+      flex: 1;
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 60%;
+    &.fixed-height {
+      height: 284px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 12rem;
+    }
+  }
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape){
+  .profile-section {
+    display: block;
+    .profile-avatar {
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 60%;
+    &.fixed-height {
+      height: 260px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 12rem;
+    }
+  }
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+  .profile-section {
+    display: block;
+    margin-top: 1rem;
+    .profile-avatar {
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 80%;
+    &.fixed-height {
+      height: 245px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 11rem;
+    }
+  }
+  .social-row {
+    .ctrl.--social {
+      margin-right: 1rem;
+    }
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape){
+  .profile-section {
+    display: block;
+    margin-top: 1rem;
+    .profile-avatar {
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+        width: 100%;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 80%;
+    &.fixed-height {
+      height: 200px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 9rem;
+    }
+  }
+  .social-row {
+    .ctrl-label.--social {
+      flex: 2;
+      margin: auto 0;
+    }
+    .toggler {
+      order: 2;
+      flex: 1;
+    }
+    .ctrl.--social {
+      order: 3;
+      flex: unset;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
+  .profile-section {
+    .profile-detail {
+      .ctrl-row {
+        margin: 10px 0;
+      }
+    }
+  }
+  .upload-avatar {
+    &.fixed-height {
+      height: 220px;
+    }
+    .--placeholder {
+      font-size: 10rem;
+    }
+  }
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+  .profile-section {
+    display: block;
+    margin-top: 1rem;
+    .profile-avatar {
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+        width: 100%;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 80%;
+    &.fixed-height {
+      height: 245px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 12rem;
+    }
+  }
+  .social-section {
+    margin-top: 2rem;
+  }
+  .social-row {
+    .ctrl-label.--social {
+      flex: 2;
+      margin: auto 0;
+    }
+    .ctrl.--social {
+      margin-top: 10px;
+    }
+    .toggler {
+      order: 2;
+      flex: 1;
+    }
+    .ctrl.--social {
+      order: 3;
+      flex: unset;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  .about-section {
+    margin-top: 2rem;
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait) {
+  .profile-section {
+    display: block;
+    margin-top: 1rem;
+    .profile-avatar {
+      margin-right: 0;
+    }
+    .profile-detail {
+      margin-top: 1rem;
+      .ctrl-row {
+        margin: 10px 0;
+        width: 100%;
+      }
+    }
+  }
+  .upload-avatar {
+    width: 100%;
+    &.fixed-height {
+      height: 200px;
+    }
+    .--img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .--placeholder {
+      font-size: 9rem;
+    }
+  }
+  .social-section {
+    margin-top: 2rem;
+  }
+  .social-row {
+    .ctrl-label.--social {
+      flex: 2;
+      margin: auto 0;
+    }
+    .toggler {
+      order: 2;
+      flex: 1;
+    }
+    .ctrl.--social {
+      order: 3;
+      flex: unset;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  .about-section {
+    margin-top: 2rem;
   }
 }

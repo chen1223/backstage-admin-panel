@@ -8,7 +8,7 @@
   <section class="profile-section">
     <!-- Avatar -->
     <div class="profile-avatar">
-      <button class="upload-avatar" type="button" aria-label="Upload profile picture">
+      <button class="upload-avatar" type="button" aria-label="Upload profile picture" [ngClass]="{ 'fixed-height': !profileForm.get('profileLink').value }">
         <input class="avatar-ctrl" type="file" accept="image/png, image/jpeg">
         <fa-icon
           *ngIf="!profileForm.get('profileLink').value"
@@ -54,51 +54,51 @@
   <!-- Social Section -->
   <section class="social-section">
     <!-- Facebook Setting -->
-    <div class="social-row">
+    <div class="social-row required">
       <label for="facebook" class="ctrl-label --social">Facebook profile link</label>
       <label class="toggler">
-        <input type="checkbox" class="toggler-ctrl">
+        <input type="checkbox" class="toggler-ctrl" formControlName="facebookEnable">
         <span class="slider"></span>
       </label>
-      <input id="facebook" type="text" class="ctrl --social">
+      <input id="facebook" type="text" class="ctrl --social" formControlName="facebookLink">
     </div><!-- End of facebook setting -->
     <!-- Vimeo Setting -->
     <div class="social-row">
       <label for="vimeo" class="ctrl-label --social">Vimeo profile link</label>
       <label class="toggler">
-        <input type="checkbox" class="toggler-ctrl">
+        <input type="checkbox" class="toggler-ctrl" formControlName="vimeoEnable">
         <span class="slider"></span>
       </label>
-      <input id="vimeo" type="text" class="ctrl --social">
+      <input id="vimeo" type="text" class="ctrl --social" formControlName="vimeoLink">
     </div><!-- End of vimeo setting -->
     <!-- Youtube Setting -->
     <div class="social-row">
       <label for="youtube" class="ctrl-label --social">Youtube profile link</label>
       <label class="toggler">
-        <input type="checkbox" class="toggler-ctrl">
+        <input type="checkbox" class="toggler-ctrl" formControlName="youtubeEnable">
         <span class="slider"></span>
       </label>
-      <input id="youtube" type="text" class="ctrl --social">
+      <input id="youtube" type="text" class="ctrl --social" formControlName="youtubeLink">
     </div><!-- End of youtube setting -->
     <!-- Instagram Setting -->
     <div class="social-row">
       <label for="instagram" class="ctrl-label --social">Instagram profile link</label>
       <label class="toggler">
-        <input type="checkbox" class="toggler-ctrl">
+        <input type="checkbox" class="toggler-ctrl" formControlName="instagramEnable">
         <span class="slider"></span>
       </label>
-      <input id="instagram" type="text" class="ctrl --social">
+      <input id="instagram" type="text" class="ctrl --social" formControlName="instagramLink">
     </div><!-- End of instagram setting -->
   </section><!-- End of social section -->
   <!-- About Section -->
   <section class="about-section">
     <!-- Introduction -->
-    <div class="about-row">
+    <div class="about-row required">
       <label for="intro" class="ctrl-label">Introduction</label>
       <textarea id="intro" cols="30" rows="5" class="ctrl --about"></textarea>
     </div><!-- End of introduction -->
     <!-- Contact me -->
-    <div class="about-row">
+    <div class="about-row required">
       <label for="contact" class="ctrl-label">Contact me</label>
       <textarea id="contact" cols="30" rows="5" class="ctrl --about"></textarea>
     </div><!-- End of contact me -->

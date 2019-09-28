@@ -15,7 +15,21 @@ export class ProfileComponent implements OnInit {
     firstname: ['', [Validators.required, Validators.maxLength(60)]],
     lastname: ['', [Validators.required, Validators.maxLength(60)]],
     email: ['', [Validators.required]],
-    resumeLink: ['']
+    resumeLink: ['', [Validators.required]],
+
+    /* Social Section */
+    facebookLink: ['', [Validators.required]],
+    facebookEnable: [true],
+    vimeoLink: [''],
+    vimeoEnable: [false],
+    youtubeLink: [''],
+    youtubeEnable: [false],
+    instagramLink: [''],
+    instagramEnable: [false],
+
+    /* About Section */
+    intro: ['', [Validators.required]],
+    contactMe: ['', [Validators.required]]
   });
 
   // Determine current mode: view / edit

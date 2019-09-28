@@ -45,6 +45,26 @@ describe('ProfileComponent', () => {
     expect(profileForm.get('email')).toBeTruthy();
     // resumeLink
     expect(profileForm.get('resumeLink')).toBeTruthy();
+    // facebookLink
+    expect(profileForm.get('facebookLink')).toBeTruthy();
+    // facebookEnable
+    expect(profileForm.get('facebookEnable')).toBeTruthy();
+    // vimeoLink
+    expect(profileForm.get('vimeoLink')).toBeTruthy();
+    // vimeoEnable
+    expect(profileForm.get('vimeoEnable')).toBeTruthy();
+    // youtubeLink
+    expect(profileForm.get('youtubeLink')).toBeTruthy();
+    // youtubeEnable
+    expect(profileForm.get('youtubeEnable')).toBeTruthy();
+    // instagramLink
+    expect(profileForm.get('instagramLink')).toBeTruthy();
+    // instagramEnable
+    expect(profileForm.get('instagramEnable')).toBeTruthy();
+    // intro
+    expect(profileForm.get('intro')).toBeTruthy();
+    // contactMe
+    expect(profileForm.get('contactMe')).toBeTruthy();
   });
   it('should validate FormControl: firstname', () => {
     // Prepare a test string of length 70
@@ -53,9 +73,6 @@ describe('ProfileComponent', () => {
       testString += '0123456789';
     }
     const profileForm = <FormGroup> component.profileForm;
-    /**
-     * Firstname validation
-     */
     // Maxlength validation
     profileForm.get('firstname').setValue(testString);
     fixture.detectChanges();
@@ -72,10 +89,6 @@ describe('ProfileComponent', () => {
       testString += '0123456789';
     }
     const profileForm = <FormGroup> component.profileForm;
-
-    /**
-     * Lastname validation
-     */
     // Maxlength validation
     profileForm.get('lastname').setValue(testString);
     fixture.detectChanges();
@@ -87,12 +100,37 @@ describe('ProfileComponent', () => {
   });
   it('should validate FormControl: email', () => {
     const profileForm = <FormGroup> component.profileForm;
-
-    /**
-     * Email validation
-     */
+    // Required validation
     profileForm.get('email').setValue('');
     fixture.detectChanges();
     expect(profileForm.get('email').valid).toBeFalsy();
+  });
+  it('should validate FormControl: resumeLink', () => {
+    const profileForm = <FormGroup> component.profileForm;
+    // Required validation
+    profileForm.get('resumeLink').setValue('');
+    fixture.detectChanges();
+    expect(profileForm.get('resumeLink').valid).toBeFalsy();
+  });
+  it('should validate FormControl: facebookLink', () => {
+    const profileForm = <FormGroup> component.profileForm;
+    // Required validation
+    profileForm.get('facebookLink').setValue('');
+    fixture.detectChanges();
+    expect(profileForm.get('facebookLink').valid).toBeFalsy();
+  });
+  it('should validate FormControl: intro', () => {
+    const profileForm = <FormGroup> component.profileForm;
+    // Required validation
+    profileForm.get('intro').setValue('');
+    fixture.detectChanges();
+    expect(profileForm.get('intro').valid).toBeFalsy();
+  });
+  it('should validate FormControl: contactMe', () => {
+    const profileForm = <FormGroup> component.profileForm;
+    // Required validation
+    profileForm.get('contactMe').setValue('');
+    fixture.detectChanges();
+    expect(profileForm.get('contactMe').valid).toBeFalsy();
   });
 });
