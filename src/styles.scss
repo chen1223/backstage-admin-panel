@@ -22,6 +22,11 @@ textarea {
   box-sizing: border-box;
   margin-top: 5px;
 }
+.input {
+  &.disabled {
+    background-color: rgb(235, 235, 228) !important;
+  }
+}
 textarea {
   resize: none;
 }
@@ -110,11 +115,13 @@ button {
   input:checked + .slider {
     background-color: $mainColor;
   }
-
+  input:disabled +.slider {
+    opacity: .8;
+    cursor: default;
+  }
   input:focus + .slider {
     box-shadow: 0 0 1px $mainColor;
   }
-
   input:checked + .slider:before {
     left: calc(100% - 30px);
   }
@@ -140,6 +147,36 @@ button {
     color: #333;
   }
 }
+/*** Action Row ***/
+.action-row {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  min-height: 40px;
+  .page-title {
+    margin: auto 0;
+  }
+  .inner-action-wrapper {
+    margin-left: auto;
+    display: flex;
+  }
+  .action-btn {
+    margin: auto 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.--icon {
+      font-size: 1.4rem;
+      color: $mainColor;
+      cursor: pointer;
+      &:hover {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){

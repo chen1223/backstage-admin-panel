@@ -1,3 +1,58 @@
-<p>
-  role-management works!
-</p>
+<form class="role-form" [formGroup]="roleForm">
+  <!-- Action Row -->
+  <div class="action-row">
+    <h1 class="page-title">Roles</h1>
+    <div class="inner-action-wrapper">
+      <button class="action-btn" *ngIf="mode === 'view'" (click)="onEdit()" class="action-btn --edit" type="button" aria-label="Edit">
+        <fa-icon class="action-btn --icon" [icon]="['fa', 'pen']"></fa-icon>
+      </button>
+      <button *ngIf="mode === 'edit'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
+      <button *ngIf="mode === 'edit'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Save">Cancel</button>
+    </div>
+  </div><!-- End of action row -->
+  <!-- New Wrapper -->
+  <div class="new-wrapper">
+    <button *ngIf="mode === 'edit'" class="new-btn" type="button" aria-label="add role" (click)="addRole()">
+      <fa-icon class="new-btn-icon" [icon]="['fa', 'plus-circle']"></fa-icon>
+      <span class="new-btn-text">Add Role</span>
+    </button>
+  </div><!-- End of new wrapper -->
+  <!-- Role Section -->
+  <section class="role-section" formArrayName="roles">
+    <div class="role-wrapper" *ngFor="let role of roleForm.get('roles').controls;let i = index">
+      <button class="remove-btn" type="button" aria-label="remove role" (click)="onRemoveRole(i)">
+        <fa-icon [icon]="['fa', 'times']"></fa-icon>
+      </button>
+      <div class="ctrl-row --title" [formGroupName]="i">
+        <label [for]="'title' + i" class="ctrl-label">Title</label>
+        <input [id]="'title' + i" type="text" class="ctrl" formControlName="title">
+      </div>
+      <div class="ctrl-row-wrapper" [formGroupName]="i">
+        <div class="ctrl-row">
+          <label [for]="'desc' + i" class="ctrl-label">Description</label>
+          <textarea [id]="'desc' + i" cols="30" rows="10" class="ctrl" placeholder="Description" formControlName="description"></textarea>
+        </div>
+        <div class="img-wrapper">
+          <button class="inner-img-wrapper" type="button" aria-label="role image 1" [ngClass]="{ 'empty': !role.get('img1Link').value }">
+            <input #file1 (change)="onImgSelected(i, 1, file1.files)" type="file" class="upload-ctrl" formControlName="img1" accept="image/png, image/jpeg, .gif">
+            <span *ngIf="!role.get('img1Link').value" class="upload-hint">Add image</span>
+            <img
+              class="role-img"
+              *ngIf="role.get('img1Link').value"
+              [src]="role.get('img1Link').value"
+              [alt]="role.get('title').value + ' image 1'">
+          </button>
+          <button class="inner-img-wrapper" type="button" aria-label="role image 2" [ngClass]="{ 'empty': !role.get('img2Link').value }">
+            <input #file2 (change)="onImgSelected(i, 2, file2.files)" type="file" class="upload-ctrl" formControlName="img2">
+            <span *ngIf="!role.get('img2Link').value" class="upload-hint">Add image</span>
+            <img
+              class="role-img"
+              *ngIf="role.get('img2Link').value"
+              [src]="role.get('img2Link').value"
+              [alt]="role.get('title').value + ' image 2'">
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

@@ -1,15 +1,26 @@
 <form class="profile-form" [formGroup]="profileForm">
   <!-- Action Row -->
   <div class="action-row">
-    <fa-icon *ngIf="mode === 'view'" class="action-btn --icon" [icon]="['fa', 'pen']" aria-label="Edit"></fa-icon>
-    <button *ngIf="mode === 'edit'" class="btn --md action-btn" type="button" aria-label="Save">Save</button>
+    <h1 class="page-title">Profile</h1>
+    <div class="inner-action-wrapper">
+      <button *ngIf="mode === 'view'" (click)="onEdit()" class="action-btn --edit" type="button" aria-label="Edit">
+        <fa-icon class="action-btn --icon" [icon]="['fa', 'pen']"></fa-icon>
+      </button>
+      <button *ngIf="mode === 'edit'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
+      <button *ngIf="mode === 'edit'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
+    </div>
   </div><!-- End of action row -->
   <!-- Profile Section -->
   <section class="profile-section">
     <!-- Avatar -->
     <div class="profile-avatar">
-      <button class="upload-avatar" type="button" aria-label="Upload profile picture" [ngClass]="{ 'fixed-height': !profileForm.get('profileLink').value }">
-        <input class="avatar-ctrl" type="file" accept="image/png, image/jpeg">
+      <button
+        class="upload-avatar"
+        type="button"
+        aria-label="Upload profile picture"
+        [ngClass]="{ 'fixed-height': !profileForm.get('profileLink').value,
+                     'disabled': profileForm.get('profileLink').disabled }">
+        <input #profileImg (change)="onImgSelected(profileImg.files)" title="" class="avatar-ctrl" type="file" accept="image/png, image/jpeg" formControlName="profileImg">
         <fa-icon
           *ngIf="!profileForm.get('profileLink').value"
           class="avatar --placeholder"
@@ -43,7 +54,7 @@
       <!-- Resume Link -->
       <div class="ctrl-row required">
         <label for="resumeLink" class="ctrl-label --profile">Resume</label>
-        <div class="upload-wrapper input ctrl profile">
+        <div class="upload-wrapper input ctrl profile" [ngClass]="{ 'disabled': profileForm.get('resumeLink').disabled }">
           <fa-icon class="upload-icon" [icon]="['fa','upload']"></fa-icon>
           <input type="file" id="resumeLink" class="--upload-ctrl" formControlName="resumeLink" accept=".pdf">
         </div>
@@ -95,12 +106,12 @@
     <!-- Introduction -->
     <div class="about-row required">
       <label for="intro" class="ctrl-label">Introduction</label>
-      <textarea id="intro" cols="30" rows="5" class="ctrl --about"></textarea>
+      <textarea id="intro" cols="30" rows="5" class="ctrl --about" placeholder="Introduction" formControlName="intro"></textarea>
     </div><!-- End of introduction -->
     <!-- Contact me -->
     <div class="about-row required">
       <label for="contact" class="ctrl-label">Contact me</label>
-      <textarea id="contact" cols="30" rows="5" class="ctrl --about"></textarea>
+      <textarea id="contact" cols="30" rows="5" class="ctrl --about" placeholder="Contact me text" formControlName="contactMe"></textarea>
     </div><!-- End of contact me -->
   </section><!-- End of about section -->
 </form>

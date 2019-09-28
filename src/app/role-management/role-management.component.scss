@@ -1,3 +1,91 @@
+@import '../../shared/color.scss';
+
+/*** New role button ***/
+.new-wrapper {
+  margin: 30px 0;
+}
+.new-btn {
+  display: flex;
+  cursor: pointer;
+  outline: none;
+  color: #333;
+  .new-btn-icon {
+    margin: auto 0;
+    margin-right: 5px;
+    font-size: 1.8rem;
+  }
+  .new-btn-text {
+    font-size: 1.2rem;
+    margin: auto 0;
+    display: block;
+  }
+}
+/*** Role Section ***/
+.role-section {
+  margin-top: 3rem;
+  .role-wrapper {
+    margin-top: 5rem;
+    position: relative;
+  }
+  .remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+    color: #888;
+    &:hover {
+      color: $red;
+    }
+  }
+  .ctrl-row {
+    margin: 10px 0;
+    &.--title {
+      max-width: 33%;
+    }
+  }
+  .ctrl-row-wrapper {
+    display: flex;
+    .ctrl-row,
+    .img-wrapper {
+      flex: 1;
+    }
+    .ctrl-row {
+      margin-right: 20px;
+    }
+  }
+}
+.img-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .inner-img-wrapper {
+    width: calc(50% - 10px);
+    position: relative;
+    padding: 0;
+    &.empty {
+      height: 50%;
+      border: 2px dashed #888;
+    }
+    .upload-ctrl {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .upload-hint {
+      font-size: 1.05rem;
+    }
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){

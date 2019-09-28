@@ -1,21 +1,5 @@
 @import '../../shared/color.scss';
 
-.action-row {
-  display: flex;
-  margin-top: 20px;
-  min-height: 40px;
-  .action-btn {
-    margin-left: auto;
-    &.--icon {
-      font-size: 1.4rem;
-      color: $mainColor;
-      cursor: pointer;
-      &:hover {
-        font-size: 1.6rem;
-      }
-    }
-  }
-}
 .profile-section {
   display: flex;
   align-items: center;
@@ -44,10 +28,16 @@
   position: relative;
   padding: 0;
   box-sizing: border-box;
+  cursor: pointer;
   &.fixed-height {
     height: 260px;
   }
-  cursor: pointer;
+  &.disabled {
+    cursor: default;
+    .avatar-ctrl {
+      cursor: default;
+    }
+  }
   .avatar-ctrl {
     position: absolute;
     top: 0;
@@ -85,6 +75,11 @@
   position: relative;
   background: white;
   display: flex;
+  &.disabled {
+    .--upload-ctrl {
+      cursor: default;
+    }
+  }
   .upload-icon {
     margin-left: auto;
     color: gray;

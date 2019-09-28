@@ -21,7 +21,8 @@ import { faUser,
          faTimes,
          faPen,
          faUserAlt,
-         faUpload } from '@fortawesome/free-solid-svg-icons';
+         faUpload,
+         faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from './container/container.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { ReelManagementComponent } from './reel-management/reel-management.component';
@@ -52,7 +53,7 @@ export class AppModule {
     [faUser, faUserTie, faFilm,
      faVideo, faPenFancy, faSignOutAlt,
      faBars, faTimes, faPen,
-     faUserAlt, faUpload].forEach(icon => {
+     faUserAlt, faUpload, faPlusCircle].forEach(icon => {
       library.add(icon);
     });
   }
