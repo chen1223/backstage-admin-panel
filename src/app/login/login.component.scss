@@ -143,7 +143,7 @@
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: portrait){
   .login-container {
-    background: linear-gradient(to bottom, gradientFrom, gradientTo);
+    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -213,7 +213,7 @@
 /***** MD Devices*****/
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
   .login-container {
-    background: linear-gradient(to bottom, gradientFrom, gradientTo);
+    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -283,7 +283,7 @@
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
   .login-container {
-    background: linear-gradient(to bottom, gradientFrom, gradientTo);
+    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -354,7 +354,7 @@
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
   .login-container {
-    background: linear-gradient(to bottom, gradientFrom, gradientTo);
+    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -419,7 +419,7 @@
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait){
   .login-container {
-    background: linear-gradient(to bottom, gradientFrom, gradientTo);
+    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(12, 1fr);

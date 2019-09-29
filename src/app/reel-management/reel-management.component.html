@@ -1,3 +1,124 @@
-<p>
-  reel-management works!
-</p>
+<form class="reel-form" [formGroup]="reelForm">
+  <!-- Action Row -->
+  <div class="action-row">
+    <h1 class="page-title">Reel</h1>
+    <div class="inner-action-wrapper">
+      <button *ngIf="mode === 'view'" (click)="onEdit()" class="action-btn --edit" type="button" aria-label="Edit">
+        <fa-icon class="action-btn --icon" [icon]="['fa', 'pen']"></fa-icon>
+      </button>
+      <button *ngIf="mode === 'edit'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
+      <button *ngIf="mode === 'edit'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
+    </div>
+  </div><!-- End of action row -->
+  <!-- Video Section -->
+  <section class="video-section">
+    <div class="ctrl-row required">
+      <label for="reelUrl" class="ctrl-label">Video Link</label>
+      <input type="text" id="reelUrl" class="ctrl" formControlName="reelUrl" placeholder="Vimeo or Youtube Link...">
+    </div>
+  </section><!-- End of video section -->
+  <!-- Large image section -->
+  <section class="img-section --lg">
+    <!-- Title and action buttons -->
+    <div class="title-row">
+      <h2 class="section-title">Desktop image slides (Landscape)</h2>
+      <button *ngIf="mode === 'edit'" class="btn --md new-btn" type="button" aria-label="add new desktop images">
+        <input #lgFile (change)="onAddNewImg(lgFile.files, 'large')" type="file" class="upload-img" title="">
+        <span class="new-btn-text">Add New</span>
+      </button>
+    </div><!-- End of title and action buttons -->
+    <!-- Large image slides -->
+    <div class="img-slides">
+      <div class="carousel-wrapper">
+        <ul class="carousel-inner-wrapper" formArrayName="reelLgImgs">
+          <li
+            *ngFor="let slide of reelForm.get('reelLgImgs').controls; let i = index"
+            class="carousel-item"
+            [ngClass]="{'active': i == lgActiveCarousel }"
+            [formGroupName]="i">
+            <button
+              *ngIf="!slide.get('deleted').value && (mode === 'edit')"
+              class="carousel-btn --remove"
+              type="button"
+              aria-label="remove slide image"
+              (click)="onImageAction('large', i, 'remove')">
+              <fa-icon [icon]="['fa', 'times']"></fa-icon>
+            </button>
+            <button
+              *ngIf="slide.get('deleted').value && (mode === 'edit')"
+              class="carousel-btn --undo"
+              type="button"
+              aria-label="restore slide image"
+              (click)="onImageAction('large', i, 'undo')">
+              <fa-icon [icon]="['fa', 'undo']"></fa-icon>
+            </button>
+            <img
+              *ngIf="slide.get('imgLink').value"
+              [src]="slide.get('imgLink').value"
+              [alt]="'large reel image ' + i"
+              class="carousel-img"
+              [ngClass]="{'deleted': slide.get('deleted').value}">
+          </li><!-- End of carousel item -->
+        </ul><!-- End of inner carousel wrapper -->
+        <button (click)="onCarouselClicks('large', 'next')" class="carousel-ctrl --next" type="button" aria-label="next image">
+          <fa-icon [icon]="['fa', 'arrow-right']"></fa-icon>
+        </button>
+        <button (click)="onCarouselClicks('large', 'prev')" class="carousel-ctrl --prev" type="button" aria-label="previous image">
+          <fa-icon [icon]="['fa', 'arrow-left']"></fa-icon>
+        </button>
+      </div><!-- End of carousel wrapper -->
+    </div><!-- End of large image slides -->
+  </section><!-- End of large image section -->
+  <!-- Small image section -->
+  <section class="img-section --sm">
+    <!-- Title and action buttons -->
+    <div class="title-row">
+      <h2 class="section-title">Mobile image slides (Portrait)</h2>
+      <button *ngIf="mode === 'edit'" class="btn --md new-btn" type="button" aria-label="add new mobile images">
+        <input #smFile (change)="onAddNewImg(smFile.files, 'small')" type="file" class="upload-img" title="">
+        <span class="new-btn-text">Add New</span>
+      </button>
+    </div><!-- End of title and action buttons -->
+    <!-- Small image slides -->
+    <div class="img-slides">
+      <div class="carousel-wrapper">
+        <ul class="carousel-inner-wrapper" formArrayName="reelSmImgs">
+          <li
+            *ngFor="let slide of reelForm.get('reelSmImgs').controls; let i = index"
+            class="carousel-item"
+            [ngClass]="{'active': i == smActiveCarousel }"
+            [formGroupName]="i">
+            <button
+              *ngIf="!slide.get('deleted').value && (mode === 'edit')"
+              class="carousel-btn --remove"
+              type="button"
+              aria-label="remove slide image"
+              (click)="onImageAction('small', i, 'remove')">
+              <fa-icon [icon]="['fa', 'times']"></fa-icon>
+            </button>
+            <button
+              *ngIf="slide.get('deleted').value && (mode === 'edit')"
+              class="carousel-btn --undo"
+              type="button"
+              aria-label="restore slide image"
+              (click)="onImageAction('small', i, 'undo')">
+              <fa-icon [icon]="['fa', 'undo']"></fa-icon>
+            </button>
+            <img
+              *ngIf="slide.get('imgLink').value"
+              [src]="slide.get('imgLink').value"
+              [alt]="'small reel image ' + i"
+              class="carousel-img"
+              [ngClass]="{'deleted': slide.get('deleted').value}">
+          </li><!-- End of carousel item -->
+        </ul><!-- End of inner carousel wrapper -->
+        <button (click)="onCarouselClicks('small', 'next')" class="carousel-ctrl --next" type="button" aria-label="next image">
+          <fa-icon [icon]="['fa', 'arrow-right']"></fa-icon>
+        </button>
+        <button (click)="onCarouselClicks('small', 'prev')" class="carousel-ctrl --prev" type="button" aria-label="previous image">
+          <fa-icon [icon]="['fa', 'arrow-left']"></fa-icon>
+        </button>
+      </div><!-- End of carousel wrapper -->
+    </div><!-- End of large image slides -->
+  </section><!-- End of large image section -->
+</form>

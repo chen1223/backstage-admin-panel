@@ -311,6 +311,11 @@ button {
     }
   }
   .action-row {
+    display: block;
+    .inner-action-wrapper {
+      display: block;
+      text-align: right;
+    }
     .action-btn {
       margin: auto 5px;
     }
@@ -319,7 +324,7 @@ button {
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: portrait){
-  input, .btn {
+  input {
     font-size: 2rem;
   }
   .layout {
@@ -337,9 +342,6 @@ button {
   .input,
   textarea {
     padding: 5px 8px;
-  }
-  .btn {
-    font-size: 2rem;
   }
   .layout {
     .content-wrapper {
