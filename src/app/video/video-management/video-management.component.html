@@ -1,3 +1,53 @@
-<p>
-  video-management works!
-</p>
+<form [formGroup]="categoryForm" class="categoryForm">
+  <!-- Action Row -->
+  <div class="action-row">
+    <h1 class="page-title">Videos</h1>
+  </div><!-- End of action row -->
+  <!-- Category Section -->
+  <section class="category-section">
+    <!-- Category action row -->
+    <div class="action-row">
+      <h2 class="section-title">Categories</h2>
+      <div class="inner-action-wrapper">
+        <button *ngIf="mode === 'view'" (click)="onEdit()" class="action-btn --edit" type="button" aria-label="Edit">
+          <fa-icon class="action-btn --icon" [icon]="['fa', 'pen']"></fa-icon>
+        </button>
+      </div>
+    </div><!-- End of category action row -->
+    <!-- New Row -->
+    <div class="new-row" *ngIf="mode === 'edit'">
+      <div class="ctrl-row">
+        <label class="ctrl-label">New Category</label>
+        <input type="text" class="ctrl" placeholder="New Category" formControlName="newCategory">
+      </div>
+      <button (click)="onAdd()" class="btn --md --add" type="button" aria-label="Add new category">Add</button>
+    </div><!-- End of new row -->
+    <!-- Categories -->
+    <div class="category-container">
+      <ul class="category-list" formArrayName="categories">
+        <li *ngFor="let category of categoryForm.get('categories').controls; let i = index"
+            class="category"
+            [formGroupName]="i"
+            [ngClass]="{
+              'editing': mode === 'edit'
+            }">
+          <button
+            *ngIf="mode === 'edit'"
+            (click)="onRemoveCategory(i)"
+            class="category-btn --remove"
+            type="button"
+            aria-label="remove category">
+            <fa-icon class="category-icon" [icon]="['fa', 'times']"></fa-icon>
+          </button>
+          <fa-icon *ngIf="mode === 'view'" class="category-icon --hash" [icon]="['fa', 'hashtag']"></fa-icon>
+          <span class="category-text">{{ category.get('text').value }}</span>
+        </li>
+      </ul>
+    </div>
+    <!-- Bottom action row -->
+    <div class="action-row --btm">
+      <button *ngIf="mode === 'edit'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
+      <button *ngIf="mode === 'edit'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
+    </div>
+  </section><!-- End of category section -->
+</form>

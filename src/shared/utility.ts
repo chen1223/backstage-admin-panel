@@ -16,3 +16,14 @@ export function uploadImg(files: FileList, ctrl: FormControl): void {
     ctrl.setValue(reader.result);
   }
 }
+
+export function toCamelCase(input: string): string {
+  const stringArray = input.split(' ');
+  for (let i = 0; i < stringArray.length; i++) {
+    if (i !== 0) {
+      // Convert the first character to uppercase
+      stringArray[i] = stringArray[i][0].toUpperCase() + stringArray[i].substring(1, stringArray[i].length);
+    }
+  }
+  return stringArray.join('');
+}

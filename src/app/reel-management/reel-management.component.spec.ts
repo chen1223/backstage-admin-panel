@@ -29,7 +29,7 @@ describe('ReelManagementComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should set mode to view mode and disable form on page init', () => {
+  it('should set mode to view mode and disable form on page init', () => {
     // Set initial status before testing
     component.mode = 'edit';
     component.reelForm.enable();

@@ -7,7 +7,7 @@ import { uploadImg } from '../../shared/utility';
   templateUrl: './reel-management.component.html',
   styleUrls: ['./reel-management.component.scss']
 })
-export class ReelManagementComponent implements OnInit, AfterViewInit {
+export class ReelManagementComponent implements OnInit {
 
   // Determine current mode
   mode: string = 'view';
@@ -29,16 +29,8 @@ export class ReelManagementComponent implements OnInit, AfterViewInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    // this.mode = 'view';
-    // this.reelForm.disable();
-  }
-
-  ngAfterViewInit() {
-    // if (window.matchMedia("(orientation: portrait)").matches) {
-    //   this.carouselDistance = 9;
-    // } else {
-    //   this.carouselDistance = 3;
-    // }
+    this.mode = 'view';
+    this.reelForm.disable();
   }
 
   // On user clicks on the edit button

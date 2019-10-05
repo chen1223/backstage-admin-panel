@@ -1,3 +1,70 @@
+@import '../../../shared/color.scss';
+/*** Category Section ***/
+.action-row {
+  .inner-action-wrapper {
+    margin-left: 10px;
+  }
+  .action-btn {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+}
+.new-row {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  .ctrl-row {
+    margin-right: 40px;
+    max-width: 200px;
+  }
+  input, button {
+    font-size: 1rem;
+  }
+}
+.category-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  .category {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-weight: bold;
+    &.editing {
+      border: 2px solid #888;
+      padding: 5px 8px;
+      border-radius: 3px;
+      position: relative;
+      font-weight: normal;
+    }
+    .category-icon {
+      margin-right: 3px;
+      font-size: .8rem;
+    }
+    .category-text {
+      font-size: 1rem;
+    }
+    .category-btn.--remove {
+      position: absolute;
+      top: -13px;
+      right: -10px;
+      padding: 0;
+      .category-icon {
+        font-size: 1.2rem;
+        color: $red;
+      }
+      &:hover {
+        .category-icon {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){

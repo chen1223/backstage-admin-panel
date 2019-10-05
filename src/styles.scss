@@ -179,6 +179,12 @@ button {
     }
   }
 }
+/*** Section Title ***/
+.section-title {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+}
 
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
@@ -265,6 +271,9 @@ button {
       margin: auto 5px;
     }
   }
+  .section-title {
+    font-size: 1.3rem;
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: landscape){
@@ -319,6 +328,10 @@ button {
     .action-btn {
       margin: auto 5px;
     }
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin: 10px 0;
   }
 }
 /*--------- Portrait Devices ---------*/
@@ -405,6 +418,10 @@ button {
       margin: auto 5px;
     }
   }
+  .section-title {
+    font-size: 1.3rem;
+    margin: 10px 0;
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait){
@@ -452,5 +469,9 @@ button {
     .action-btn {
       margin: auto 5px;
     }
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin: 20px 0;
   }
 }
