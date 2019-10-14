@@ -4,6 +4,17 @@ import { VideoManagementComponent } from './video-management.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { MgtData } from '../../shared/mgt-card/mgt-card.component';
+
+@Component({
+  selector: 'mgt-card',
+  template: '',
+  host: { 'class': 'mgt-card' }
+})
+export class MockMgtCardComponent {
+  @Input() data: MgtData = null;
+}
 
 describe('VideoManagementComponent', () => {
   let component: VideoManagementComponent;
@@ -12,7 +23,8 @@ describe('VideoManagementComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        VideoManagementComponent
+        VideoManagementComponent,
+        MockMgtCardComponent
       ],
       imports: [
         FontAwesomeModule,
@@ -221,5 +233,87 @@ describe('VideoManagementComponent', () => {
     component.onRemoveCategory(0);
     fixture.detectChanges();
     expect(categoryArray.controls.length).toBe(1);
+  });
+
+  /**
+   * Video related tests
+   */
+  it('should invoke the filterVideo on video type changed', () => {
+    const onChangeFnc = spyOn(component, 'filterVideo');
+    const videoTypeMenu = <HTMLSelectElement> fixture.debugElement.query(By.css('.menu.--type')).nativeElement;
+    videoTypeMenu.value = videoTypeMenu.options[1].value;
+    videoTypeMenu.dispatchEvent(new Event('change'));
+    fixture.detectChanges;
+    expect(onChangeFnc).toHaveBeenCalled();
+  });
+  it('should invoke the filterVideo on video category changed', () => {
+    const onChangeFnc = spyOn(component, 'filterVideo');
+    const categoryMenu = <HTMLSelectElement> fixture.debugElement.query(By.css('.menu.--category')).nativeElement;
+    categoryMenu.value = categoryMenu.options[0].value;
+    categoryMenu.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+    expect(onChangeFnc).toHaveBeenCalled();
+  });
+  it('should filter the video list on filterVideo called', () => {
+    const dummyData = [
+      {
+        link: 'videos/1',
+        status: 'published',
+        datePublished: 'Sep 21, 2019',
+        category: 'helloWorld',
+        title: 'video1',
+        coverImg: ''
+      },
+      {
+        link: 'videos/2',
+        status: 'draft',
+        datePublished: null,
+        category: 'helloWorld2',
+        title: 'video2',
+        coverImg: ''
+      }
+    ];
+    component.fullVideoList = dummyData;
+    component.filteredVideolist = dummyData;
+    fixture.detectChanges();
+
+    component.videoCategorySelection = 'helloWorld';
+    component.videoTypeSelection = 'published';
+    component.filterVideo();
+    fixture.detectChanges();
+
+    component.filteredVideolist.forEach(videoShown => {
+      expect(videoShown.status).toBe('published');
+      expect(videoShown.category).toBe('helloWorld');
+    });
+  });
+  it('should show filterVideoList on screen', () => {
+    const dummyData = [
+      {
+        link: 'videos/1',
+        status: 'published',
+        datePublished: 'Sep 21, 2019',
+        category: 'helloWorld',
+        title: 'video1',
+        coverImg: ''
+      },
+      {
+        link: 'videos/2',
+        status: 'draft',
+        datePublished: null,
+        category: 'helloWorld2',
+        title: 'video2',
+        coverImg: ''
+      }
+    ];
+    component.filteredVideolist = dummyData;
+    fixture.detectChanges();
+    const filteredVideos = fixture.debugElement.queryAll(By.css('.mgt-card'));
+    expect(filteredVideos.length).toBe(2);
+  });
+  it('should set up video statistic number on init', () => {
+    const fnc = spyOn(component, 'setUpVideoStats');
+    component.ngOnInit();
+    expect(fnc).toHaveBeenCalled();
   });
 });

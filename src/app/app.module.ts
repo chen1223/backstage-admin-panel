@@ -26,11 +26,11 @@ import { faUser,
          faUndo,
          faArrowRight,
          faArrowLeft,
-         faHashtag } from '@fortawesome/free-solid-svg-icons';
+         faHashtag,
+         faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from './container/container.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { ReelManagementComponent } from './reel-management/reel-management.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +59,7 @@ export class AppModule {
      faBars, faTimes, faPen,
      faUserAlt, faUpload, faPlusCircle,
      faUndo, faArrowLeft, faArrowRight,
-     faHashtag].forEach(icon => {
+     faHashtag, faChevronRight].forEach(icon => {
       library.add(icon);
     });
   }

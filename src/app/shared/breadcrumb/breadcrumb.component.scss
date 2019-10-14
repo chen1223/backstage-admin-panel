@@ -1,0 +1,25 @@
+.breadcrumb-list {
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
+  .breadcrumb {
+    display: inline-block;
+    .title {
+      text-decoration: none;
+      color: #555;
+      font-size: 1.2rem;
+      opacity: .8;
+      font-style: italic;
+      font-weight: bold;
+    }
+    .title.current {
+      opacity: 1;
+      font-style: normal;
+    }
+    .icon {
+      margin: 0 10px;
+      font-size: 1.2rem;
+      color: #888;
+    }
+  }
+}

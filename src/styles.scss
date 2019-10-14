@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
-@import './shared/color.scss';
+@import './app/shared/color.scss';
 
 * {
   font-family: 'Roboto Slab', serif;
@@ -12,7 +12,8 @@ body {
 
 input,
 .input,
-textarea {
+textarea,
+select {
   padding: 8px 10px;
   border: 2px solid #888;
   border-radius: 3px;
@@ -21,6 +22,10 @@ textarea {
   width: 100%;
   box-sizing: border-box;
   margin-top: 5px;
+}
+select {
+  cursor: pointer;
+  padding: 5px 10px;
 }
 .input {
   &.disabled {
@@ -155,7 +160,6 @@ button {
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  display: flex;
   min-height: 40px;
   .page-title {
     margin: auto 0;
@@ -214,7 +218,8 @@ button {
   }
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 1rem;
   }
@@ -231,7 +236,8 @@ button {
   }
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 14px;
   }
@@ -240,7 +246,8 @@ button {
 @media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 14px;
   }
@@ -279,7 +286,8 @@ button {
 @media (max-width: 479px) and (orientation: landscape){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 14px;
   }
@@ -353,7 +361,8 @@ button {
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
   }
   .layout {
@@ -374,7 +383,8 @@ button {
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
   }
   .layout {
@@ -391,7 +401,8 @@ button {
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 14px;
   }
@@ -427,7 +438,8 @@ button {
 @media (max-width: 479px) and (orientation: portrait){
   input,
   .input,
-  textarea {
+  textarea,
+  select {
     padding: 5px 8px;
     font-size: 14px;
   }
@@ -466,6 +478,9 @@ button {
     }
   }
   .action-row {
+    .page-title {
+      margin-top: 10px;
+    }
     .action-btn {
       margin: auto 5px;
     }

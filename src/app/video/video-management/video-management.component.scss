@@ -1,4 +1,4 @@
-@import '../../../shared/color.scss';
+@import '../../shared/color.scss';
 /*** Category Section ***/
 .action-row {
   .inner-action-wrapper {
@@ -28,7 +28,7 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
   .category {
     margin-right: 20px;
     margin-bottom: 10px;
@@ -65,6 +65,48 @@
     }
   }
 }
+.new-video {
+  margin-left: auto;
+  text-decoration: none;
+  font-size: 1rem;
+}
+/*** Filter Section ***/
+.stats-row {
+  display: flex;
+  margin: 20px 0;
+  .video-stats-wrapper {
+    margin-right: 3rem;
+    .section-title {
+      display: inline;
+      margin-right: 20px;
+      text-transform: none;
+    }
+  }
+}
+.filter-row {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  .filter-wrapper {
+    width: calc(50% - 20px);
+    display: flex;
+    align-items: baseline;
+    .ctrl-label {
+      font-size: 1.3rem;
+      margin-right: 10px;
+    }
+    .menu {
+      font-size: 1rem;
+    }
+  }
+}
+/*** Video List section ***/
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){
@@ -72,19 +114,91 @@
 }
 /***** MD Devices*****/
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
-
+  .stats-row {
+    margin-top: 2rem;
+  }
+  .filter-row {
+    .filter-wrapper {
+      .ctrl-label {
+        font-size: 1.2rem;
+      }
+    }
+  }
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: landscape){
-
+  .action-row {
+    margin-bottom: 0;
+  }
+  .section-title {
+    margin-top: 1rem;
+  }
+  .stats-row {
+    margin-top: 2rem;
+  }
+  .filter-row {
+    width: 100%;
+  }
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
-
+  .section-title {
+    margin-top: 1rem;
+  }
+  .new-row {
+    width: 100%;
+    .ctrl-row {
+      margin-right: 10px;
+      max-width: unset;
+    }
+  }
+  .stats-row {
+    margin-top: 2rem;
+    display: block;
+    position: relative;
+    .video-stats-wrapper {
+      margin-top: 10px;
+    }
+    .new-video {
+      position: absolute;
+      top: 20px;
+      right: 0;
+    }
+  }
+  .filter-row {
+    width: 100%;
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: landscape){
-
+  .section-title {
+    margin-top: 1rem;
+  }
+  .new-row {
+    width: 100%;
+    .ctrl-row {
+      max-width: unset;
+    }
+  }
+  .stats-row {
+    margin-top: 2rem;
+    display: block;
+    .video-stats-wrapper {
+      margin-right: 0;
+      margin-top: 10px;
+    }
+  }
+  .new-video {
+    display: block;
+  }
+  .filter-row {
+    width: 100%;
+    display: block;
+    .filter-wrapper {
+      display: block;
+      width: 100%;
+    }
+  }
 }
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
@@ -97,13 +211,78 @@
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
-
+  .filter-row {
+    width: 100%;
+  }
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
-
+  .new-row {
+    width: 100%;
+    .ctrl-row {
+      max-width: unset;
+      margin-right: 10px;
+    }
+  }
+  .action-row.--btm {
+    display: block;
+    text-align: center;
+  }
+  .new-video {
+    display: block;
+  }
+  .stats-row {
+    display: block;
+    .video-stats-wrapper {
+      margin-right: 0;
+      margin-top: 10px;
+    }
+  }
+  .filter-row {
+    width: 100%;
+    display: block;
+    .filter-wrapper {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait){
+  .action-row {
+    margin-top: 0;
+    margin-bottom: 0;
+    &.--btm {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+  .new-row {
+    width: 100%;
+    .ctrl-row {
+      max-width: unset;
+    }
+  }
+  .new-video {
+    display: block;
+  }
+  .stats-row {
+    display: block;
+    .video-stats-wrapper {
+      margin-right: 0;
+      margin-top: 10px;
+    }
+  }
+  .filter-row {
+    width: 100%;
+    display: block;
+    .filter-wrapper {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
 
 }

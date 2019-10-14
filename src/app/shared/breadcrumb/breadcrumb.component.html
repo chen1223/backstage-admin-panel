@@ -1,0 +1,12 @@
+<ul class="breadcrumb-list">
+  <li *ngFor="let breadcrumb of trace; let i = index"
+      class="breadcrumb">
+    <ng-container *ngIf="i !== trace.length -1;else last">
+      <a [routerLink]="breadcrumb.link" class="title" [attr.aria-label]="breadcrumb.text">{{ breadcrumb.text }}</a>
+      <fa-icon class="icon" [icon]="['fa', 'chevron-right']"></fa-icon>
+    </ng-container>
+    <ng-template #last>
+      <span class="title current">{{ breadcrumb.text }}</span>
+    </ng-template>
+  </li>
+</ul>

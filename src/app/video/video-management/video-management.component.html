@@ -45,9 +45,52 @@
       </ul>
     </div>
     <!-- Bottom action row -->
-    <div class="action-row --btm">
-      <button *ngIf="mode === 'edit'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
-      <button *ngIf="mode === 'edit'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
+    <div *ngIf="mode === 'edit'" class="action-row --btm">
+      <button (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save">Save</button>
+      <button (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
     </div>
   </section><!-- End of category section -->
 </form>
+<!-- Video Section -->
+<section class="video-section">
+  <!-- Video statistic -->
+  <div class="stats-row">
+    <!-- Total published -->
+    <div class="video-stats-wrapper">
+      <h2 class="section-title">Total published:</h2>
+      <span class="stat-detail">{{ totalPublished }}</span>
+    </div><!-- End of total published -->
+    <!-- Total drafts -->
+    <div class="video-stats-wrapper">
+      <h2 class="section-title">Total drafts:</h2>
+      <span class="stat-detail">{{ totalDrafts }}</span>
+    </div><!-- End of total drafts -->
+    <!-- New Video Button -->
+    <a routerLink="/videos/new" class="btn --md new-video" aria-label="New video">Add Video</a>
+  </div><!-- End of video statistic -->
+  <!-- Filter row -->
+  <div class="filter-row">
+    <!-- Video type menu -->
+    <div class="filter-wrapper ctrl-row">
+      <label for="videoType" class="ctrl-label">Show</label>
+      <select name="videoType" id="videoType" class="ctrl menu --type" (change)="filterVideo()" [(ngModel)]="videoTypeSelection">
+        <option value="all" class="video-option">All</option>
+        <option value="published" class="video-option">Published</option>
+        <option value="draft" class="video-option">Draft</option>
+      </select>
+    </div><!-- End of video type menu -->
+    <!-- Video category menu -->
+    <div class="filter-wrapper ctrl-row">
+      <label for="videoType" class="ctrl-label">Category</label>
+      <select name="videoType" id="videoType" class="ctrl menu --category" (change)="filterVideo()" [(ngModel)]="videoCategorySelection">
+        <option value="all" class="video-option">All</option>
+        <option *ngFor="let videoCat of categoryForm.get('categories').controls"
+                [ngValue]="videoCat.get('tag').value"
+                class="video-option">{{ videoCat.get('text').value }}</option>
+      </select>
+    </div><!-- End of video type menu -->
+  </div><!-- End of filter row -->
+  <div class="video-list">
+    <mgt-card *ngFor="let video of filteredVideolist" [data]="video"></mgt-card>
+  </div>
+</section><!-- End of video section -->

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
-import { uploadImg } from '../../shared/utility';
+import { uploadImg } from '../shared/utility';
 
 @Component({
   selector: 'app-role-management',

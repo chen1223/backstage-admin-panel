@@ -1,6 +1,6 @@
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { uploadImg } from '../../shared/utility';
+import { uploadImg } from '../shared/utility';
 
 @Component({
   selector: 'app-profile',

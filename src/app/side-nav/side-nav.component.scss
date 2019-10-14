@@ -1,4 +1,4 @@
-@import '../../shared/color.scss';
+@import '../shared/color.scss';
 :host {
   background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
   min-height: 100vh;

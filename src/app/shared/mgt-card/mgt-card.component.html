@@ -1,0 +1,12 @@
+<a class="card-link"
+  [routerLink]="data?.link"
+  [ngClass]="{'draft': data?.status === 'draft'}">
+  <span class="status" *ngIf="data?.status === 'published';else draft">{{ 'Published on ' + data?.datePublished }}</span>
+  <ng-template #draft>
+    <span class="status">Draft</span>
+  </ng-template>
+  <div class="img-wrapper">
+    <img [src]="data?.coverImg" [alt]="data?.title" class="cover-img">
+  </div>
+  <span class="title">{{ data?.title }}</span>
+</a>

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
-import { uploadImg } from '../../shared/utility';
+import { uploadImg } from '../shared/utility';
 
 @Component({
   selector: 'app-reel-management',
