@@ -53,7 +53,7 @@ describe('VideoDetailComponent', () => {
    * Form related test
    */
   it('should have FormControls', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // title
     expect(videoForm.get('title')).toBeTruthy();
     // category id
@@ -62,6 +62,8 @@ describe('VideoDetailComponent', () => {
     expect(videoForm.get('year')).toBeTruthy();
     // url
     expect(videoForm.get('url')).toBeTruthy();
+    // videoID
+    expect(videoForm.get('videoID')).toBeTruthy();
     // description
     expect(videoForm.get('description')).toBeTruthy();
     // status
@@ -70,21 +72,21 @@ describe('VideoDetailComponent', () => {
     expect(videoForm.get('generes')).toBeTruthy();
   });
   it('should validate FormControl: title', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // Required validation
     videoForm.get('title').setValue('');
     fixture.detectChanges();
     expect(videoForm.get('title').valid).toBeFalsy();
   });
   it('should validate FormControl: categoryId', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // Required validation
     videoForm.get('categoryId').setValue('');
     fixture.detectChanges();
     expect(videoForm.get('categoryId').valid).toBeFalsy();
   });
   it('should validate FormControl: year', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // Required validation
     videoForm.get('year').setValue('');
     fixture.detectChanges();
@@ -99,14 +101,14 @@ describe('VideoDetailComponent', () => {
     expect(videoForm.get('year').valid).toBeFalsy();
   });
   it('should validate FormControl: url', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // Required validation
     videoForm.get('url').setValue('');
     fixture.detectChanges();
     expect(videoForm.get('url').valid).toBeFalsy();
   });
   it('should validate FormControl: description', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     // Required validation
     videoForm.get('description').setValue('');
     fixture.detectChanges();
@@ -121,7 +123,7 @@ describe('VideoDetailComponent', () => {
     fixture.detectChanges();
     component.setStatus();
     fixture.detectChanges();
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     expect(videoForm.get('status').value).toBe('draft');
   });
 
@@ -132,7 +134,7 @@ describe('VideoDetailComponent', () => {
     component.mode = 'view';
     fixture.detectChanges();
     const onEditFnc = spyOn(component, 'onEdit');
-    const editBtn = <HTMLButtonElement> (fixture.debugElement.query(By.css('.action-btn.--edit'))).nativeElement;
+    const editBtn = (fixture.debugElement.query(By.css('.action-btn.--edit'))).nativeElement as HTMLButtonElement;
     editBtn.click();
     fixture.detectChanges();
     expect(onEditFnc).toHaveBeenCalled();
@@ -154,7 +156,7 @@ describe('VideoDetailComponent', () => {
     component.mode = 'edit';
     fixture.detectChanges();
     const saveFormFnc = spyOn(component, 'saveForm');
-    const saveBtn = <HTMLButtonElement> (fixture.debugElement.query(By.css('.action-btn.--save'))).nativeElement;
+    const saveBtn = (fixture.debugElement.query(By.css('.action-btn.--save'))).nativeElement as HTMLButtonElement;
     saveBtn.click();
     fixture.detectChanges();
     expect(saveFormFnc).toHaveBeenCalled();
@@ -176,7 +178,7 @@ describe('VideoDetailComponent', () => {
     component.mode = 'edit';
     fixture.detectChanges();
     const cancelFn = spyOn(component, 'onCancel');
-    const cancelBtn = <HTMLButtonElement> (fixture.debugElement.query(By.css('.--cancel'))).nativeElement;
+    const cancelBtn = (fixture.debugElement.query(By.css('.--cancel'))).nativeElement as HTMLButtonElement;
     cancelBtn.click();
     fixture.detectChanges();
     expect(cancelFn).toHaveBeenCalled();
@@ -196,11 +198,11 @@ describe('VideoDetailComponent', () => {
    */
   it('should invoke the publishVideo function on user clicks on the publish button', () => {
     component.mode = 'view';
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     videoForm.get('status').setValue('draft');
     fixture.detectChanges();
     const fnc = spyOn(component, 'publishVideo').and.callFake(() => {});
-    const publishBtn = <HTMLButtonElement> fixture.debugElement.query(By.css('.--publish')).nativeElement;
+    const publishBtn = fixture.debugElement.query(By.css('.--publish')).nativeElement as HTMLButtonElement;
     publishBtn.click();
     fixture.detectChanges();
     expect(fnc).toHaveBeenCalled();
@@ -211,11 +213,11 @@ describe('VideoDetailComponent', () => {
    */
   it('should invoke the unpublishVideo function on user clicks on the unpublish button', () => {
     component.mode = 'view';
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     videoForm.get('status').setValue('published');
     fixture.detectChanges();
     const fnc = spyOn(component, 'unpublishVideo').and.callFake(() => {});
-    const unpublishBtn = <HTMLButtonElement> fixture.debugElement.query(By.css('.--unpublish')).nativeElement;
+    const unpublishBtn = fixture.debugElement.query(By.css('.--unpublish')).nativeElement as HTMLButtonElement;
     unpublishBtn.click();
     fixture.detectChanges();
     expect(fnc).toHaveBeenCalled();
@@ -226,25 +228,58 @@ describe('VideoDetailComponent', () => {
    */
   it('should display video status as "New"', () => {
     component.mode = 'create';
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     videoForm.get('status').setValue('draft');
     fixture.detectChanges();
-    const videoStatus = <HTMLElement> fixture.debugElement.query(By.css('.page-title')).nativeElement;
+    const videoStatus = fixture.debugElement.query(By.css('.page-title')).nativeElement as HTMLElement;
     expect(videoStatus.innerText).toBe('New');
   });
   it('should display video status as "Draft"', () => {
     component.mode = 'edit';
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     videoForm.get('status').setValue('draft');
     fixture.detectChanges();
-    const videoStatus = <HTMLElement> fixture.debugElement.query(By.css('.page-title')).nativeElement;
+    const videoStatus = fixture.debugElement.query(By.css('.page-title')).nativeElement as HTMLElement;
     expect(videoStatus.innerText).toBe('Draft');
   });
   it('should display video status as "Published"', () => {
-    const videoForm = <FormGroup> component.videoForm;
+    const videoForm = component.videoForm as FormGroup;
     videoForm.get('status').setValue('published');
     fixture.detectChanges();
-    const videoStatus = <HTMLElement> fixture.debugElement.query(By.css('.page-title')).nativeElement;
+    const videoStatus = fixture.debugElement.query(By.css('.page-title')).nativeElement as HTMLElement;
     expect(videoStatus.innerText).toBe('Published');
+  });
+
+  /**
+   * FormControl: 'url' related test
+   */
+  it('should invoke the "setVideoID" function on url changed', () => {
+    const fnc = spyOn(component, 'setVideoID');
+    const urlInput = fixture.debugElement.query(By.css('#url'));
+    urlInput.triggerEventHandler('change', 'test');
+    fixture.detectChanges();
+    expect(fnc).toHaveBeenCalled();
+  });
+
+  /**
+   * setVideoID related tests
+   */
+  it('should successfully set video ID when user enters a vimeo url', () => {
+    const videoForm = component.videoForm as FormGroup;
+    const dummyUrl = 'https://vimeo.com/abc';
+    videoForm.get('url').setValue(dummyUrl);
+    fixture.detectChanges();
+    component.setVideoID();
+    fixture.detectChanges();
+    expect(videoForm.get('videoID').value).toEqual('abc');
+  });
+  it('should successfully set video ID when user enters an youtube url', () => {
+    const videoForm = component.videoForm as FormGroup;
+    const dummyUrl = 'https://www.youtube.com/watch?v=abc';
+    videoForm.get('url').setValue(dummyUrl);
+    fixture.detectChanges();
+    component.setVideoID();
+    fixture.detectChanges();
+    expect(videoForm.get('videoID').value).toEqual('abc');
   });
 });

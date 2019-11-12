@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from '../../../shared/breadcrumb/breadcrumb.component';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-video-detail',
@@ -23,6 +24,7 @@ export class VideoDetailComponent implements OnInit {
     categoryId: ['', Validators.required],
     year: ['', [Validators.required, Validators.maxLength(4), Validators.minLength(4)]],
     url: ['', Validators.required],
+    videoID: [''],
     description: ['', Validators.required],
     status: ['draft'],
     generes: ['']
@@ -32,7 +34,8 @@ export class VideoDetailComponent implements OnInit {
   categoryList = [];
 
   constructor(private activatedRoute: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.setMode();
@@ -106,6 +109,27 @@ export class VideoDetailComponent implements OnInit {
     }
   }
 
+  // On user enters video url, set video ID
+  setVideoID(): void {
+    const url = this.videoForm.get('url').value as string;
+    console.log('url', url);
+    const trimmedUrl = url.substring(0, url.indexOf('&') > -1 ? url.indexOf('&') : url.length);
+    console.log('trimmedUrl', trimmedUrl)
+    this.videoForm.get('url').setValue(trimmedUrl);
+    let id = '';
+    // Get video ID from vimeo url
+    if (trimmedUrl.indexOf('vimeo') > -1) {
+      id = trimmedUrl.replace('https://vimeo.com/', '');
+    } else if (trimmedUrl.indexOf('youtube') > -1) {
+      id = trimmedUrl.replace('https://www.youtube.com/watch?v=', '');
+    } else {
+      // TODO: Replace with customize alert message
+      alert('Only Youtube and Vimeo urls are allowed');
+    }
+    console.log('id', id);
+    this.videoForm.get('videoID').setValue(id);
+  }
+
   // On user clicks on the edit button
   onEdit(): void {
     this.videoForm.enable();
@@ -137,5 +161,10 @@ export class VideoDetailComponent implements OnInit {
     // Update mode
     this.mode = 'view';
     // TODO: Reset videoForm back to original data
+  }
+
+  // Transform video link to by pass security check
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

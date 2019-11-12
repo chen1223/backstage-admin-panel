@@ -41,11 +41,67 @@
   <!-- Title -->
   <div class="ctrl-row required">
     <label for="title" class="ctrl-label --title">Title</label>
-    <input type="text" id="title" class="ctrl" placeholder="Title">
+    <input type="text" id="title" class="ctrl" formControlName="title" placeholder="Title">
   </div><!-- End of title -->
   <!-- URL -->
   <div class="ctrl-row required">
     <label for="url" class="ctrl-label --url">URL</label>
-    <input type="text" id="title" class="ctrl" placeholder="Vimeo or Youtube link...">
+    <input (change)="setVideoID()" type="text" id="url" class="ctrl" formControlName="url" placeholder="Vimeo or Youtube link...">
   </div><!-- End of url -->
+  <!-- Video Preview -->
+  <div class="ctrl-row --video-preview" *ngIf="videoForm.get('url').value">
+    <ng-container *ngIf="videoForm.get('url').value.indexOf('youtube') > -1">
+      <div class="video-wrapper">
+        <iframe
+          class="video-player"
+          width="560"
+          height="315"
+          frameborder="0"
+          allow="accelerometer; autoplay; gyroscope; picture-in-picture"
+          allowfullscreen
+          [src]="transform('https://www.youtube.com/embed/' + videoForm.get('videoID').value)">
+        </iframe>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="videoForm.get('url').value.indexOf('vimeo') > -1">
+      <div class="video-wrapper video--vimeo">
+        <iframe
+          class="video-player"
+          width="640"
+          height="360"
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          [src]="transform('https://player.vimeo.com/video/' + videoForm.get('videoID').value)">
+        </iframe>
+      </div>
+    </ng-container>
+  </div><!-- End of video preview -->
+  <!-- Meta data: category, year, genere -->
+  <div class="ctrl-row --meta-data">
+    <!-- Category -->
+    <div class="meta-wrapper required --category">
+      <label for="category" class="ctrl-label --category">Category</label>
+      <select id="category" class="ctrl">
+        <option value="">Select category</option>
+        <option *ngFor="let category of categoryList" [ngValue]="category.id">{{ category.text }}</option>
+      </select>
+    </div><!-- End of category -->
+    <!-- Year -->
+    <div class="meta-wrapper required --year">
+      <label for="year" class="ctrl-label --category">Year</label>
+      <input maxlength="4" minlength="4" id="year" type="text" class="ctrl" formControlName="year" placeholder="Year">
+    </div><!-- End of year -->
+    <!-- Genere -->
+    <div class="meta-wrapper required --genere">
+      <label for="genere" class="ctrl-label --category">Genere</label>
+      <input id="genere" type="text" class="ctrl" formControlName="generes" placeholder="Genere separated by comma">
+    </div><!-- End of genere -->
+  </div><!-- End of meta data -->
+  <!-- Description -->
+  <div class="ctrl-row required">
+    <label for="description" class="ctrl-label --category">Description</label>
+    <textarea id="description" class="ctrl" formControlName="description" placeholder="Description" rows="5"></textarea>
+  </div><!-- End of description -->
 </form>

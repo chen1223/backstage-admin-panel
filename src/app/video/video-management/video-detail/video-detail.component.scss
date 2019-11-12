@@ -1,5 +1,30 @@
 .ctrl-row {
   margin: 20px 0;
+  &.--video-preview {
+    margin-top: 3rem;
+  }
+}
+.video-wrapper {
+  text-align: center;
+}
+/*** Meta data section ***/
+.ctrl-row.--meta-data {
+  display: flex;
+  justify-content: space-between;
+  .meta-wrapper {
+    &.--category {
+      width: 25%;
+      select {
+        height: 42.5px;
+      }
+    }
+    &.--year {
+      width: 70px;
+    }
+    &.--genere {
+      width: 60%;
+    }
+  }
 }
 
 /*--------- Landscape Devices ---------*/
