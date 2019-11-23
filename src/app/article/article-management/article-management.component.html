@@ -1,0 +1,37 @@
+<!-- Action Row -->
+<div class="action-row">
+  <h1 class="page-title">Articles</h1>
+</div><!-- End of Action row -->
+<!-- Article Section -->
+<section class="article-section">
+  <!-- Article statistic -->
+  <div class="stats-row">
+    <!-- Total published -->
+    <div class="article-stats-wrapper">
+      <h2 class="section-title">Total published:</h2>
+      <span class="stat-detail">{{ totalPublished }}</span>
+    </div><!-- End of total published -->
+    <!-- Total drafts -->
+    <div class="article-stats-wrapper">
+      <h2 class="section-title">Total drafts:</h2>
+      <span class="stat-detail">{{ totalDrafts }}</span>
+    </div><!-- End of total drafts -->
+    <!-- New Article Button -->
+    <a routerLink="/articles/new" class="btn --md new-article" aria-label="New article">New Article</a>
+  </div><!-- End of Article statistic -->
+  <!-- Filter row -->
+  <div class="filter-row">
+    <!-- Article type menu -->
+    <div class="filter-wrapper ctrl-row">
+      <label for="articleType" class="ctrl-label">Show</label>
+      <select name="articleType" id="articleType" class="ctrl menu --type" (change)="filterArticle()" [(ngModel)]="articleTypeSelection">
+        <option value="all" class="article-option">All</option>
+        <option value="published" class="article-option">Published</option>
+        <option value="draft" class="article-option">Draft</option>
+      </select>
+    </div><!-- End of article type menu -->
+  </div><!-- End of filter row -->
+  <div class="article-list">
+    <mgt-card *ngFor="let article of filteredArticlelist" [data]="article"></mgt-card>
+  </div>
+</section><!-- End of article section -->
