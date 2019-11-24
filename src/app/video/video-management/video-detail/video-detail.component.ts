@@ -73,16 +73,24 @@ export class VideoDetailComponent implements OnInit {
           break;
         case 'view':
           this.mode = 'view';
+          this.setBreadcrumb({
+            link: '',
+            text: 'View Video'
+          })
           // TODO: Set Breadcrumb with video title
           this.setStatus();
           break;
         case 'update':
           this.mode = 'update';
+          this.setBreadcrumb({
+            link: '',
+            text: 'Update Video'
+          })
           // TODO: Set Breadcrumb with video title
           this.setStatus();
           break;
       }
-    })
+    });
   }
 
   // Set breadcrumb

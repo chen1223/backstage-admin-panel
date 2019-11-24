@@ -14,9 +14,6 @@
   .meta-wrapper {
     &.--category {
       width: 25%;
-      select {
-        height: 42.5px;
-      }
     }
     &.--year {
       width: 70px;
@@ -42,11 +39,46 @@
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+  .ctrl-row.--meta-data {
+    flex-wrap: wrap;
+    .meta-wrapper {
+      &.--category {
+        select {
+          height: unset;
+        }
+      }
+      &.--category,
+      &.--year {
+        width: calc(50% - 10px);
+      }
+      &.--genere {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
 
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: landscape){
-
+  .ctrl-row.--meta-data {
+    flex-wrap: wrap;
+    .meta-wrapper {
+      &.--category {
+        select {
+          height: unset;
+        }
+      }
+      &.--category,
+      &.--year {
+        width: calc(50% - 10px);
+      }
+      &.--genere {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
 }
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
@@ -59,13 +91,55 @@
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
-
+  .ctrl-row.--meta-data {
+    .meta-wrapper.--category {
+      select {
+        height: unset;
+      }
+    }
+  }
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
+  .ctrl-row.--meta-data {
+    flex-wrap: wrap;
+    .meta-wrapper {
+      &.--category {
+        select {
+          height: unset;
+        }
+      }
+      &.--category,
+      &.--year {
+        width: calc(50% - 10px);
+      }
+      &.--genere {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
 
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait){
+  .ctrl-row.--meta-data {
+    flex-wrap: wrap;
+    .meta-wrapper {
+      &.--category {
+        select {
+          height: unset;
+        }
+      }
+      &.--category,
+      &.--year {
+        width: calc(50% - 10px);
+      }
+      &.--genere {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
 
 }

@@ -83,7 +83,7 @@
     <!-- Category -->
     <div class="meta-wrapper required --category">
       <label for="category" class="ctrl-label --category">Category</label>
-      <select id="category" class="ctrl">
+      <select id="category" class="ctrl" formControlName="categoryId">
         <option value="">Select category</option>
         <option *ngFor="let category of categoryList" [ngValue]="category.id">{{ category.text }}</option>
       </select>

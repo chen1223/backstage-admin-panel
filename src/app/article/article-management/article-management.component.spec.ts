@@ -1,10 +1,10 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleManagementComponent } from './article-management.component';
 import { Component, Input } from '@angular/core';
-import { MgtData } from '../../shared/mgt-card/mgt-card.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { MgtData } from 'src/app/shared/mgt-card/mgt-card.component';
 import { By } from '@angular/platform-browser';
 
 @Component({
@@ -27,8 +27,8 @@ describe('ArticleManagementComponent', () => {
         ArticleManagementComponent
       ],
       imports: [
-        FontAwesomeModule,
         FormsModule,
+        FontAwesomeModule
       ]
     })
     .compileComponents();
@@ -38,6 +38,10 @@ describe('ArticleManagementComponent', () => {
     fixture = TestBed.createComponent(ArticleManagementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   /**
@@ -93,18 +97,16 @@ describe('ArticleManagementComponent', () => {
   it('should show filterArticleList on screen', () => {
     const dummyData = [
       {
-        link: 'article/1',
+        link: 'articles/1',
         status: 'published',
         datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
         title: 'article1',
         coverImg: ''
       },
       {
-        link: 'article/2',
+        link: 'articles/2',
         status: 'draft',
         datePublished: null,
-        category: 'helloWorld2',
         title: 'article2',
         coverImg: ''
       }

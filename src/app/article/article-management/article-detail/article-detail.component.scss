@@ -1,29 +1,31 @@
-.breadcrumb-list {
+/*** Article title ***/
+.article-title {
+  border: none;
+  background: none;
   padding: 0;
-  margin: 20px 0;
-  list-style: none;
-  .breadcrumb {
-    display: inline-block;
-    .title {
-      text-decoration: none;
-      color: #555;
-      font-size: 1.2rem;
-      opacity: .8;
-      font-style: italic;
-      font-weight: bold;
-    }
-    .title.current {
-      opacity: 1;
-      font-style: normal;
-    }
-    .icon {
-      margin: 0 10px;
-      font-size: 1.2rem;
-      color: #888;
-    }
+  outline: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.new-btn {
+  display: flex;
+  cursor: pointer;
+  outline: none;
+  color: #333;
+  .new-btn-icon {
+    margin: auto 0;
+    margin-right: 5px;
+    font-size: 1.8rem;
+  }
+  .new-btn-text {
+    font-size: 1.2rem;
+    margin: auto 0;
+    display: block;
   }
 }
-
+.ctrl-row {
+  margin: 20px 0;
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){
@@ -39,11 +41,9 @@
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
-
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: landscape){
-
 }
 /*--------- Portrait Devices ---------*/
 /***** LG Devices *****/
@@ -56,7 +56,6 @@
 }
 /***** SM Devices *****/
 @media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
-
 }
 /***** XS Devices *****/
 @media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
@@ -64,11 +63,5 @@
 }
 /***** XXS Devices *****/
 @media (max-width: 479px) and (orientation: portrait){
-  .breadcrumb-list {
-    .breadcrumb {
-      .title {
-        font-size: 1rem;
-      }
-    }
-  }
+
 }

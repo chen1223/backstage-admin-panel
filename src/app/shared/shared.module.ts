@@ -1,18 +1,24 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { MgtCardComponent } from './mgt-card/mgt-card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MgtCardComponent } from './mgt-card/mgt-card.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    MgtCardComponent
+    MgtCardComponent,
+    BreadcrumbComponent
   ],
   exports: [
-    MgtCardComponent
+    MgtCardComponent,
+    BreadcrumbComponent,
+    FontAwesomeModule
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }

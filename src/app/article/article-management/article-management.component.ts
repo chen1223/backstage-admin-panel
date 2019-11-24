@@ -8,15 +8,15 @@ import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 })
 export class ArticleManagementComponent implements OnInit {
 
+  // Article statistics
   totalPublished: number = 0;
   totalDrafts: number = 0;
+  articleTypeSelection: string = 'all';
 
   // Full article list
   fullArticleList: MgtData[] = [];
   // Article list shown after filter
   filteredArticlelist: MgtData[] = [];
-  articleTypeSelection: string = 'all';
-
   constructor() { }
 
   ngOnInit() {
@@ -104,13 +104,12 @@ export class ArticleManagementComponent implements OnInit {
     this.setUpArticleStats();
   }
 
-
-  // Set up video statistic number
+  // Set up article statistic number
   setUpArticleStats(): void {
     this.totalPublished = 0;
     this.totalDrafts = 0;
-    this.fullArticleList.forEach(video => {
-      if (video.status === 'published') {
+    this.fullArticleList.forEach(article => {
+      if (article.status === 'published') {
         this.totalPublished++;
       } else {
         this.totalDrafts++;
