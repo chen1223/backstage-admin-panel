@@ -65,7 +65,7 @@
     }
   }
 }
-.new-video {
+.new-article {
   margin-left: auto;
   text-decoration: none;
   font-size: 1rem;
@@ -74,7 +74,7 @@
 .stats-row {
   display: flex;
   margin: 20px 0;
-  .video-stats-wrapper {
+  .article-stats-wrapper {
     margin-right: 3rem;
     .section-title {
       display: inline;
@@ -101,8 +101,8 @@
     }
   }
 }
-/*** Video List section ***/
-.video-list {
+/*** article List section ***/
+.article-list {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -10px;
@@ -156,15 +156,15 @@
     margin-top: 2rem;
     display: block;
     position: relative;
-    .video-stats-wrapper {
+    .article-stats-wrapper {
       margin-top: 10px;
     }
-    .new-video {
+    .new-article {
       position: absolute;
       top: 20px;
       right: 0;
       margin-top: 20px;
-      max-width: 85px;
+      max-width: 95px;
     }
   }
   .filter-row {
@@ -185,15 +185,15 @@
   .stats-row {
     margin-top: 2rem;
     display: block;
-    .video-stats-wrapper {
+    .article-stats-wrapper {
       margin-right: 0;
       margin-top: 10px;
     }
   }
-  .new-video {
+  .new-article {
     display: block;
     margin-top: 20px;
-    max-width: 85px;
+    max-width: 95px;
   }
   .filter-row {
     width: 100%;
@@ -232,14 +232,14 @@
     display: block;
     text-align: center;
   }
-  .new-video {
+  .new-article {
     display: block;
     margin-top: 20px;
-    max-width: 85px;
+    max-width: 95px;
   }
   .stats-row {
     display: block;
-    .video-stats-wrapper {
+    .article-stats-wrapper {
       margin-right: 0;
       margin-top: 10px;
     }
@@ -271,14 +271,14 @@
       max-width: unset;
     }
   }
-  .new-video {
+  .new-article {
     display: block;
     margin-top: 20px;
-    max-width: 85px;
+    max-width: 95px;
   }
   .stats-row {
     display: block;
-    .video-stats-wrapper {
+    .article-stats-wrapper {
       margin-right: 0;
       margin-top: 10px;
     }

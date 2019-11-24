@@ -1,12 +1,25 @@
-import { ArticleComponent } from './article.component';
+import { ArticleDetailComponent } from './article-management/article-detail/article-detail.component';
+import { ArticleManagementComponent } from './article-management/article-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticleComponent,
+    component: ArticleManagementComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'new',
+    component: ArticleDetailComponent
+  },
+  {
+    path: 'view',
+    component: ArticleDetailComponent
+  },
+  {
+    path: 'update',
+    component: ArticleDetailComponent
   }
 ];
 

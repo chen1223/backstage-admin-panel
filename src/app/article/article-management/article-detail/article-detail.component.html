@@ -1,0 +1,52 @@
+<app-breadcrumb [trace]="breadcrumb"></app-breadcrumb>
+<form class="article-form" [formGroup]="articleForm">
+  <!-- Action Row -->
+  <div class="action-row">
+    <!-- Article status -->
+    <ng-container [ngSwitch]="articleForm.get('status').value">
+      <ng-container *ngSwitchCase="'draft'">
+        <h1 class="page-title" *ngIf="mode === 'create';else draftTitle">New</h1>
+        <ng-template #draftTitle>
+          <h1 class="page-title">Draft</h1>
+        </ng-template>
+      </ng-container>
+      <h1 class="page-title" *ngSwitchCase="'published'">Published</h1>
+    </ng-container>
+    <!-- End of article status -->
+    <div class="inner-action-wrapper">
+      <!-- Publish button -->
+      <button
+          *ngIf="mode === 'view' && articleForm.get('status').value === 'draft'"
+          (click)="publishArticle()"
+          class="btn --md action-btn --publish"
+          type="button"
+          aria-label="Publish article">Publish</button>
+      <!-- Unpublish button -->
+      <button
+          *ngIf="mode === 'view' && articleForm.get('status').value === 'published'"
+          (click)="unpublishArticle()"
+          class="btn --md action-btn --unpublish"
+          type="button"
+          aria-label="Unpublish article">Unpublish</button>
+      <!-- Edit button -->
+      <button *ngIf="mode === 'view'" (click)="onEdit()" class="action-btn --edit" type="button" aria-label="Edit article">
+        <fa-icon class="action-btn --icon" [icon]="['fa', 'pen']"></fa-icon>
+      </button>
+      <!-- Save button -->
+      <button *ngIf="mode !== 'view'" (click)="saveForm()" class="btn --md action-btn --save" type="button" aria-label="Save as draft">Save Draft</button>
+      <!-- Cancel button -->
+      <button *ngIf="mode !== 'view'" (click)="onCancel()" class="btn --md action-btn --cancel" type="button" aria-label="Cancel">Cancel</button>
+    </div>
+  </div><!-- End of action row -->
+  <!-- Title -->
+  <div class="ctrl-row">
+    <input id="title" type="text" class="ctrl article-title" formControlName="title" placeholder="Enter title ..." autocomplete="off">
+  </div><!-- End of title -->
+  <!-- New paragraph -->
+  <div class="ctrl-row">
+    <button *ngIf="mode !== 'view'" class="new-btn" type="button" aria-label="add paragraph" (click)="addParagraph()">
+      <fa-icon class="new-btn-icon" [icon]="['fa', 'plus-circle']"></fa-icon>
+      <span class="new-btn-text">New Paragraph</span>
+    </button>
+  </div><!-- End of new paragraph -->
+</form>
