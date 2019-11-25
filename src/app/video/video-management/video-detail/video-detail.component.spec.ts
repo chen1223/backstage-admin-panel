@@ -17,6 +17,16 @@ export class MockBreadcrumbComponent {
   @Input() trace: Breadcrumb[] = [];
 }
 
+class MockSweetAlertService {
+  warn(): void {}
+  success(): void {}
+  info(): void {}
+  confirm(): Promise<Object> {
+    return new Promise(() => {});
+  }
+  error(): void {}
+}
+
 describe('VideoDetailComponent', () => {
   let component: VideoDetailComponent;
   let fixture: ComponentFixture<VideoDetailComponent>;
@@ -34,7 +44,7 @@ describe('VideoDetailComponent', () => {
         FontAwesomeModule
       ],
       providers: [
-        SweetAlertService
+        { provide: SweetAlertService, useClass: MockSweetAlertService }
       ]
     })
     .compileComponents();

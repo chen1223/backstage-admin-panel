@@ -8,12 +8,22 @@ import { Component, Input } from '@angular/core';
 import { Breadcrumb } from 'src/app/shared/breadcrumb/breadcrumb.component';
 import { By } from '@angular/platform-browser';
 
+// Mock Breadcrumb component
 @Component({
   selector: 'app-breadcrumb',
   template: ''
 })
 export class MockBreadcrumbComponent {
   @Input() trace: Breadcrumb[] = [];
+}
+
+// Mock LayoutDialog component
+@Component({
+  selector: 'app-layout-dialog',
+  template: '',
+})
+export class MockLayoutDialogComponent {
+  show(): void {}
 }
 
 
@@ -26,6 +36,7 @@ describe('ArticleDetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MockBreadcrumbComponent,
+        MockLayoutDialogComponent,
         ArticleDetailComponent
       ],
       imports: [
@@ -217,4 +228,10 @@ describe('ArticleDetailComponent', () => {
     fixture.detectChanges();
     expect(fnc).toHaveBeenCalled();
   });
+  it('should show layout dialog on "addParagraph" function invoked', () => {
+    let fnc = spyOn(component.layoutDialog, 'show');
+    component.addParagraph();
+    fixture.detectChanges();
+    expect(fnc).toHaveBeenCalled();
+  })
 });

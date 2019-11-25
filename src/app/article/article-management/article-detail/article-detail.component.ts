@@ -1,6 +1,7 @@
+import { LayoutDialogComponent } from './layout-dialog/layout-dialog.component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Breadcrumb } from 'src/app/shared/breadcrumb/breadcrumb.component';
 
 @Component({
@@ -9,6 +10,9 @@ import { Breadcrumb } from 'src/app/shared/breadcrumb/breadcrumb.component';
   styleUrls: ['./article-detail.component.scss']
 })
 export class ArticleDetailComponent implements OnInit {
+
+  // Layout dialog
+  @ViewChild('dialog', { static: false }) layoutDialog: LayoutDialogComponent;
 
   // Breadcrumb
   breadcrumb: Breadcrumb[] = [];
@@ -122,6 +126,6 @@ export class ArticleDetailComponent implements OnInit {
 
   // On user clicks on the "New Paragraph" button
   addParagraph(): void {
-
+    this.layoutDialog.show();
   }
 }

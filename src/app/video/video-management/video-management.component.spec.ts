@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormArray, FormControl } f
 import { By } from '@angular/platform-browser';
 import { Component, Input } from '@angular/core';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
+import { of } from 'rxjs';
+import { SweetAlertService } from 'src/app/shared/sweet-alert.service';
 
 @Component({
   selector: 'mgt-card',
@@ -14,6 +16,16 @@ import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 })
 export class MockMgtCardComponent {
   @Input() data: MgtData = null;
+}
+
+class MockSweetAlertService {
+  warn(): void {}
+  success(): void {}
+  info(): void {}
+  confirm(): Promise<Object> {
+    return new Promise(() => {});
+  }
+  error(): void {}
 }
 
 describe('VideoManagementComponent', () => {
@@ -30,6 +42,9 @@ describe('VideoManagementComponent', () => {
         FontAwesomeModule,
         FormsModule,
         ReactiveFormsModule
+      ],
+      providers: [
+        { provide: SweetAlertService, useClass: MockSweetAlertService }
       ]
     })
     .compileComponents();

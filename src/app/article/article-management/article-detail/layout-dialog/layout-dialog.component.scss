@@ -1,0 +1,371 @@
+::ng-deep {
+  .layout-dialog .dialog-container {
+    width: 95%;
+    max-height: 95%;
+    .layout-wrapper {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .layout-wrapper .layout {
+      list-style: none;
+      text-align: left;
+      width: calc(33% - 10px);
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+      box-shadow: 1px 2px 2px 2px #ddd;
+      border-radius: 3px;
+      margin-bottom: 20px;
+      min-height: 250px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+      p {
+        font-size: .8rem;
+        margin: 0;
+      }
+      span {
+        font-size: 1rem;
+      }
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
+      .body {
+        margin: auto;
+      }
+      .footer {
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+    /*** Image only layout ***/
+    .layout-wrapper .layout.--img-only {
+      .body {
+        text-align: center;
+        img {
+          width: 80%;
+          max-width: 80%;
+        }
+      }
+    }
+    /*** Text with 1 image layout (Right and Left) ***/
+    .layout-wrapper .layout.--text-with-img-right,
+    .layout-wrapper .layout.--text-with-img-left {
+      .body {
+        display: flex;
+        justify-content: space-between;
+        .text-wrapper {
+          width: calc(66% - 5px);
+          p {
+            font-size: .6rem;
+          }
+        }
+        .img-wrapper {
+          width: calc(33% - 5px);
+        }
+        .img-wrapper {
+          display: flex;
+          img {
+            margin: auto;
+          }
+        }
+      }
+    }
+    /*** Text with 2 images layout (Right and Left) ***/
+    .layout-wrapper .layout.--text-with-2imgs-left,
+    .layout-wrapper .layout.--text-with-2imgs-right {
+      .body {
+        display: flex;
+        justify-content: space-between;
+        .text-wrapper {
+          width: calc(50% - 5px);
+          p {
+            font-size: .5rem;
+          }
+        }
+        .img-wrapper {
+          width: calc(50% - 5px);
+        }
+        .img-wrapper {
+          display: flex;
+          img {
+            margin: auto;
+            width: calc(50% - 5px);
+            max-width: calc(50% - 5px);
+          }
+        }
+      }
+    }
+  }
+}
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+      }
+    }
+  }
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: calc(50% - 10px);
+      }
+    }
+  }
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: calc(50% - 10px);
+        p {
+          font-size: .5rem;
+        }
+        span {
+          font-size: .8rem;
+        }
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .3rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: 100%;
+        p {
+          font-size: .5rem;
+        }
+        span {
+          font-size: .8rem;
+        }
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .3rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        p {
+          font-size: .7rem;
+        }
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .5rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: calc(50% - 10px);
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .5rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: calc(50% - 10px);
+        p {
+          font-size: .5rem;
+        }
+        span {
+          font-size: .8rem;
+        }
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .3rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait){
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-height: unset;
+      .layout-wrapper .layout {
+        min-height: unset;
+        width: 100%;
+        p {
+          font-size: .5rem;
+        }
+        span {
+          font-size: .8rem;
+        }
+      }
+      /*** Text with 1 image layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-img-right,
+      .layout-wrapper .layout.--text-with-img-left {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .3rem;
+            }
+          }
+        }
+      }
+      /*** Text with 2 images layout (Right and Left) ***/
+      .layout-wrapper .layout.--text-with-2imgs-left,
+      .layout-wrapper .layout.--text-with-2imgs-right {
+        .body {
+          .text-wrapper {
+            p {
+              font-size: .2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
