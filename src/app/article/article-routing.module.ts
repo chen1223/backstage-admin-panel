@@ -14,17 +14,17 @@ const routes: Routes = [
     component: ArticleDetailComponent
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: ArticleDetailComponent
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: ArticleDetailComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class ArticleRoutingModule { }

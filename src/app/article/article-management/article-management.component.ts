@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MgtData } from 'src/app/shared/mgt-card/mgt-card.component';
+import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 
 @Component({
   selector: 'app-article-management',
