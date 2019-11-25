@@ -1,3 +1,4 @@
+import { SweetAlertService } from './../../../shared/sweet-alert.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoDetailComponent } from './video-detail.component';
@@ -31,6 +32,9 @@ describe('VideoDetailComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         FontAwesomeModule
+      ],
+      providers: [
+        SweetAlertService
       ]
     })
     .compileComponents();

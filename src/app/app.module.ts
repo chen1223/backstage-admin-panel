@@ -31,6 +31,7 @@ import { faUser,
 import { ContainerComponent } from './container/container.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { ReelManagementComponent } from './reel-management/reel-management.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { ReelManagementComponent } from './reel-management/reel-management.compo
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    SweetAlert2Module.forRoot(),
     AppRoutingModule
   ],
   providers: [],

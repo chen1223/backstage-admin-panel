@@ -1,3 +1,4 @@
+import { SweetAlertService } from './../../../shared/sweet-alert.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from '../../../shared/breadcrumb/breadcrumb.component';
@@ -35,7 +36,8 @@ export class VideoDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private fb: FormBuilder,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer,
+              private sweetAlertService: SweetAlertService) { }
 
   ngOnInit() {
     this.setMode();
@@ -120,9 +122,7 @@ export class VideoDetailComponent implements OnInit {
   // On user enters video url, set video ID
   setVideoID(): void {
     const url = this.videoForm.get('url').value as string;
-    console.log('url', url);
     const trimmedUrl = url.substring(0, url.indexOf('&') > -1 ? url.indexOf('&') : url.length);
-    console.log('trimmedUrl', trimmedUrl)
     this.videoForm.get('url').setValue(trimmedUrl);
     let id = '';
     // Get video ID from vimeo url
@@ -131,10 +131,8 @@ export class VideoDetailComponent implements OnInit {
     } else if (trimmedUrl.indexOf('youtube') > -1) {
       id = trimmedUrl.replace('https://www.youtube.com/watch?v=', '');
     } else {
-      // TODO: Replace with customize alert message
-      alert('Only Youtube and Vimeo urls are allowed');
+      this.sweetAlertService.warn(null, 'Only Youtube and Vimeo urls are allowed');
     }
-    console.log('id', id);
     this.videoForm.get('videoID').setValue(id);
   }
 

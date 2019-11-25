@@ -64,6 +64,15 @@ button {
     border: 2px solid $mainColor;
   }
 }
+.btn.--filled {
+  border: none;
+  background: $mainColor;
+  color: white;
+  &:hover {
+    background: $lightMainColor;
+    color: white;
+  }
+}
 /*** Toggler ***/
 .toggler {
   position: relative;
@@ -192,6 +201,98 @@ button {
   margin-top: 2rem;
 }
 
+/*** SweetAlert Styling ***/
+.sweet-btn {
+  border: none;
+  outline: none;
+  color: white;
+  margin: 0 5px;
+  &:hover {
+    border: none;
+  }
+  &.--success {
+    background: $green;
+    &:hover {
+      background: $lightGreen;
+    }
+  }
+  &.--warning {
+    background: $orange;
+    &:hover {
+      background: $lightOrange;
+    }
+  }
+  &.--error {
+    background: $red;
+    &:hover {
+      background: $lightRed;
+    }
+  }
+  &.--info {
+    background: $mainColor;
+    &:hover {
+      background: $lightMainColor;
+    }
+  }
+  &.--cancel {
+    background: #888;
+    &:hover {
+      background: #bbb;
+    }
+  }
+}
+.fade-in-right {
+  animation: fadeInRight .5s;
+}
+.fade-out-left {
+  animation: fadeOutLeft .5s;
+}
+.fade-in-top {
+  animation: fadeInTop .5s;
+}
+.fade-out-bottom {
+  animation: fadeOutBottom .5s;
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(200px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-200px, 0, 0);
+  }
+}
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -200px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeOutBottom {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 200px, 0);
+  }
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){

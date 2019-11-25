@@ -25,11 +25,11 @@ const routes: Routes = [
       },
       {
         path: 'videos',
-        loadChildren: './video/video.module#VideoModule'
+        loadChildren: () => import('./video/video.module').then(m => m.VideoModule)
       },
       {
         path: 'articles',
-        loadChildren: './article/article.module#ArticleModule'
+        loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
       },
       {
         path: '',

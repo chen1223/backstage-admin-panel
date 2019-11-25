@@ -1,3 +1,4 @@
+import { SweetAlertService } from './../../shared/sweet-alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { toCamelCase } from '../../shared/utility';
@@ -11,7 +12,7 @@ import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 export class VideoManagementComponent implements OnInit {
 
   // Determine current mode
-  mode: string = 'view';
+  mode = 'view';
 
   categoryForm = this.fb.group({
     categories: this.fb.array([
@@ -91,17 +92,18 @@ export class VideoManagementComponent implements OnInit {
   });
 
   // Video statistics
-  totalPublished: number = 0;
-  totalDrafts: number = 0;
-  videoTypeSelection: string = 'all';
-  videoCategorySelection: string = 'all';
+  totalPublished = 0;
+  totalDrafts = 0;
+  videoTypeSelection = 'all';
+  videoCategorySelection = 'all';
 
   // Full video list
   fullVideoList: MgtData[] = [];
   // Video list shown after filter
   filteredVideolist: MgtData[] = [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private sweetAlertService: SweetAlertService) { }
 
   ngOnInit() {
     this.categoryForm.disable();
@@ -209,7 +211,7 @@ export class VideoManagementComponent implements OnInit {
 
   // On user clicks on the add button
   onAdd(): void {
-    const categoryArray = <FormArray> this.categoryForm.get('categories');
+    const categoryArray = this.categoryForm.get('categories') as FormArray;
     const newCategory = this.categoryForm.get('newCategory').value;
     if (!newCategory) {
       return;
@@ -218,8 +220,7 @@ export class VideoManagementComponent implements OnInit {
     for (let i = 0; i < categoryArray.controls.length; i++) {
       const oldCategory = categoryArray.at(i);
       if (oldCategory.get('tag').value === tag) {
-        // TODO: Show warning message
-        window.alert('The same category already exist');
+        this.sweetAlertService.warn(null, 'The same category already exist');
         return;
       }
     }
@@ -232,13 +233,12 @@ export class VideoManagementComponent implements OnInit {
 
   // On user clicks on the remove button on any category
   onRemoveCategory(index: number): void {
-    const categoryArray = <FormArray> this.categoryForm.get('categories');
-    const category = <FormGroup> categoryArray.at(index);
+    const categoryArray = this.categoryForm.get('categories') as FormArray;
+    const category = categoryArray.at(index) as FormGroup;
     if (category.get('status').value !== 'inUsed') {
       categoryArray.removeAt(index);
     } else {
-      // TODO: Show warning message
-      window.alert(`${category.get('text').value} is currently in used`);
+      this.sweetAlertService.warn(null, `${category.get('text').value} is currently in used`);
     }
   }
 
