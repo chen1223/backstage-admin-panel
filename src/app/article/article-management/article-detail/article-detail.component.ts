@@ -128,4 +128,9 @@ export class ArticleDetailComponent implements OnInit {
   addParagraph(): void {
     this.layoutDialog.show();
   }
+
+  // On user selects new layout
+  insertLayout(layoutType: number): void {
+    console.log('layout type', layoutType);
+  }
 }

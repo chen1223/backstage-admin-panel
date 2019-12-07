@@ -1,5 +1,5 @@
 <app-breadcrumb [trace]="breadcrumb"></app-breadcrumb>
-<app-layout-dialog #dialog></app-layout-dialog>
+<app-layout-dialog #dialog (OnSelectLayout)="insertLayout($event)"></app-layout-dialog>
 <form class="article-form" [formGroup]="articleForm">
   <!-- Action Row -->
   <div class="action-row">

@@ -1,7 +1,10 @@
 ::ng-deep {
   .layout-dialog .dialog-container {
     width: 95%;
-    max-height: 95%;
+    max-height: 98%;
+    .swal2-title {
+      margin: 10px 0;
+    }
     .layout-wrapper {
       padding: 0;
       display: flex;
@@ -14,9 +17,9 @@
       width: calc(33% - 10px);
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 10px 20px;
       box-sizing: border-box;
-      box-shadow: 1px 2px 2px 2px #ddd;
+      box-shadow: 0px 2px 2px 3px #ddd;
       border-radius: 3px;
       margin-bottom: 20px;
       min-height: 250px;
@@ -39,7 +42,7 @@
         margin: auto;
       }
       .footer {
-        margin-top: 10px;
+        margin: 10px 0;
         text-align: center;
       }
     }
@@ -106,7 +109,12 @@
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){
-
+  ::ng-deep {
+    .layout-dialog .dialog-container {
+      max-width: 1000px;
+      padding: 20px 30px;
+    }
+  }
 }
 /***** MD Devices*****/
 @media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
