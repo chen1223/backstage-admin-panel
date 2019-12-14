@@ -1,5 +1,5 @@
 <!-- Container -->
-<div class="container" [formGroup]="formGroup">
+<div class="container" [formGroup]="group">
   <!-- Action row -->
   <div class="paragraph-action">
     <button class="delete-btn" type="button" aria-label="remove paragraph" title="remove paragraph" (click)="onRemove()">
@@ -10,17 +10,112 @@
       </fa-icon>
     </button>
   </div><!-- End of action row -->
-  <ng-container [ngSwitch]="formGroup.get('type').value">
+  <ng-container [ngSwitch]="group.get('type').value">
     <!-- TEXT_ONLY layout -->
-    <textarea *ngSwitchCase="articleService.TEXT_ONLY" formControlName="text" rows="5" placeholder="Enter text">
+    <textarea *ngSwitchCase="articleService.TEXT_ONLY" formControlName="text" rows="5" placeholder="Enter text...">
     </textarea><!-- End of TEXT_ONLY layout -->
 
     <!-- IMAGE_ONLY layout -->
     <div class="inner-wrapper" *ngSwitchCase="articleService.IMAGE_ONLY" formArrayName="images">
       <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-        <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+        <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+          <fa-icon
+            class="icon"
+            [icon]="['fa', 'cloud-upload-alt']"
+            aria-label="upload icon">
+          </fa-icon>
+          <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+        </button>
         <img class="img-preview" [src]="imagePreview[i]">
       </div>
     </div><!-- End of IMAGE_ONLY -->
+
+    <!-- TEXT_WITH_ONE_IMAGE_RIGHT layout -->
+    <div class="inner-wrapper --text-with-img-right" *ngSwitchCase="articleService.TEXT_WITH_ONE_IMAGE_RIGHT">
+      <!-- Text wrapper -->
+      <div class="text-wrapper">
+        <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
+      </div><!-- End of text wrapper -->
+      <!-- Image wrapper -->
+      <div class="img-wrapper" formArrayName="images">
+        <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+            <fa-icon
+              class="icon"
+              [icon]="['fa', 'cloud-upload-alt']"
+              aria-label="upload icon">
+            </fa-icon>
+            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+          </button>
+          <img class="img-preview" [src]="imagePreview[i]">
+        </div>
+      </div><!-- End of image wrapper -->
+    </div><!-- End of TEXT_WITH_ONE_IMAGE_RIGHT layout -->
+
+    <!-- TEXT_WITH_ONE_IMAGE_LEFT layout -->
+    <div class="inner-wrapper --text-with-img-left" *ngSwitchCase="articleService.TEXT_WITH_ONE_IMAGE_LEFT">
+      <!-- Text wrapper -->
+      <div class="text-wrapper">
+        <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
+      </div><!-- End of text wrapper -->
+      <!-- Image wrapper -->
+      <div class="img-wrapper" formArrayName="images">
+        <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+            <fa-icon
+              class="icon"
+              [icon]="['fa', 'cloud-upload-alt']"
+              aria-label="upload icon">
+            </fa-icon>
+            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+          </button>
+          <img class="img-preview" [src]="imagePreview[i]">
+        </div>
+      </div><!-- End of image wrapper -->
+    </div><!-- End of TEXT_WITH_ONE_IMAGE_LEFT layout -->
+
+    <!-- TEXT_WITH_TWO_IMAGES_RIGHT layout -->
+    <div class="inner-wrapper --text-with-two-imgs-right" *ngSwitchCase="articleService.TEXT_WITH_TWO_IMAGES_RIGHT">
+      <!-- Text wrapper -->
+      <div class="text-wrapper">
+        <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
+      </div><!-- End of text wrapper -->
+      <!-- Image wrapper -->
+      <div class="img-wrapper" formArrayName="images">
+        <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+            <fa-icon
+              class="icon"
+              [icon]="['fa', 'cloud-upload-alt']"
+              aria-label="upload icon">
+            </fa-icon>
+            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+          </button>
+          <img class="img-preview" [src]="imagePreview[i]">
+        </div>
+      </div><!-- End of image wrapper -->
+    </div><!-- End of TEXT_WITH_TWO_IMAGES_RIGHT layout -->
+
+    <!-- TEXT_WITH_TWO_IMAGES_LEFT layout -->
+    <div class="inner-wrapper --text-with-two-imgs-left" *ngSwitchCase="articleService.TEXT_WITH_TWO_IMAGES_LEFT">
+        <!-- Text wrapper -->
+        <div class="text-wrapper">
+          <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
+        </div><!-- End of text wrapper -->
+        <!-- Image wrapper -->
+        <div class="img-wrapper" formArrayName="images">
+          <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+            <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+              <fa-icon
+                class="icon"
+                [icon]="['fa', 'cloud-upload-alt']"
+                aria-label="upload icon">
+              </fa-icon>
+              <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+            </button>
+            <img class="img-preview" [src]="imagePreview[i]">
+          </div>
+        </div><!-- End of image wrapper -->
+      </div><!-- End of TEXT_WITH_TWO_IMAGES_LEFT layout -->
   </ng-container>
 </div><!-- End of container -->

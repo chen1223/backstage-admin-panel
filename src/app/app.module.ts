@@ -28,7 +28,8 @@ import { faUser,
          faArrowLeft,
          faHashtag,
          faChevronRight,
-         faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+         faTrashAlt,
+         faCloudUploadAlt} from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from './container/container.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { ReelManagementComponent } from './reel-management/reel-management.component';
@@ -62,7 +63,8 @@ export class AppModule {
      faBars, faTimes, faPen,
      faUserAlt, faUpload, faPlusCircle,
      faUndo, faArrowLeft, faArrowRight,
-     faHashtag, faChevronRight, faTrashAlt].forEach(icon => {
+     faHashtag, faChevronRight, faTrashAlt,
+     faCloudUploadAlt].forEach(icon => {
       library.add(icon);
     });
   }

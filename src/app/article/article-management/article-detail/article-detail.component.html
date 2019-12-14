@@ -53,7 +53,7 @@
   <!-- Paragraph container -->
   <div class="paragraph-container">
     <paragraph *ngFor="let paragraph of articleForm.get('paragraphs').controls;let i = index"
-               [formGroup]="paragraph"
+               [group]="paragraph"
                (OnRemove)="removeParagraph(i)"></paragraph>
   </div><!-- End of paragraph container -->
 </form>
