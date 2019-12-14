@@ -50,4 +50,10 @@
       <span class="new-btn-text">New Paragraph</span>
     </button>
   </div><!-- End of new paragraph -->
+  <!-- Paragraph container -->
+  <div class="paragraph-container">
+    <paragraph *ngFor="let paragraph of articleForm.get('paragraphs').controls;let i = index"
+               [formGroup]="paragraph"
+               (OnRemove)="removeParagraph(i)"></paragraph>
+  </div><!-- End of paragraph container -->
 </form>

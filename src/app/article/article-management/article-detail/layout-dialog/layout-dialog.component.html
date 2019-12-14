@@ -10,7 +10,7 @@
     <li class="layout --text-only"
         title="Text only"
         aria-label="Text only"
-        (click)="onSelectLayout(TEXT_ONLY)">
+        (click)="onSelectLayout(articleService.TEXT_ONLY)">
       <div class="body">
         <p>{{ textPlaceholder }}</p>
       </div>
@@ -23,7 +23,7 @@
     <li class="layout --img-only"
         title="Image only"
         aria-label="Image only"
-        (click)="onSelectLayout(IMAGE_ONLY)">
+        (click)="onSelectLayout(articleService.IMAGE_ONLY)">
       <div class="body">
         <img alt="Layout image placeholder" [src]="imgPlaceholder">
       </div>
@@ -36,7 +36,7 @@
     <li class="layout --text-with-img-right"
         title="Text with one image right"
         aria-label="Text with one image right"
-        (click)="onSelectLayout(TEXT_WITH_ONE_IMAGE_RIGHT)">
+        (click)="onSelectLayout(articleService.TEXT_WITH_ONE_IMAGE_RIGHT)">
       <div class="body">
         <div class="text-wrapper">
           <p>{{ textPlaceholder }}</p>
@@ -54,7 +54,7 @@
     <li class="layout --text-with-img-left"
         title="Text with one image left"
         aria-label="Text with one image left"
-        (click)="onSelectLayout(TEXT_WITH_ONE_IMAGE_LEFT)">
+        (click)="onSelectLayout(articleService.TEXT_WITH_ONE_IMAGE_LEFT)">
       <div class="body">
         <div class="img-wrapper">
           <img alt="Layout image placeholder" [src]="imgPlaceholder">
@@ -72,7 +72,7 @@
     <li class="layout --text-with-2imgs-right"
         title="Text with two images right"
         aria-label="Text with two images right"
-        (click)="onSelectLayout(TEXT_WITH_TWO_IMAGES_RIGHT)">
+        (click)="onSelectLayout(articleService.TEXT_WITH_TWO_IMAGES_RIGHT)">
       <div class="body">
         <div class="text-wrapper">
           <p>{{ textPlaceholder }}</p>
@@ -91,7 +91,7 @@
     <li class="layout --text-with-2imgs-left"
         title="Text with two images left"
         aria-label="Text with two images left"
-        (click)="onSelectLayout(TEXT_WITH_TWO_IMAGES_LEFT)">
+        (click)="onSelectLayout(articleService.TEXT_WITH_TWO_IMAGES_LEFT)">
       <div class="body">
         <div class="img-wrapper">
           <img alt="Layout image placeholder" [src]="imgPlaceholder">

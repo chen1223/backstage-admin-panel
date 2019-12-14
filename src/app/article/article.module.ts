@@ -8,12 +8,14 @@ import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleManagementComponent } from './article-management/article-management.component';
 import { ArticleDetailComponent } from './article-management/article-detail/article-detail.component';
 import { LayoutDialogComponent } from './article-management/article-detail/layout-dialog/layout-dialog.component';
+import { ParagraphComponent } from './article-management/article-detail/paragraph/paragraph.component';
 
 @NgModule({
   declarations: [
     ArticleManagementComponent,
     ArticleDetailComponent,
-    LayoutDialogComponent
+    LayoutDialogComponent,
+    ParagraphComponent
   ],
   imports: [
     CommonModule,

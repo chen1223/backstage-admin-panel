@@ -1,0 +1,26 @@
+<!-- Container -->
+<div class="container" [formGroup]="formGroup">
+  <!-- Action row -->
+  <div class="paragraph-action">
+    <button class="delete-btn" type="button" aria-label="remove paragraph" title="remove paragraph" (click)="onRemove()">
+      <fa-icon
+        class="icon"
+        [icon]="['fa', 'trash-alt']"
+        aria-label="delete icon">
+      </fa-icon>
+    </button>
+  </div><!-- End of action row -->
+  <ng-container [ngSwitch]="formGroup.get('type').value">
+    <!-- TEXT_ONLY layout -->
+    <textarea *ngSwitchCase="articleService.TEXT_ONLY" formControlName="text" rows="5" placeholder="Enter text">
+    </textarea><!-- End of TEXT_ONLY layout -->
+
+    <!-- IMAGE_ONLY layout -->
+    <div class="inner-wrapper" *ngSwitchCase="articleService.IMAGE_ONLY" formArrayName="images">
+      <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+        <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+        <img class="img-preview" [src]="imagePreview[i]">
+      </div>
+    </div><!-- End of IMAGE_ONLY -->
+  </ng-container>
+</div><!-- End of container -->

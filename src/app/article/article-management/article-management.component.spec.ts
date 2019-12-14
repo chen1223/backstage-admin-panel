@@ -55,14 +55,6 @@ describe('ArticleManagementComponent', () => {
     fixture.detectChanges;
     expect(onChangeFnc).toHaveBeenCalled();
   });
-  it('should invoke the filterArticle on article category changed', () => {
-    const onChangeFnc = spyOn(component, 'filterArticle');
-    const categoryMenu = <HTMLSelectElement> fixture.debugElement.query(By.css('.menu.--category')).nativeElement;
-    categoryMenu.value = categoryMenu.options[0].value;
-    categoryMenu.dispatchEvent(new Event('change'));
-    fixture.detectChanges();
-    expect(onChangeFnc).toHaveBeenCalled();
-  });
   it('should filter the article list on filterArticle called', () => {
     const dummyData = [
       {

@@ -1,5 +1,5 @@
 import { LayoutDialogComponent } from './layout-dialog/layout-dialog.component';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Breadcrumb } from 'src/app/shared/breadcrumb/breadcrumb.component';
@@ -21,8 +21,10 @@ export class ArticleDetailComponent implements OnInit {
 
   articleForm = this.fb.group({
     status: ['draft'],
-    title: ['', [Validators.required]]
+    title: ['', [Validators.required]],
+    paragraphs: this.fb.array([])
   });
+
 
   constructor(private activatedRoute: ActivatedRoute,
               private fb: FormBuilder) { }
@@ -129,8 +131,33 @@ export class ArticleDetailComponent implements OnInit {
     this.layoutDialog.show();
   }
 
-  // On user selects new layout
+  // Insert paragraph into the FormArray: paragraphs
+  insertParagraph(data: Object): void {
+    const newGroup = this.fb.group({
+      type: [data['type']],
+      order: [data['order']],
+      text: data['text'] ? data['text'] : '',
+      images: this.fb.array([])
+    });
+    for (let i = 0; i < data['images'].length; i++) {
+      (newGroup.get('images') as FormArray).push(this.fb.control(data['images'][i]));
+    }
+    (this.articleForm.get('paragraphs') as FormArray).push(newGroup);
+  }
+
+  // On user selects new layout, insert a new paragraph into the FormArray: paragraphs
   insertLayout(layoutType: number): void {
     console.log('layout type', layoutType);
+    this.insertParagraph({
+      type: layoutType,
+      order: (this.articleForm.get('paragraphs') as FormArray).length +1,
+      text: '',
+      images: []
+    });
+  }
+
+  // On user remove paragraph
+  removeParagraph(index: number): void {
+    (this.articleForm.get('paragraphs') as FormArray).removeAt(index);
   }
 }

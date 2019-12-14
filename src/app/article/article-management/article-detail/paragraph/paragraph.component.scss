@@ -1,0 +1,30 @@
+@import '../../../../shared/color.scss';
+:host {
+  display: block;
+  border: 2px dashed #888;
+  border-radius: 3px;
+  padding: 3px;
+}
+.paragraph-action {
+  text-align: right;
+  position: relative;
+  height: 25px;
+  padding-bottom: 8px;
+  .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2rem;
+    color: #333;
+    &:hover {
+      color: $red;
+      font-size: 1.4rem;
+    }
+  }
+}
+textarea {
+  resize: none;
+  background: none;
+  border: none;
+  outline: none;
+}

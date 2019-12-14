@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { ArticleService } from './../../../article.service';
 
 @Component({
   selector: 'app-layout-dialog',
@@ -7,13 +8,6 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
   styleUrls: ['./layout-dialog.component.scss']
 })
 export class LayoutDialogComponent implements OnInit {
-  // Layout types
-  TEXT_ONLY = 1;
-  IMAGE_ONLY = 2;
-  TEXT_WITH_ONE_IMAGE_RIGHT = 3;
-  TEXT_WITH_ONE_IMAGE_LEFT = 4;
-  TEXT_WITH_TWO_IMAGES_RIGHT = 5;
-  TEXT_WITH_TWO_IMAGES_LEFT = 6;
 
   @ViewChild('layout', {static: false}) dialog: SwalComponent;
   @Output('OnSelectLayout') OnSelectLayout = new EventEmitter<number>();
@@ -27,7 +21,7 @@ export class LayoutDialogComponent implements OnInit {
     popup: 'dialog-container'
   };
 
-  constructor() { }
+  constructor(public articleService: ArticleService) { }
 
   ngOnInit() {
   }

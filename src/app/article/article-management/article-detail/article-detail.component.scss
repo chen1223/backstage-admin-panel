@@ -26,6 +26,12 @@
 .ctrl-row {
   margin: 20px 0;
 }
+/*** Paragraph section ***/
+::ng-deep {
+  .paragraph {
+    margin-bottom: 10px;
+  }
+}
 /*--------- Landscape Devices ---------*/
 /***** LG Devices *****/
 @media (min-width: 1200px) and (orientation: landscape){
