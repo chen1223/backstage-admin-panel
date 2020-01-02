@@ -43,6 +43,24 @@
   <div class="ctrl-row">
     <input id="title" type="text" class="ctrl article-title" formControlName="title" placeholder="Enter title ..." autocomplete="off">
   </div><!-- End of title -->
+  <!-- Cover Photo -->
+  <div class="ctrl-row required">
+    <label for="coverphoto" class="ctrl-label --cover-photo">Cover Photo</label>
+    <!-- Image wrapper -->
+    <div class="img-wrapper">
+      <div class="img-ctrl --cover-container">
+        <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+          <fa-icon
+            class="icon"
+            [icon]="['fa', 'cloud-upload-alt']"
+            aria-label="upload icon">
+          </fa-icon>
+          <input formControlName="coverPhoto" class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onCoverUpload($event)">
+        </button>
+        <img *ngIf="coverPreview" class="img-preview" [src]="coverPreview">
+      </div>
+    </div><!-- End of image wrapper -->
+  </div><!-- End of Cover photo -->
   <!-- New paragraph -->
   <div class="ctrl-row">
     <button *ngIf="mode !== 'view'" class="new-btn" type="button" aria-label="add paragraph" (click)="addParagraph()">

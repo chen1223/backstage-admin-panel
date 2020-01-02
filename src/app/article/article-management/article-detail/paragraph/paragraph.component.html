@@ -38,14 +38,14 @@
       </div><!-- End of text wrapper -->
       <!-- Image wrapper -->
       <div class="img-wrapper" formArrayName="images">
-        <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+        <div class="img-ctrl" *ngFor="let img of formImages;let i = index">
           <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
             <fa-icon
               class="icon"
               [icon]="['fa', 'cloud-upload-alt']"
               aria-label="upload icon">
             </fa-icon>
-            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" [formGroupName]="i" (change)="onImageUpload($event, i)">
           </button>
           <img class="img-preview" [src]="imagePreview[i]">
         </div>

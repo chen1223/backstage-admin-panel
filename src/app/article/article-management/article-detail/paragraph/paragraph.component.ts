@@ -113,6 +113,7 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
       this.sweetAlertService.warn('Invalid file', 'Only image files are accepted');
       return;
     }
+    (this.group.get('images') as FormArray).at(index).setValue(fileData);
     const reader = new FileReader();
     reader.readAsDataURL(fileData);
     reader.onload = () => {

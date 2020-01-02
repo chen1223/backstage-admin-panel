@@ -142,3 +142,179 @@ textarea {
     font-size: 1.2rem;
   }
 }
+/*--------- Landscape Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: landscape){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: landscape){
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: landscape){
+  .new-btn {
+    .new-btn-text {
+      font-size: 1rem;
+    }
+    .new-btn-icon {
+      font-size: 1.5rem;
+    }
+  }
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+  textarea {
+    min-height: 300px;
+  }
+  /*** Text with img right / left ***/
+  /*** Text with two images right / left ***/
+  .--text-with-img-right,
+  .--text-with-img-left,
+  .--text-with-two-imgs-right,
+  .--text-with-two-imgs-left {
+    flex-direction: column;
+    .img-wrapper {
+      display: block;
+      .img-ctrl {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  }
+  .--text-with-img-right,
+  .--text-with-two-imgs-right {
+    .text-wrapper {
+      order: 1;
+    }
+    .img-wrapper {
+      order: 2;
+    }
+  }
+
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: landscape){
+  .img-ctrl {
+    width: 100%;
+  }
+  /*** Text with img right / left ***/
+  /*** Text with two images right / left ***/
+  .--text-with-img-right,
+  .--text-with-img-left,
+  .--text-with-two-imgs-right,
+  .--text-with-two-imgs-left {
+    flex-direction: column;
+    .img-wrapper {
+      display: block;
+      .img-ctrl {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  }
+  .--text-with-img-right,
+  .--text-with-two-imgs-right {
+    .text-wrapper {
+      order: 1;
+    }
+    .img-wrapper {
+      order: 2;
+    }
+  }
+
+}
+/*--------- Portrait Devices ---------*/
+/***** LG Devices *****/
+@media (min-width: 1200px) and (orientation: portrait){
+
+}
+/***** MD Devices*****/
+@media (min-width: 993px) and (max-width: 1199px) and (orientation: portrait){
+
+}
+/***** SM Devices *****/
+@media (min-width: 768px) and (max-width: 992px) and (orientation: portrait){
+
+}
+/***** XS Devices *****/
+@media (min-width: 480px) and (max-width: 767px) and (orientation: portrait){
+  textarea {
+    min-height: 300px;;
+  }
+  /*** Text with img right / left ***/
+  /*** Text with two images right / left ***/
+  .--text-with-img-right,
+  .--text-with-img-left,
+  .--text-with-two-imgs-right,
+  .--text-with-two-imgs-left {
+    flex-direction: column;
+    .img-wrapper {
+      display: block;
+      .img-ctrl {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  }
+  .--text-with-img-right,
+  .--text-with-two-imgs-right {
+    .text-wrapper {
+      order: 1;
+    }
+    .img-wrapper {
+      order: 2;
+    }
+  }
+  .--text-with-img-left,
+  .--text-with-two-imgs-left {
+    .text-wrapper {
+      order: 2;
+    }
+    .img-wrapper {
+      order: 1;
+    }
+  }
+}
+/***** XXS Devices *****/
+@media (max-width: 479px) and (orientation: portrait){
+  textarea {
+    min-height: 250px;;
+  }
+  .img-ctrl {
+    width: 100%;
+  }
+  /*** Text with img right / left ***/
+  /*** Text with two images right / left ***/
+  .--text-with-img-right,
+  .--text-with-img-left,
+  .--text-with-two-imgs-right,
+  .--text-with-two-imgs-left {
+    flex-direction: column;
+    .img-wrapper {
+      display: block;
+      .img-ctrl {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  }
+  .--text-with-img-right,
+  .--text-with-two-imgs-right {
+    .text-wrapper {
+      order: 1;
+    }
+    .img-wrapper {
+      order: 2;
+    }
+  }
+  .--text-with-img-left,
+  .--text-with-two-imgs-left {
+    .text-wrapper {
+      order: 2;
+    }
+    .img-wrapper {
+      order: 1;
+    }
+  }
+}

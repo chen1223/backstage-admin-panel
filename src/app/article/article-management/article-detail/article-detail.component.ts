@@ -1,15 +1,16 @@
 import { LayoutDialogComponent } from './layout-dialog/layout-dialog.component';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/shared/breadcrumb/breadcrumb.component';
+import { SweetAlertService } from './../../../shared/sweet-alert.service';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss']
 })
-export class ArticleDetailComponent implements OnInit {
+export class ArticleDetailComponent implements OnInit, AfterViewInit {
 
   // Layout dialog
   @ViewChild('dialog', { static: false }) layoutDialog: LayoutDialogComponent;
@@ -19,18 +20,26 @@ export class ArticleDetailComponent implements OnInit {
 
   mode: string;
 
+  // Cover photo preview image
+  coverPreview = null;
   articleForm = this.fb.group({
     status: ['draft'],
+    coverPhoto: [],
     title: ['', [Validators.required]],
     paragraphs: this.fb.array([])
   });
 
 
   constructor(private activatedRoute: ActivatedRoute,
+              private sweetAlertService: SweetAlertService,
               private fb: FormBuilder) { }
 
   ngOnInit() {
     this.setMode();
+  }
+
+  ngAfterViewInit() {
+    this.setCoverSize();
   }
 
   // Set mode
@@ -101,6 +110,8 @@ export class ArticleDetailComponent implements OnInit {
 
   // On user clicks save form
   saveForm(): void {
+    console.log('form', this.articleForm.getRawValue());
+    return;
     // Disable the form
     this.articleForm.disable();
     // Update mode
@@ -124,6 +135,28 @@ export class ArticleDetailComponent implements OnInit {
     // Update mode
     this.mode = 'view';
     // TODO: Reset articleForm back to original data
+  }
+
+  // Set cover photo image container size
+  setCoverSize(): void {
+    const ratio = 300 / 168;
+    const container = document.getElementsByClassName('--cover-container')[0] as HTMLDivElement;
+    const width = container.offsetWidth;
+    container.style.height = `${width / ratio}px`;
+  }
+
+  // On cover photo upload
+  onCoverUpload(event): void {
+    const fileData = event.target.files[0];
+    if (fileData.type.match(/image\/*/) == null) {
+      this.sweetAlertService.warn('Invalid file', 'Only image files are accepted');
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    reader.onload = () => {
+      this.coverPreview = reader.result;
+    }
   }
 
   // On user clicks on the "New Paragraph" button

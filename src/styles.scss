@@ -152,6 +152,7 @@ button {
 /*** Required label ***/
 .required label:after {
   content: '*';
+  color: $red;
 }
 /*** Page Layout ***/
 .layout {
