@@ -1,13 +1,13 @@
 import { FormControl } from '@angular/forms';
 // On image upload, set result to targeted FormControl
 
-export function uploadImg(files: FileList, ctrl: FormControl): void {
+export function uploadImg(files: FileList, ctrl: FormControl): number {
   if (files.length === 0) {
-    return;
+    return -1;
   }
   const mimeType = files[0].type;
   if (mimeType.match(/image\/*/) == null) {
-    return;
+    return -2;
   }
 
   var reader = new FileReader();
@@ -15,6 +15,7 @@ export function uploadImg(files: FileList, ctrl: FormControl): void {
   reader.onload = (_event) => {
     ctrl.setValue(reader.result);
   }
+  return 0;
 }
 
 export function toCamelCase(input: string): string {

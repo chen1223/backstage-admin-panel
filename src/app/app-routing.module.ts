@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoleManagementComponent } from './role-management/role-management.component';
+import { AuthGuardService } from './shared/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContainerComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
         path: 'roles',

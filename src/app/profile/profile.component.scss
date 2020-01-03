@@ -66,11 +66,16 @@
   }
 }
 .ctrl-row {
+  position: relative;
   .ctrl {
     margin-top: 5px;
   }
 }
 /* Upload */
+.resume-link {
+  position: absolute;
+  right: 0;
+}
 .upload-wrapper {
   position: relative;
   background: white;

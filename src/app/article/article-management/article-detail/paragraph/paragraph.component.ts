@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, NgZone, AfterViewInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ArticleService } from '../../../article.service';
 import { SweetAlertService } from './../../../../shared/sweet-alert.service';
+import { uploadImg } from './../../../../shared/utility';
 
 @Component({
   selector: 'paragraph',
@@ -10,8 +11,6 @@ import { SweetAlertService } from './../../../../shared/sweet-alert.service';
   host: { 'class': 'paragraph' }
 })
 export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterViewInit {
-  // Image preview array
-  imagePreview = [];
 
   // FormGroup bind to this control
   @Input() group: FormGroup;
@@ -49,27 +48,20 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
         break;
       case this.articleService.IMAGE_ONLY:
         (this.group.get('images') as FormArray).push(this.fb.control(''));
-        this.imagePreview.push('');
         break;
       case this.articleService.TEXT_WITH_ONE_IMAGE_LEFT:
         (this.group.get('images') as FormArray).push(this.fb.control(''));
-        this.imagePreview.push('');
         break;
       case this.articleService.TEXT_WITH_ONE_IMAGE_RIGHT:
         (this.group.get('images') as FormArray).push(this.fb.control(''));
-        this.imagePreview.push('');
         break;
       case this.articleService.TEXT_WITH_TWO_IMAGES_LEFT:
         (this.group.get('images') as FormArray).push(this.fb.control(''));
         (this.group.get('images') as FormArray).push(this.fb.control(''));
-        this.imagePreview.push('');
-        this.imagePreview.push('');
         break;
       case this.articleService.TEXT_WITH_TWO_IMAGES_RIGHT:
         (this.group.get('images') as FormArray).push(this.fb.control(''));
         (this.group.get('images') as FormArray).push(this.fb.control(''));
-        this.imagePreview.push('');
-        this.imagePreview.push('');
         break;
       default: // Default to text only
       this.group.get('type').setValue(this.articleService.TEXT_ONLY);
@@ -108,16 +100,10 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
 
   // On image upload
   onImageUpload(event, index: number): void {
-    const fileData = event.target.files[0];
-    if (fileData.type.match(/image\/*/) == null) {
+    const ctrl = (this.group.get('images') as FormArray).at(index) as FormControl;
+    const result = uploadImg(event.target.files, ctrl);
+    if (result === -2) {
       this.sweetAlertService.warn('Invalid file', 'Only image files are accepted');
-      return;
-    }
-    (this.group.get('images') as FormArray).at(index).setValue(fileData);
-    const reader = new FileReader();
-    reader.readAsDataURL(fileData);
-    reader.onload = () => {
-      this.imagePreview[index] = reader.result;
     }
   }
 

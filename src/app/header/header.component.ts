@@ -1,4 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
+import { AuthService } from './../login/auth.service';
+import { SweetAlertService } from 'src/app/shared/sweet-alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +13,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   menuStatus: string = 'collapsed';
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private sweetAlertService: SweetAlertService,
+              private router: Router) { }
 
   headerHeight;
 
@@ -68,7 +73,28 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // On user clicks log out
   onLogout(): void {
-
+    const body = {
+      'username': localStorage.getItem('username')
+    };
+    this.authService.logout(body)
+        .subscribe(
+          res => {
+            if (+res['code'] === 200) {
+              localStorage.removeItem('token');
+              localStorage.removeItem('username');
+              this.router.navigate(['/login']);
+              this.sweetAlertService.success(null, 'Logout successfully.');
+            }
+          },
+          err => {
+            const error = err.error;
+            if (error) {
+              this.sweetAlertService.error(null, err.error.msg);
+            } else {
+              this.sweetAlertService.error(null, err.message);
+            }
+          }
+        );
   }
 
   // On toggle menu

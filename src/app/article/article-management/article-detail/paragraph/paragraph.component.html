@@ -26,7 +26,10 @@
           </fa-icon>
           <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
         </button>
-        <img class="img-preview" [src]="imagePreview[i]">
+        <img
+          class="img-preview"
+          *ngIf="group.get('images').at(i).value"
+          [src]="group.get('images').at(i).value">
       </div>
     </div><!-- End of IMAGE_ONLY -->
 
@@ -47,7 +50,10 @@
             </fa-icon>
             <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" [formGroupName]="i" (change)="onImageUpload($event, i)">
           </button>
-          <img class="img-preview" [src]="imagePreview[i]">
+          <img
+            class="img-preview"
+            *ngIf="group.get('images').at(i).value"
+            [src]="group.get('images').at(i).value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_ONE_IMAGE_RIGHT layout -->
@@ -69,7 +75,10 @@
             </fa-icon>
             <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
           </button>
-          <img class="img-preview" [src]="imagePreview[i]">
+          <img
+            class="img-preview"
+            *ngIf="group.get('images').at(i).value"
+            [src]="group.get('images').at(i).value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_ONE_IMAGE_LEFT layout -->
@@ -91,7 +100,10 @@
             </fa-icon>
             <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
           </button>
-          <img class="img-preview" [src]="imagePreview[i]">
+          <img
+            class="img-preview"
+            *ngIf="group.get('images').at(i).value"
+            [src]="group.get('images').at(i).value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_TWO_IMAGES_RIGHT layout -->
@@ -113,7 +125,10 @@
               </fa-icon>
               <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
             </button>
-            <img class="img-preview" [src]="imagePreview[i]">
+            <img
+              class="img-preview"
+              *ngIf="group.get('images').at(i).value"
+              [src]="group.get('images').at(i).value">
           </div>
         </div><!-- End of image wrapper -->
       </div><!-- End of TEXT_WITH_TWO_IMAGES_LEFT layout -->

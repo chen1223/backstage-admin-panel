@@ -1,4 +1,4 @@
-<form class="profile-form" [formGroup]="profileForm">
+<form class="profile-form" [formGroup]="profileForm" enctype="multipart/form-data">
   <!-- Action Row -->
   <div class="action-row">
     <h1 class="page-title">Profile</h1>
@@ -54,9 +54,11 @@
       <!-- Resume Link -->
       <div class="ctrl-row required">
         <label for="resumeLink" class="ctrl-label --profile">Resume</label>
+        <a *ngIf="profileForm.get('resume').value" [href]="profileForm.get('resume').value" target="_blank" class="resume-link">Resume.pdf</a>
         <div class="upload-wrapper input ctrl profile" [ngClass]="{ 'disabled': profileForm.get('resumeLink').disabled }">
+          <span class="filename">{{ filename }}</span>
           <fa-icon class="upload-icon" [icon]="['fa','upload']"></fa-icon>
-          <input type="file" id="resumeLink" class="--upload-ctrl" formControlName="resumeLink" accept=".pdf">
+          <input (change)="onFileUpload($event.target.files)" type="file" id="resumeLink" class="--upload-ctrl" formControlName="resumeLink" accept=".pdf">
         </div>
       </div><!-- End of resume link -->
     </div><!-- End of profile detail -->
