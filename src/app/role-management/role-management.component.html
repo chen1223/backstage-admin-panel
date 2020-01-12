@@ -20,36 +20,34 @@
   <!-- Role Section -->
   <section class="role-section" formArrayName="roles">
     <div class="role-wrapper" *ngFor="let role of roleForm.get('roles').controls;let i = index">
-      <button class="remove-btn" type="button" aria-label="remove role" (click)="onRemoveRole(i)">
+      <button *ngIf="mode !== 'view'" class="remove-btn" type="button" aria-label="remove role" (click)="onRemoveRole(i)">
         <fa-icon [icon]="['fa', 'times']"></fa-icon>
       </button>
       <div class="ctrl-row --title" [formGroupName]="i">
         <label [for]="'title' + i" class="ctrl-label">Title</label>
-        <input [id]="'title' + i" type="text" class="ctrl" formControlName="title">
+        <input (change)="onRoleTextUpdate(i)" [id]="'title' + i" type="text" class="ctrl" formControlName="title">
       </div>
       <div class="ctrl-row-wrapper" [formGroupName]="i">
         <div class="ctrl-row">
           <label [for]="'desc' + i" class="ctrl-label">Description</label>
-          <textarea [id]="'desc' + i" cols="30" rows="10" class="ctrl" placeholder="Description" formControlName="description"></textarea>
+          <textarea (change)="onRoleTextUpdate(i)" [id]="'desc' + i" cols="30" rows="10" class="ctrl" placeholder="Description" formControlName="introduction"></textarea>
         </div>
-        <div class="img-wrapper">
-          <button class="inner-img-wrapper" type="button" aria-label="role image 1" [ngClass]="{ 'empty': !role.get('img1Link').value }">
-            <input #file1 (change)="onImgSelected(i, 1, file1.files)" type="file" class="upload-ctrl" title="" formControlName="img1" accept="image/png, image/jpeg, .gif">
-            <span *ngIf="!role.get('img1Link').value" class="upload-hint">Add image</span>
+        <div class="img-wrapper" formArrayName="images">
+          <button
+            *ngFor="let image of role.get('images').controls;let j = index"
+            [formGroupName]="j"
+            class="inner-img-wrapper"
+            type="button"
+            aria-label="role image 1"
+            [ngClass]="{ 'empty': !image.get('imgData').value }">
+            <input #file (change)="onImgSelected(i, j, file.files)" type="file" class="upload-ctrl" title="" formControlName="imgName" accept="image/png, image/jpeg, .gif">
+            <span *ngIf="!image.get('imgData').value" class="upload-hint">Add image</span>
             <img
               class="role-img"
-              *ngIf="role.get('img1Link').value"
-              [src]="role.get('img1Link').value"
-              [alt]="role.get('title').value + ' image 1'">
-          </button>
-          <button class="inner-img-wrapper" type="button" aria-label="role image 2" [ngClass]="{ 'empty': !role.get('img2Link').value }">
-            <input #file2 (change)="onImgSelected(i, 2, file2.files)" type="file" class="upload-ctrl" title="" formControlName="img2">
-            <span *ngIf="!role.get('img2Link').value" class="upload-hint">Add image</span>
-            <img
-              class="role-img"
-              *ngIf="role.get('img2Link').value"
-              [src]="role.get('img2Link').value"
-              [alt]="role.get('title').value + ' image 2'">
+              *ngIf="image.get('imgData').value"
+              [src]="image.get('imgData').value"
+              [alt]="role.get('title').value + ' image ' + (j+1)"
+              [title]="role.get('title').value + ' image ' + (j+1)">
           </button>
         </div>
       </div>

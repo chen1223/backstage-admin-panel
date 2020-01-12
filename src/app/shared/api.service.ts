@@ -15,6 +15,9 @@ export class ApiService {
     logout: `${this.endpoint}/logout`,
 
     /** Profile **/
-    profile: `${this.endpoint}/profile`
+    profile: `${this.endpoint}/profile`,
+
+    /** Role **/
+    roles: `${this.endpoint}/roles`
   };
 }
