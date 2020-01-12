@@ -14,7 +14,7 @@
   <section class="video-section">
     <div class="ctrl-row required">
       <label for="reelUrl" class="ctrl-label">Video Link</label>
-      <input type="text" id="reelUrl" class="ctrl" formControlName="reelUrl" placeholder="Vimeo or Youtube Link...">
+      <input (blur)="checkVideoType()" type="text" id="reelUrl" class="ctrl" formControlName="reelUrl" placeholder="Vimeo or Youtube Link...">
     </div>
   </section><!-- End of video section -->
   <!-- Large image section -->
@@ -53,8 +53,8 @@
               <fa-icon [icon]="['fa', 'undo']"></fa-icon>
             </button>
             <img
-              *ngIf="slide.get('imgLink').value"
-              [src]="slide.get('imgLink').value"
+              *ngIf="slide.get('imgData').value"
+              [src]="slide.get('imgData').value"
               [alt]="'large reel image ' + i"
               class="carousel-img"
               [ngClass]="{'deleted': slide.get('deleted').value}">
@@ -105,8 +105,8 @@
               <fa-icon [icon]="['fa', 'undo']"></fa-icon>
             </button>
             <img
-              *ngIf="slide.get('imgLink').value"
-              [src]="slide.get('imgLink').value"
+              *ngIf="slide.get('imgData').value"
+              [src]="slide.get('imgData').value"
               [alt]="'small reel image ' + i"
               class="carousel-img"
               [ngClass]="{'deleted': slide.get('deleted').value}">

@@ -18,6 +18,9 @@ export class ApiService {
     profile: `${this.endpoint}/profile`,
 
     /** Role **/
-    roles: `${this.endpoint}/roles`
+    roles: `${this.endpoint}/roles`,
+
+    /** Reel **/
+    reel: `${this.endpoint}/reel`
   };
 }
