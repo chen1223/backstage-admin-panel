@@ -114,23 +114,30 @@ export class ProfileComponent implements OnInit {
   // On user clicks save form
   saveForm(): void {
     if (this.formIsValid()) {
-      const data = this.profileForm.getRawValue();
-      this.profileService.updateProfile(data)
-          .subscribe(
-            res => {
-              if (+res['code'] === 200) {
-                this.sweetAlertService.success(null, res['msg']);
-                // Disable the form
-                this.profileForm.disable();
-                // Update mode
-                this.mode = 'view';
+      this.sweetAlertService.confirm('Are you sure?', 'Are you sure you want to save?')
+          .then(
+            response => {
+              const agree = response['value'];
+              if (agree) {
+                const data = this.profileForm.getRawValue();
+                this.profileService.updateProfile(data)
+                    .subscribe(
+                      res => {
+                        if (+res['code'] === 200) {
+                          this.sweetAlertService.success(null, res['msg']);
+                          // Disable the form
+                          this.profileForm.disable();
+                          // Update mode
+                          this.mode = 'view';
+                        }
+                      },
+                      err => {
+                        this.sweetAlertService.error(null, err.error.msg);
+                      }
+                    );
               }
-            },
-            err => {
-              this.sweetAlertService.error(null, err.error.msg);
             }
           );
-
     } else {
       this.sweetAlertService.warn('Invalid Operation', 'Please fill in all required fields');
     }

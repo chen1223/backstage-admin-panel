@@ -46,10 +46,10 @@
   <!-- URL -->
   <div class="ctrl-row required">
     <label for="url" class="ctrl-label --url">URL</label>
-    <input (change)="setVideoID()" type="text" id="url" class="ctrl" formControlName="url" placeholder="Vimeo or Youtube link...">
+    <input (blur)="setVideoID()" type="text" id="url" class="ctrl" formControlName="url" placeholder="Vimeo or Youtube link...">
   </div><!-- End of url -->
   <!-- Video Preview -->
-  <div class="ctrl-row --video-preview" *ngIf="videoForm.get('url').value">
+  <div class="ctrl-row --video-preview">
     <ng-container *ngIf="videoForm.get('url').value.indexOf('youtube') > -1">
       <div class="video-wrapper">
         <iframe
@@ -59,7 +59,7 @@
           frameborder="0"
           allow="accelerometer; autoplay; gyroscope; picture-in-picture"
           allowfullscreen
-          [src]="transform('https://www.youtube.com/embed/' + videoForm.get('videoID').value)">
+          [src]="youtubeLink">
         </iframe>
       </div>
     </ng-container>
@@ -73,7 +73,7 @@
           webkitallowfullscreen
           mozallowfullscreen
           allowfullscreen
-          [src]="transform('https://player.vimeo.com/video/' + videoForm.get('videoID').value)">
+          [src]="vimeoLink">
         </iframe>
       </div>
     </ng-container>
@@ -83,7 +83,11 @@
     <!-- Category -->
     <div class="meta-wrapper required --category">
       <label for="category" class="ctrl-label --category">Category</label>
-      <select id="category" class="ctrl" formControlName="categoryId">
+      <select
+        id="category"
+        class="ctrl"
+        formControlName="categoryId"
+        [ngClass]="{ 'default': videoForm.get('categoryId').value === ''}">
         <option value="">Select category</option>
         <option *ngFor="let category of categoryList" [ngValue]="category.id">{{ category.text }}</option>
       </select>
@@ -93,10 +97,10 @@
       <label for="year" class="ctrl-label --category">Year</label>
       <input maxlength="4" minlength="4" id="year" type="text" class="ctrl" formControlName="year" placeholder="Year">
     </div><!-- End of year -->
-    <!-- Genere -->
+    <!-- Genre -->
     <div class="meta-wrapper required --genere">
-      <label for="genere" class="ctrl-label --category">Genere</label>
-      <input id="genere" type="text" class="ctrl" formControlName="generes" placeholder="Genere separated by comma">
+      <label for="genere" class="ctrl-label --category">Genre</label>
+      <input id="genere" type="text" class="ctrl" formControlName="genres" placeholder="Genere separated by comma">
     </div><!-- End of genere -->
   </div><!-- End of meta data -->
   <!-- Description -->

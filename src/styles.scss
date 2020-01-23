@@ -34,6 +34,9 @@ select {
     background-color: rgb(235, 235, 228) !important;
   }
 }
+select.default {
+  color: #757575;
+}
 textarea {
   resize: none;
 }

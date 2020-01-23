@@ -21,6 +21,14 @@ export class ApiService {
     roles: `${this.endpoint}/roles`,
 
     /** Reel **/
-    reel: `${this.endpoint}/reel`
+    reel: `${this.endpoint}/reel`,
+
+    /** Category **/
+    categories: `${this.endpoint}/categories`,
+
+    /** Video **/
+    video: `${this.endpoint}/video`,
+    videos: `${this.endpoint}/videos`,
+    videoStatus: `${this.endpoint}/video/status`,
   };
 }

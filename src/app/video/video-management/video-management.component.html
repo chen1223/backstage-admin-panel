@@ -25,23 +25,25 @@
     <!-- Categories -->
     <div class="category-container">
       <ul class="category-list" formArrayName="categories">
-        <li *ngFor="let category of categoryForm.get('categories').controls; let i = index"
-            class="category"
-            [formGroupName]="i"
-            [ngClass]="{
-              'editing': mode === 'edit'
-            }">
-          <button
-            *ngIf="mode === 'edit'"
-            (click)="onRemoveCategory(i)"
-            class="category-btn --remove"
-            type="button"
-            aria-label="remove category">
-            <fa-icon class="category-icon" [icon]="['fa', 'times']"></fa-icon>
-          </button>
-          <fa-icon *ngIf="mode === 'view'" class="category-icon --hash" [icon]="['fa', 'hashtag']"></fa-icon>
-          <span class="category-text">{{ category.get('text').value }}</span>
-        </li>
+        <ng-container *ngFor="let category of categoryForm.get('categories').controls; let i = index">
+          <li *ngIf="category.get('status').value !== 'deleted'"
+              class="category"
+              [formGroupName]="i"
+              [ngClass]="{
+                'editing': mode === 'edit'
+              }">
+            <button
+              *ngIf="mode === 'edit'"
+              (click)="onRemoveCategory(i)"
+              class="category-btn --remove"
+              type="button"
+              aria-label="remove category">
+              <fa-icon class="category-icon" [icon]="['fa', 'times']"></fa-icon>
+            </button>
+            <fa-icon *ngIf="mode === 'view'" class="category-icon --hash" [icon]="['fa', 'hashtag']"></fa-icon>
+            <span class="category-text">{{ category.get('text').value }}</span>
+          </li>
+        </ng-container>
       </ul>
     </div>
     <!-- Bottom action row -->
@@ -85,7 +87,7 @@
       <select name="videoType" id="videoType" class="ctrl menu --category" (change)="filterVideo()" [(ngModel)]="videoCategorySelection">
         <option value="all" class="video-option">All</option>
         <option *ngFor="let videoCat of categoryForm.get('categories').controls"
-                [ngValue]="videoCat.get('tag').value"
+                [ngValue]="videoCat.get('categoryId').value"
                 class="video-option">{{ videoCat.get('text').value }}</option>
       </select>
     </div><!-- End of video type menu -->

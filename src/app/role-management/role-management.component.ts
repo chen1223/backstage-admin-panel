@@ -224,16 +224,24 @@ export class RoleManagementComponent implements OnInit {
   // On user clicks save form
   saveForm(): void {
     const body = this.formatOutput();
-    this.roleService.updateRoles(body)
-        .subscribe(
-          res => {
-            const data = this.mapRoleData(res['roles']);
-            this.loadRoleData(data);
-          },
-          err => {
-            const error = err.error;
-            if (error.msg) {
-              this.sweetAlertService.error(null, error.msg);
+    this.sweetAlertService.confirm('Are you sure?', 'Are you sure you want to save?')
+        .then(
+          response => {
+            const agree = response['value'];
+            if (agree) {
+              this.roleService.updateRoles(body)
+                  .subscribe(
+                    res => {
+                      const data = this.mapRoleData(res['roles']);
+                      this.loadRoleData(data);
+                    },
+                    err => {
+                      const error = err.error;
+                      if (error.msg) {
+                        this.sweetAlertService.error(null, error.msg);
+                      }
+                    }
+                  );
             }
           }
         );

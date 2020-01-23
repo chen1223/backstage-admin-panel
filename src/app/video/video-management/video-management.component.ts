@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { toCamelCase } from '../../shared/utility';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
+import { VideoService } from './../video.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-video-management',
@@ -14,79 +16,9 @@ export class VideoManagementComponent implements OnInit {
   // Determine current mode
   mode = 'view';
 
+  categoryData;
   categoryForm = this.fb.group({
-    categories: this.fb.array([
-      this.fb.group(
-        {
-          tag: 'helloWorld',
-          text: 'Hello World',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      ),
-      this.fb.group(
-        {
-          tag: 'helloWorld2',
-          text: 'Hello World 2',
-          status: 'inUsed'
-        }
-      )
-    ]),
+    categories: this.fb.array([]),
     // Frontend only control
     newCategory: ['']
   });
@@ -103,104 +35,47 @@ export class VideoManagementComponent implements OnInit {
   filteredVideolist: MgtData[] = [];
 
   constructor(private fb: FormBuilder,
-              private sweetAlertService: SweetAlertService) { }
+              private sweetAlertService: SweetAlertService,
+              private videoService: VideoService) { }
 
   ngOnInit() {
     this.categoryForm.disable();
     this.mode = 'view';
-    // TODO: Replace this line with actual API call
-    this.fullVideoList = [
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        category: 'helloWorld',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://img.youtube.com/vi/Ehhb7LJJv60/maxresdefault.jpg'
-      },
-      {
-        link: '/videos/view/2',
-        status: 'draft',
-        datePublished: null,
-        category: 'helloWorld2',
-        title: '7 Days Since Death',
-        coverImg: 'https://img.youtube.com/vi/fYEtth_sB9M/maxresdefault.jpg'
-      }
-    ];
-    this.filterVideo();
-    this.setUpVideoStats();
+    this.getCategories();
+    this.getVideos();
+  }
+
+  loadCategoryData(data): void {
+    this.categoryData = data;
+    // Clear old data
+    (this.categoryForm.get('categories') as FormArray).clear();
+    this.categoryForm.get('newCategory').reset();
+    // Load new data
+    this.categoryData.forEach(category => {
+      const tag = toCamelCase(category['text']);
+      (this.categoryForm.get('categories') as FormArray).push(this.fb.group({
+        categoryId: [category['id']],
+        tag: [tag],
+        text: [category['text']],
+        status: [category['status']]}));
+    });
+  }
+
+  // Get all categories
+  getCategories(): void {
+    this.videoService.getCategories()
+        .subscribe(
+          res => {
+            const data = res['data'];
+            this.loadCategoryData(data);
+          },
+          err => {
+            const errObj = err.error;
+            if (errObj.msg) {
+              this.sweetAlertService.error(null, errObj.msg);
+            }
+          }
+        );
   }
 
   // On user clicks on the edit button
@@ -225,29 +100,69 @@ export class VideoManagementComponent implements OnInit {
       }
     }
     (categoryArray).push(this.fb.group({
+      categoryId: [''],
       tag: [tag],
       text: [newCategory],
       status: ['new']
     }));
+    this.categoryForm.get('newCategory').reset();
   }
 
   // On user clicks on the remove button on any category
   onRemoveCategory(index: number): void {
     const categoryArray = this.categoryForm.get('categories') as FormArray;
     const category = categoryArray.at(index) as FormGroup;
-    if (category.get('status').value !== 'inUsed') {
+    const status = category.get('status').value;
+    // Remove it from array directly if its a new category
+    if (status === 'new') {
       categoryArray.removeAt(index);
-    } else {
+    } else if (status === 'unUsed') {
+      category.get('status').setValue('deleted');
+    } else if (status === 'inUsed') {
       this.sweetAlertService.warn(null, `${category.get('text').value} is currently in used`);
     }
   }
 
+  // Format category list output
+  formatCategoryOutput(): Object {
+    const output = {
+      create: [],
+      delete: []
+    };
+    const data = this.categoryForm.getRawValue();
+    data['categories'].forEach(category => {
+      const text = category['text'];
+      const status = category['status'];
+      const categoryId = category['categoryId'];
+      if (status === 'new') {
+        output['create'].push(text);
+      } else if (status === 'deleted') {
+        output['delete'].push(categoryId);
+      }
+    });
+    return output;
+  }
+
   // On user clicks save form
   saveForm(): void {
-    // Disable the form
-    this.categoryForm.disable();
-    // Update mode
-    this.mode = 'view';
+    const body = this.formatCategoryOutput();
+    this.videoService.updateCategories(body)
+        .subscribe(
+          res => {
+            const categories = res['data'];
+            this.loadCategoryData(categories);
+            // Disable the form
+            this.categoryForm.disable();
+            // Update mode
+            this.mode = 'view';
+          },
+          err => {
+            const errObj = err.error;
+            if (errObj.msg) {
+              this.sweetAlertService.error(null, errObj.msg);
+            }
+          }
+        );
   }
 
   // On user clicks on the cancel button
@@ -256,8 +171,55 @@ export class VideoManagementComponent implements OnInit {
     this.categoryForm.disable();
     // Update mode
     this.mode = 'view';
-    // TODO: Reset profileForm back to original data
   }
+
+  // Get video id
+  getVideoTypeId(videoLink): Object {
+    const trimmedUrl = videoLink.substring(0, videoLink.indexOf('&') > -1 ? videoLink.indexOf('&') : videoLink.length);
+    let id = '';
+    let type = '';
+    // Get video ID from vimeo url
+    if (trimmedUrl.indexOf('vimeo') > -1) {
+      id = trimmedUrl.replace('https://vimeo.com/', '');
+      type = 'vimeo';
+    } else if (trimmedUrl.indexOf('youtube') > -1) {
+      id = trimmedUrl.replace('https://www.youtube.com/watch?v=', '');
+      type = 'youtube';
+    }
+    return {
+      type: type,
+      id: id
+    };
+  }
+
+  // Get videos
+  getVideos(): void {
+    this.videoService.getVideos()
+        .pipe(
+          map(res => {
+            res['data'].forEach(video => {
+              video['link'] = `/videos/view/${video['id']}`;
+              video['category'] = video['categoryId'];
+            });
+            return res;
+          })
+        )
+        .subscribe(
+          res => {
+            const data = res['data'];
+            this.fullVideoList = data;
+            this.filterVideo();
+            this.setUpVideoStats();
+          },
+          err => {
+            const errObj = err.error;
+            if (errObj.msg) {
+              this.sweetAlertService.error(null, errObj.msg);
+            }
+          }
+        );
+  }
+
 
   // Set up video statistic number
   setUpVideoStats(): void {

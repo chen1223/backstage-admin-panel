@@ -269,16 +269,24 @@ export class ReelManagementComponent implements OnInit {
   // On user clicks save form
   saveForm(): void {
     const body = this.formatOutput();
-    this.reelService.saveReel(body)
-        .subscribe(
-          res => {
-            const data = this.mapReelData(res['reel']);
-            this.loadReelData(data);
-          },
-          err => {
-            const error = err.error;
-            if (error.msg) {
-              this.sweetAlertService.error(null, error.msg);
+    this.sweetAlertService.confirm('Are you sure?', 'Are you sure you want to save?')
+        .then(
+          response => {
+            const agree = response['value'];
+            if (agree) {
+              this.reelService.saveReel(body)
+                  .subscribe(
+                    res => {
+                      const data = this.mapReelData(res['reel']);
+                      this.loadReelData(data);
+                    },
+                    err => {
+                      const error = err.error;
+                      if (error.msg) {
+                        this.sweetAlertService.error(null, error.msg);
+                      }
+                    }
+                  );
             }
           }
         );
