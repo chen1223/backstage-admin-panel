@@ -14,6 +14,7 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
 
   // FormGroup bind to this control
   @Input() group: FormGroup;
+  @Input() mode: string = 'create';
   @Output() OnRemove = new EventEmitter<void>();
 
   onChange = (_: any) => {};
@@ -47,21 +48,59 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
       case this.articleService.TEXT_ONLY:
         break;
       case this.articleService.IMAGE_ONLY:
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
+        if ((this.group.get('images') as FormArray).controls.length < 1 ) {
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+        }
         break;
       case this.articleService.TEXT_WITH_ONE_IMAGE_LEFT:
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
+        if ((this.group.get('images') as FormArray).controls.length < 1 ) {
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+        }
         break;
       case this.articleService.TEXT_WITH_ONE_IMAGE_RIGHT:
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
+        if ((this.group.get('images') as FormArray).controls.length < 1 ) {
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+        }
         break;
       case this.articleService.TEXT_WITH_TWO_IMAGES_LEFT:
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
+        if ((this.group.get('images') as FormArray).controls.length < 2 ) {
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+        }
         break;
       case this.articleService.TEXT_WITH_TWO_IMAGES_RIGHT:
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
-        (this.group.get('images') as FormArray).push(this.fb.control(''));
+        if ((this.group.get('images') as FormArray).controls.length < 2 ) {
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+          (this.group.get('images') as FormArray).push(this.fb.group({
+            id: [''],
+            imageData: this.fb.control(''),
+            status: 'new'
+          }));
+        }
         break;
       default: // Default to text only
       this.group.get('type').setValue(this.articleService.TEXT_ONLY);
@@ -100,8 +139,13 @@ export class ParagraphComponent implements OnInit, ControlValueAccessor, AfterVi
 
   // On image upload
   onImageUpload(event, index: number): void {
-    const ctrl = (this.group.get('images') as FormArray).at(index) as FormControl;
+    const group = (this.group.get('images') as FormArray).at(index);
+    const ctrl = group.get('imageData') as FormControl;
     const result = uploadImg(event.target.files, ctrl);
+    const imageId = group.get('id').value;
+    if (imageId) {
+      group.get('status').setValue('updated');
+    }
     if (result === -2) {
       this.sweetAlertService.warn('Invalid file', 'Only image files are accepted');
     }

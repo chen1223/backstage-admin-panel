@@ -5,6 +5,7 @@ import { toCamelCase } from '../../shared/utility';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 import { VideoService } from './../video.service';
 import { map } from 'rxjs/operators';
+import { LoadingService } from './../../shared/loading-animation/loading.service';
 
 @Component({
   selector: 'app-video-management',
@@ -36,7 +37,8 @@ export class VideoManagementComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private sweetAlertService: SweetAlertService,
-              private videoService: VideoService) { }
+              private videoService: VideoService,
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
     this.categoryForm.disable();
@@ -146,9 +148,11 @@ export class VideoManagementComponent implements OnInit {
   // On user clicks save form
   saveForm(): void {
     const body = this.formatCategoryOutput();
+    this.loadingService.showLoading();
     this.videoService.updateCategories(body)
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const categories = res['data'];
             this.loadCategoryData(categories);
             // Disable the form
@@ -157,6 +161,7 @@ export class VideoManagementComponent implements OnInit {
             this.mode = 'view';
           },
           err => {
+            this.loadingService.hideLoading();
             const errObj = err.error;
             if (errObj.msg) {
               this.sweetAlertService.error(null, errObj.msg);
@@ -194,6 +199,7 @@ export class VideoManagementComponent implements OnInit {
 
   // Get videos
   getVideos(): void {
+    this.loadingService.showLoading();
     this.videoService.getVideos()
         .pipe(
           map(res => {
@@ -206,12 +212,14 @@ export class VideoManagementComponent implements OnInit {
         )
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const data = res['data'];
             this.fullVideoList = data;
             this.filterVideo();
             this.setUpVideoStats();
           },
           err => {
+            this.loadingService.hideLoading();
             const errObj = err.error;
             if (errObj.msg) {
               this.sweetAlertService.error(null, errObj.msg);

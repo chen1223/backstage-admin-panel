@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { uploadImg } from '../shared/utility';
 import { SweetAlertService } from 'src/app/shared/sweet-alert.service';
 import { ProfileService } from './profile.service';
+import { LoadingService } from './../shared/loading-animation/loading.service';
 
 @Component({
   selector: 'app-profile',
@@ -48,7 +49,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private sweetAlertService: SweetAlertService,
-              private profileService: ProfileService) { }
+              private profileService: ProfileService,
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
     this.profileForm.disable();
@@ -58,14 +60,17 @@ export class ProfileComponent implements OnInit {
 
   // Get profile data
   getProfile(): void {
+    this.loadingService.showLoading();
     this.profileService.getProfile()
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const profileData = res['profile'];
             this.oriProfileData = profileData;
             this.profileForm.patchValue(profileData);
           },
           err => {
+            this.loadingService.hideLoading();
             this.sweetAlertService.error(null, err.error.msg);
           }
         );

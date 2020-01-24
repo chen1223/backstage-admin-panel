@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
+import { ArticleService } from './../article.service';
+import { SweetAlertService } from './../../shared/sweet-alert.service';
+import { map } from 'rxjs/operators';
+import { LoadingService } from './../../shared/loading-animation/loading.service';
 
 @Component({
   selector: 'app-article-management',
@@ -17,91 +21,42 @@ export class ArticleManagementComponent implements OnInit {
   fullArticleList: MgtData[] = [];
   // Article list shown after filter
   filteredArticlelist: MgtData[] = [];
-  constructor() { }
+  constructor(private articleService: ArticleService,
+              private sweetalertService: SweetAlertService,
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
-    // TODO: Replace this line with actual API call
-    this.fullArticleList = [
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/1',
-        status: 'published',
-        datePublished: 'Sep 21, 2019',
-        title: 'Toyota Spec Commercial | “Safety First”',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director1.jpg'
-      },
-      {
-        link: '/articles/view/2',
-        status: 'draft',
-        datePublished: null,
-        title: '7 Days Since Death',
-        coverImg: 'https://www.brianchenfilm.com/assets/img/director2.jpg'
-      }
-    ];
-    this.filterArticle();
-    this.setUpArticleStats();
+    this.getArticles();
+  }
+
+  // Get articles data
+  getArticles(): void {
+    this.loadingService.showLoading();
+    this.articleService.getArticles()
+        .pipe(
+          map(res => {
+            res['data'].forEach(article => {
+              article['link'] = `/articles/view/${article['id']}`;
+            });
+            return res;
+          })
+        )
+        .subscribe(
+          res => {
+            this.loadingService.hideLoading();
+            const data = res['data'];
+            this.fullArticleList = data;
+            this.filterArticle();
+            this.setUpArticleStats();
+          },
+          err => {
+            this.loadingService.hideLoading();
+            const errObj = err.error;
+            if (errObj.msg) {
+              this.sweetalertService.error(null, errObj.msg);
+            }
+          }
+        );
   }
 
   // Set up article statistic number

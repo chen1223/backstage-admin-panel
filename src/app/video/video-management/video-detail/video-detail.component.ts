@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { VideoService } from './../../video.service';
 import { Location } from '@angular/common';
+import { LoadingService } from './../../../shared/loading-animation/loading.service';
 
 @Component({
   selector: 'app-video-detail',
@@ -50,7 +51,8 @@ export class VideoDetailComponent implements OnInit {
               private sanitizer: DomSanitizer,
               private videoService: VideoService,
               private sweetAlertService: SweetAlertService,
-              private location: Location) { }
+              private location: Location,
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
     this.setMode();
@@ -59,13 +61,16 @@ export class VideoDetailComponent implements OnInit {
 
   // Get category data
   getCategories(): void {
+    this.loadingService.showLoading();
     this.videoService.getCategories()
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const data = res['data'];
             this.categoryList = data;
           },
           err => {
+            this.loadingService.hideLoading();
             const errObj = err.error;
             if (errObj.msg) {
               this.sweetAlertService.error(null, errObj.msg);
@@ -214,12 +219,14 @@ export class VideoDetailComponent implements OnInit {
           response => {
             const agree = response['value'];
             if (agree) {
+              this.loadingService.showLoading();
               const body = this.formatOutput();
               const stream = this.mode === 'create' ?
                   this.videoService.createVideo(body) :
                   this.videoService.updateVideo(this.videoId, body);
               stream.subscribe(
                 res => {
+                  this.loadingService.hideLoading();
                   const data = res['data'];
                   this.videoData = data;
                   this.loadVideoData(this.videoData);
@@ -231,6 +238,7 @@ export class VideoDetailComponent implements OnInit {
                   this.location.go(`/videos/view/${data['id']}`);
                 },
                 err => {
+                  this.loadingService.hideLoading();
                   const errObj = err.error;
                   if (errObj.msg) {
                     this.sweetAlertService.error(null, errObj.msg);
@@ -243,14 +251,21 @@ export class VideoDetailComponent implements OnInit {
   }
 
   // Update video status
-  updateVideoStatus(body): void {
+  updateVideoStatus(body, publish: boolean = false): void {
     this.videoService.updateVideoStatus(this.videoId, body)
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const newStatus = res['status'];
             this.videoForm.get('status').setValue(newStatus);
+            if (publish) {
+              this.sweetAlertService.success(null, 'Video published successfully!');
+            } else {
+              this.sweetAlertService.success(null, 'Video unpublished successfully!');
+            }
           },
           err => {
+            this.loadingService.hideLoading();
             const errObj = err.error;
             if (errObj.msg) {
               this.sweetAlertService.error(null, errObj.msg);
@@ -266,8 +281,9 @@ export class VideoDetailComponent implements OnInit {
           response => {
             const agree = response['value'];
             if (agree) {
+              this.loadingService.showLoading();
               const body = this.formatOutput('published');
-              this.updateVideoStatus(body);
+              this.updateVideoStatus(body, true);
             }
           }
         );
@@ -280,8 +296,9 @@ export class VideoDetailComponent implements OnInit {
           response => {
             const agree = response['value'];
             if (agree) {
+              this.loadingService.showLoading();
               const body = this.formatOutput('draft');
-              this.updateVideoStatus(body);
+              this.updateVideoStatus(body, false);
             }
           }
         );

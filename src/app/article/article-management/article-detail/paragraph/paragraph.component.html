@@ -2,7 +2,12 @@
 <div class="container" [formGroup]="group">
   <!-- Action row -->
   <div class="paragraph-action">
-    <button class="delete-btn" type="button" aria-label="remove paragraph" title="remove paragraph" (click)="onRemove()">
+    <button *ngIf="mode !== 'view'"
+            class="delete-btn"
+            type="button"
+            aria-label="remove paragraph"
+            title="remove paragraph"
+            (click)="onRemove()">
       <fa-icon
         class="icon"
         [icon]="['fa', 'trash-alt']"
@@ -18,7 +23,7 @@
     <!-- IMAGE_ONLY layout -->
     <div class="inner-wrapper" *ngSwitchCase="articleService.IMAGE_ONLY" formArrayName="images">
       <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-        <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+        <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
           <fa-icon
             class="icon"
             [icon]="['fa', 'cloud-upload-alt']"
@@ -28,8 +33,8 @@
         </button>
         <img
           class="img-preview"
-          *ngIf="group.get('images').at(i).value"
-          [src]="group.get('images').at(i).value">
+          *ngIf="group.get('images').at(i).get('imageData').value"
+          [src]="img.get('imageData').value">
       </div>
     </div><!-- End of IMAGE_ONLY -->
 
@@ -42,7 +47,7 @@
       <!-- Image wrapper -->
       <div class="img-wrapper" formArrayName="images">
         <div class="img-ctrl" *ngFor="let img of formImages;let i = index">
-          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+          <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
             <fa-icon
               class="icon"
               [icon]="['fa', 'cloud-upload-alt']"
@@ -52,8 +57,8 @@
           </button>
           <img
             class="img-preview"
-            *ngIf="group.get('images').at(i).value"
-            [src]="group.get('images').at(i).value">
+            *ngIf="group.get('images').at(i).get('imageData').value"
+            [src]="img.get('imageData').value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_ONE_IMAGE_RIGHT layout -->
@@ -67,7 +72,7 @@
       <!-- Image wrapper -->
       <div class="img-wrapper" formArrayName="images">
         <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+          <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
             <fa-icon
               class="icon"
               [icon]="['fa', 'cloud-upload-alt']"
@@ -77,8 +82,8 @@
           </button>
           <img
             class="img-preview"
-            *ngIf="group.get('images').at(i).value"
-            [src]="group.get('images').at(i).value">
+            *ngIf="group.get('images').at(i).get('imageData').value"
+            [src]="img.get('imageData').value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_ONE_IMAGE_LEFT layout -->
@@ -92,7 +97,7 @@
       <!-- Image wrapper -->
       <div class="img-wrapper" formArrayName="images">
         <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-          <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+          <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
             <fa-icon
               class="icon"
               [icon]="['fa', 'cloud-upload-alt']"
@@ -102,8 +107,8 @@
           </button>
           <img
             class="img-preview"
-            *ngIf="group.get('images').at(i).value"
-            [src]="group.get('images').at(i).value">
+            *ngIf="group.get('images').at(i).get('imageData').value"
+            [src]="img.get('imageData').value">
         </div>
       </div><!-- End of image wrapper -->
     </div><!-- End of TEXT_WITH_TWO_IMAGES_RIGHT layout -->
@@ -117,7 +122,7 @@
         <!-- Image wrapper -->
         <div class="img-wrapper" formArrayName="images">
           <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-            <button class="upload-btn" type="button" arai-label="upload image" title="upload image">
+            <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
               <fa-icon
                 class="icon"
                 [icon]="['fa', 'cloud-upload-alt']"
@@ -127,8 +132,8 @@
             </button>
             <img
               class="img-preview"
-              *ngIf="group.get('images').at(i).value"
-              [src]="group.get('images').at(i).value">
+              *ngIf="group.get('images').at(i).get('imageData').value"
+              [src]="img.get('imageData').value">
           </div>
         </div><!-- End of image wrapper -->
       </div><!-- End of TEXT_WITH_TWO_IMAGES_LEFT layout -->

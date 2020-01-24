@@ -42,6 +42,7 @@ export class SweetAlertService {
       position: 'top-end',
       showClass: FADE_IN_CLASS,
       hideClass: FADE_OUT_CLASS,
+      timer: 1000,
       buttonsStyling: false,
       customClass: {
         confirmButton: 'btn sweet-btn --success'

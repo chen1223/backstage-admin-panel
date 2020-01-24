@@ -1,0 +1,106 @@
+.canvas {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+  position: absolute;
+  z-index: 1000;
+}
+.canvas.show {
+  display: flex;
+}
+.icon-wrapper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  transform-style: preserve-3d;
+  margin-left: -2%;
+}
+.reel {
+  width: 100px;
+  height: 100px;
+  background: black;
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  transform: translateZ(10px);
+  animation: spin 3s infinite linear;
+}
+.pole {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+}
+.--pole1 {
+  top: 12%;
+  left: 22%;
+}
+.--pole2 {
+  top: 12%;
+  right: 22%;
+}
+.--pole3 {
+  top: calc(50% - 10px);
+  right: 5%;
+}
+.--pole4 {
+  right: 22%;
+  bottom: 12%;
+}
+.--pole5 {
+  left: 22%;
+  bottom: 12%;
+}
+.--pole6 {
+  top: calc(50% - 10px);
+  left: 5%;
+}
+.center {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  left: calc(50% - 4px);
+  top: calc(50% - 4px);
+}
+.strap {
+  width: 80%;
+  height: 10px;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  background: black;
+  transform: rotateX(40deg);
+}
+.loading-text {
+  font-size: 2rem;
+  margin-top: 20px;
+  animation: blink 1.5s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateZ(10px) rotate(0deg);
+  }
+  100% {
+    transform: translateZ(10px) rotate(360deg);
+  }
+}
+@keyframes blink {
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: black;
+  }
+}

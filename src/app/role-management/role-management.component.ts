@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, Validators, FormControl, FormGroup } from '@ang
 import { uploadImg } from '../shared/utility';
 import { RoleService } from './role.service';
 import { SweetAlertService } from './../shared/sweet-alert.service';
+import { LoadingService } from './../shared/loading-animation/loading.service';
 
 @Component({
   selector: 'app-role-management',
@@ -24,7 +25,8 @@ export class RoleManagementComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private roleService: RoleService,
-              private sweetAlertService: SweetAlertService) { }
+              private sweetAlertService: SweetAlertService,
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
     this.roleForm.disable();
@@ -34,13 +36,16 @@ export class RoleManagementComponent implements OnInit {
 
   // Get data
   getRoleData(): void {
+    this.loadingService.showLoading();
     this.roleService.getRoles()
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const data = this.mapRoleData(res['roles']);
             this.loadRoleData(data);
           },
           err => {
+            this.loadingService.hideLoading();
             const error = err.error;
             if (error.msg) {
               this.sweetAlertService.error(null, error.msg);
@@ -229,13 +234,16 @@ export class RoleManagementComponent implements OnInit {
           response => {
             const agree = response['value'];
             if (agree) {
+              this.loadingService.showLoading();
               this.roleService.updateRoles(body)
                   .subscribe(
                     res => {
+                      this.loadingService.hideLoading();
                       const data = this.mapRoleData(res['roles']);
                       this.loadRoleData(data);
                     },
                     err => {
+                      this.loadingService.hideLoading();
                       const error = err.error;
                       if (error.msg) {
                         this.sweetAlertService.error(null, error.msg);

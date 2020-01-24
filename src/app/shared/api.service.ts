@@ -30,5 +30,9 @@ export class ApiService {
     video: `${this.endpoint}/video`,
     videos: `${this.endpoint}/videos`,
     videoStatus: `${this.endpoint}/video/status`,
+
+    /** Article **/
+    article: `${this.endpoint}/article`,
+    articles: `${this.endpoint}/articles`
   };
 }
