@@ -17,7 +17,7 @@
   </div><!-- End of action row -->
   <ng-container [ngSwitch]="group.get('type').value">
     <!-- TEXT_ONLY layout -->
-    <textarea *ngSwitchCase="articleService.TEXT_ONLY" formControlName="text" rows="5" placeholder="Enter text...">
+    <textarea *ngSwitchCase="articleService.TEXT_ONLY" formControlName="text" rows="10" placeholder="Enter text...">
     </textarea><!-- End of TEXT_ONLY layout -->
 
     <!-- IMAGE_ONLY layout -->
@@ -115,27 +115,27 @@
 
     <!-- TEXT_WITH_TWO_IMAGES_LEFT layout -->
     <div class="inner-wrapper --text-with-two-imgs-left" *ngSwitchCase="articleService.TEXT_WITH_TWO_IMAGES_LEFT">
-        <!-- Text wrapper -->
-        <div class="text-wrapper">
-          <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
-        </div><!-- End of text wrapper -->
-        <!-- Image wrapper -->
-        <div class="img-wrapper" formArrayName="images">
-          <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
-            <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
-              <fa-icon
-                class="icon"
-                [icon]="['fa', 'cloud-upload-alt']"
-                aria-label="upload icon">
-              </fa-icon>
-              <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
-            </button>
-            <img
-              class="img-preview"
-              *ngIf="group.get('images').at(i).get('imageData').value"
-              [src]="img.get('imageData').value">
-          </div>
-        </div><!-- End of image wrapper -->
-      </div><!-- End of TEXT_WITH_TWO_IMAGES_LEFT layout -->
+      <!-- Text wrapper -->
+      <div class="text-wrapper">
+        <textarea formControlName="text" rows="5" placeholder="Enter text..."></textarea>
+      </div><!-- End of text wrapper -->
+      <!-- Image wrapper -->
+      <div class="img-wrapper" formArrayName="images">
+        <div class="img-ctrl" *ngFor="let img of formImages;let i = index" [formGroupName]="i">
+          <button *ngIf="mode !== 'view'" class="upload-btn" type="button" arai-label="upload image" title="upload image">
+            <fa-icon
+              class="icon"
+              [icon]="['fa', 'cloud-upload-alt']"
+              aria-label="upload icon">
+            </fa-icon>
+            <input class="img-upload-ctrl" type="file" accept="image/png, image/jpeg" (change)="onImageUpload($event, i)">
+          </button>
+          <img
+            class="img-preview"
+            *ngIf="group.get('images').at(i).get('imageData').value"
+            [src]="img.get('imageData').value">
+        </div>
+      </div><!-- End of image wrapper -->
+    </div><!-- End of TEXT_WITH_TWO_IMAGES_LEFT layout -->
   </ng-container>
 </div><!-- End of container -->
