@@ -126,10 +126,12 @@ export class ProfileComponent implements OnInit {
             response => {
               const agree = response['value'];
               if (agree) {
+                this.loadingService.showLoading();
                 const data = this.profileForm.getRawValue();
                 this.profileService.updateProfile(data)
                     .subscribe(
                       res => {
+                        this.loadingService.hideLoading();
                         if (+res['code'] === 200) {
                           this.sweetAlertService.success(null, res['msg']);
                           // Disable the form
@@ -139,6 +141,7 @@ export class ProfileComponent implements OnInit {
                         }
                       },
                       err => {
+                        this.loadingService.hideLoading();
                         this.sweetAlertService.error(null, err.error.msg);
                       }
                     );

@@ -1,3 +1,4 @@
+import { LoadingService } from './../shared/loading-animation/loading.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { uploadImg } from '../shared/utility';
@@ -31,6 +32,7 @@ export class ReelManagementComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private sweetAlertService: SweetAlertService,
+              private loadingService: LoadingService,
               private reelService: ReelService) { }
 
   ngOnInit() {
@@ -40,13 +42,16 @@ export class ReelManagementComponent implements OnInit {
   }
 
   getReelData(): void {
+    this.loadingService.showLoading();
     this.reelService.getReel()
         .subscribe(
           res => {
+            this.loadingService.hideLoading();
             const data = this.mapReelData(res['reel']);
             this.loadReelData(data);
           },
           err => {
+            this.loadingService.hideLoading();
             const error = err.error;
             if (error.msg) {
               this.sweetAlertService.error(null, error.msg);
@@ -274,13 +279,16 @@ export class ReelManagementComponent implements OnInit {
           response => {
             const agree = response['value'];
             if (agree) {
+              this.loadingService.showLoading();
               this.reelService.saveReel(body)
                   .subscribe(
                     res => {
+                      this.loadingService.hideLoading();
                       const data = this.mapReelData(res['reel']);
                       this.loadReelData(data);
                     },
                     err => {
+                      this.loadingService.hideLoading();
                       const error = err.error;
                       if (error.msg) {
                         this.sweetAlertService.error(null, error.msg);
