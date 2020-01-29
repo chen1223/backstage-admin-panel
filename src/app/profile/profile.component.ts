@@ -67,7 +67,9 @@ export class ProfileComponent implements OnInit {
             this.loadingService.hideLoading();
             const profileData = res['profile'];
             this.oriProfileData = profileData;
-            this.profileForm.patchValue(profileData);
+            if (profileData) {
+              this.profileForm.patchValue(profileData);
+            }
           },
           err => {
             this.loadingService.hideLoading();
@@ -155,6 +157,9 @@ export class ProfileComponent implements OnInit {
     // Update mode
     this.mode = 'view';
     // Reset profileForm back to original data
-    this.profileForm.patchValue(this.oriProfileData);
+    this.profileForm.reset();
+    if (this.oriProfileData) {
+      this.profileForm.patchValue(this.oriProfileData);
+    }
   }
 }
