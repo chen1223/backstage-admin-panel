@@ -1,6 +1,6 @@
 import { SweetAlertService } from './../../../shared/sweet-alert.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Breadcrumb } from '../../../shared/breadcrumb/breadcrumb.component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -52,6 +52,7 @@ export class VideoDetailComponent implements OnInit {
               private videoService: VideoService,
               private sweetAlertService: SweetAlertService,
               private location: Location,
+              private router: Router,
               private loadingService: LoadingService) { }
 
   ngOnInit() {
@@ -260,8 +261,10 @@ export class VideoDetailComponent implements OnInit {
             this.videoForm.get('status').setValue(newStatus);
             if (publish) {
               this.sweetAlertService.success(null, 'Video published successfully!');
+              this.router.navigateByUrl('/videos');
             } else {
               this.sweetAlertService.success(null, 'Video unpublished successfully!');
+              this.router.navigateByUrl('/videos');
             }
           },
           err => {

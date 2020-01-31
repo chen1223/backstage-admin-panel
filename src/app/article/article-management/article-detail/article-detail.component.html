@@ -70,7 +70,7 @@
   </div><!-- End of new paragraph -->
   <!-- Paragraph container -->
   <div class="paragraph-container">
-    <ng-container *ngFor="let paragraph of articleForm.get('paragraphs').controls;let i = index">
+    <ng-container *ngFor="let paragraph of paragraphCtrls().controls;let i = index">
       <paragraph *ngIf="paragraph.get('status').value !== 'deleted'"
                  [mode]="mode"
                  [group]="paragraph"

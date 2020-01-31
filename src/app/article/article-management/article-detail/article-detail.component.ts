@@ -53,6 +53,10 @@ export class ArticleDetailComponent implements OnInit, AfterViewInit {
     this.setCoverSize();
   }
 
+  paragraphCtrls() {
+    return this.articleForm.get('paragraphs') as FormArray;
+  }
+
   // Set mode
   setMode(): void {
     this.activatedRoute.url.subscribe(url => {

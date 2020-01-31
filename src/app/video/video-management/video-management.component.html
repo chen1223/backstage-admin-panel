@@ -25,7 +25,7 @@
     <!-- Categories -->
     <div class="category-container">
       <ul class="category-list" formArrayName="categories">
-        <ng-container *ngFor="let category of categoryForm.get('categories').controls; let i = index">
+        <ng-container *ngFor="let category of categoryArray().controls; let i = index">
           <li *ngIf="category.get('status').value !== 'deleted'"
               class="category"
               [formGroupName]="i"
@@ -86,7 +86,7 @@
       <label for="videoType" class="ctrl-label">Category</label>
       <select name="videoType" id="videoType" class="ctrl menu --category" (change)="filterVideo()" [(ngModel)]="videoCategorySelection">
         <option value="all" class="video-option">All</option>
-        <option *ngFor="let videoCat of categoryForm.get('categories').controls"
+        <option *ngFor="let videoCat of categoryArray().controls"
                 [ngValue]="videoCat.get('categoryId').value"
                 class="video-option">{{ videoCat.get('text').value }}</option>
       </select>

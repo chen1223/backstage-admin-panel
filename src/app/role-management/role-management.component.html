@@ -19,7 +19,7 @@
   </div><!-- End of new wrapper -->
   <!-- Role Section -->
   <section class="role-section" formArrayName="roles">
-    <div class="role-wrapper" *ngFor="let role of roleForm.get('roles').controls;let i = index">
+    <div class="role-wrapper" *ngFor="let role of roleCtrls().controls;let i = index">
       <button *ngIf="mode !== 'view'" class="remove-btn" type="button" aria-label="remove role" (click)="onRemoveRole(i)">
         <fa-icon [icon]="['fa', 'times']"></fa-icon>
       </button>

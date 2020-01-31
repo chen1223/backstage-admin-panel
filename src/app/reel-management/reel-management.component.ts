@@ -41,6 +41,14 @@ export class ReelManagementComponent implements OnInit {
     this.getReelData();
   }
 
+  lgReelImgCtrls() {
+    return this.reelForm.get('reelLgImgs') as FormArray;
+  }
+
+  smReelImgCtrls() {
+    return this.reelForm.get('reelSmImgs') as FormArray;
+  }
+
   getReelData(): void {
     this.loadingService.showLoading();
     this.reelService.getReel()

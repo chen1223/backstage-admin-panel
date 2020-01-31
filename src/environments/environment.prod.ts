@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  endpoint: 'https://www.admin.brianchenfilm.com/api'
 };

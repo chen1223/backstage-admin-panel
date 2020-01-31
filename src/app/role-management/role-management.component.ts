@@ -34,6 +34,10 @@ export class RoleManagementComponent implements OnInit {
     this.getRoleData();
   }
 
+  roleCtrls() {
+    return this.roleForm.get('roles') as FormArray;
+  }
+
   // Get data
   getRoleData(): void {
     this.loadingService.showLoading();

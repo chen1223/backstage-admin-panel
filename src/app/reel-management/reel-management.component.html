@@ -32,7 +32,7 @@
       <div class="carousel-wrapper">
         <ul class="carousel-inner-wrapper" formArrayName="reelLgImgs">
           <li
-            *ngFor="let slide of reelForm.get('reelLgImgs').controls; let i = index"
+            *ngFor="let slide of lgReelImgCtrls().controls; let i = index"
             class="carousel-item"
             [ngClass]="{'active': i == lgActiveCarousel }"
             [formGroupName]="i">
@@ -84,7 +84,7 @@
       <div class="carousel-wrapper">
         <ul class="carousel-inner-wrapper" formArrayName="reelSmImgs">
           <li
-            *ngFor="let slide of reelForm.get('reelSmImgs').controls; let i = index"
+            *ngFor="let slide of smReelImgCtrls().controls; let i = index"
             class="carousel-item"
             [ngClass]="{'active': i == smActiveCarousel }"
             [formGroupName]="i">

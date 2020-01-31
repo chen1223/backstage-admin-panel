@@ -1,6 +1,6 @@
 import { SweetAlertService } from './../../shared/sweet-alert.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { toCamelCase } from '../../shared/utility';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 import { VideoService } from './../video.service';
@@ -61,6 +61,10 @@ export class VideoManagementComponent implements OnInit {
         text: [category['text']],
         status: [category['status']]}));
     });
+  }
+
+  categoryArray() {
+    return (this.categoryForm.get('categories') as FormArray);
   }
 
   // Get all categories
