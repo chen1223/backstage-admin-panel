@@ -12,12 +12,28 @@ export class AuthService {
               private apiService: ApiService) { }
 
   login(body): Observable<Object> {
-    const url = this.apiService.API.login;
-    return this.http.post(url, body);
+    // Simulate API response for demo purpose
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next({
+          'code':200,
+          'token': 'exampletoken'
+       });
+        observer.complete();
+      }, 500);
+    });
   }
 
   logout(body): Observable<Object> {
-    const url = this.apiService.API.logout;
-    return this.http.post(url, body);
+    // Simulate API response for demo purpose
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next({
+          'code':200,
+          'msg': 'Logout successfully!'
+       });
+        observer.complete();
+      }, 500);
+    });
   }
 }

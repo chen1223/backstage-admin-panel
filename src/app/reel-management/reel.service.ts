@@ -13,13 +13,119 @@ export class ReelService {
 
   // Get reel
   getReel(): Observable<Object> {
-    const url = this.apiService.API.reel;
-    return this.http.get(url);
+    // Simulate API response for demo purpose
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next({
+          'code':200,
+          'reel':{
+             'reelUrl':'https:\/\/vimeo.com\/123456789',
+             'reelType':'vimeo',
+             'imgs':[
+                {
+                   'id':1,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':2,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':3,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':4,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':9,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':10,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':11,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':12,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                }
+             ]
+          }
+       });
+        observer.complete();
+      }, 500);
+    });
   }
 
   // Save reel
   saveReel(body): Observable<Object> {
-    const url = this.apiService.API.reel;
-    return this.http.post(url, body);
+    // Simulate API response for demo purpose
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next({
+          'code':200,
+          'reel':{
+             'reelUrl':'https:\/\/vimeo.com\/123456789',
+             'reelType':'vimeo',
+             'imgs':[
+                {
+                   'id':1,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':2,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':3,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':4,
+                   'url':'https://via.placeholder.com/400x250',
+                   'size':'desktop'
+                },
+                {
+                   'id':9,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':10,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':11,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                },
+                {
+                   'id':12,
+                   'url':'https://via.placeholder.com/300x400',
+                   'size':'mobile'
+                }
+             ]
+          }
+       });
+        observer.complete();
+      }, 500);
+    });
   }
 }
