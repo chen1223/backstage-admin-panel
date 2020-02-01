@@ -14,7 +14,7 @@ export class LayoutDialogComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
   textPlaceholder = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`;
-  imgPlaceholder = '../../../../../assets/img/img-placeholder.jpg';
+  imgPlaceholder = 'https://www.admin.brianchenfilm.com/assets/img/img-placeholder.jpg';
   // Custom classes of SweetAlertDialog
   layoutClasses = {
     container: 'layout-dialog',
