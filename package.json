@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "ng build --prod --aot"
+    "build:prod": "ng build --prod --aot",
+    "publish:git": "ng build --prod --base-href \"https://chen1223.github.io/landing-page-animal-doctor/\" && npm run push:gitpage",
+    "push:gitpage": "ngh --dir=dist/animal-doctor"
   },
   "private": true,
   "dependencies": {
