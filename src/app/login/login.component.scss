@@ -12,7 +12,7 @@
     grid-template-rows: repeat(10, 1fr);
   }
   .left-container {
-    background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
+    background: $mainColor;
   }
 }
 .left-container {
@@ -35,7 +35,7 @@
       font-size: 2rem;
       font-size: 2vw;
       font-weight: normal;
-      color: #bbb;
+      color: $menuTitleColor;
       margin: 0;
     }
   }
@@ -72,9 +72,6 @@
     margin: 10px auto;
     width: 80%;
     max-width: 350px;
-    &:nth-child(4) {
-      text-align: right;
-    }
   }
 }
 
