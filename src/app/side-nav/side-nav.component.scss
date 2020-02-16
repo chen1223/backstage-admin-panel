@@ -1,6 +1,6 @@
 @import '../shared/color.scss';
 :host {
-  background: linear-gradient(to bottom, $gradientFrom, $gradientTo);
+  background: $mainColor;
   min-height: 100vh;
   width: 200px;
   z-index: 10;
@@ -22,7 +22,7 @@
   .brand-title {
     margin: auto 0;
     font-size: 1.4rem;
-    color: $lightMainColor;
+    color: white;
   }
 }
 /*** Menu wrapper ***/
@@ -31,7 +31,7 @@
   color: $white;
   .menu-text {
     font-size: 1.2rem;
-    color: $lightMainColor;
+    color: $menuTitleColor;
   }
 }
 .menu {
@@ -41,7 +41,7 @@
   .menu-item {
     margin: 20px 0;
     .menu-link {
-      color: $lightMainColor;
+      color: $menuColor;
       font-size: 1.4rem;
       text-decoration: none;
       cursor: pointer;

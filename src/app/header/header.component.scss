@@ -10,16 +10,17 @@
     padding: 15px 10px;
     display: flex;
     align-items: center;
-    background: $gradientFrom;
+    background: $lightMainColor;
     .header-title {
       font-size: 1.8rem;
       font-weight: 550;
       margin-right: 20px;
-      color: $white;
+      color: white;
+      font-weight: bold;
     }
     .sub-title {
       font-size: 1.2rem;
-      color: #ccc;
+      color: $menuColor;
       font-weight: 550;
     }
     .logout-wrapper {
@@ -34,7 +35,7 @@
       }
     }
     .logout-btn {
-      color: $white;
+      color: white;
       font-size: 1.2rem;
       display: flex;
       border: none;
