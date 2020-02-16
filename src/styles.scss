@@ -227,9 +227,9 @@ button {
     border: none;
   }
   &.--success {
-    background: $green;
+    background: $actionColorDark;
     &:hover {
-      background: $lightGreen;
+      background: $actionColorDark;
     }
   }
   &.--warning {

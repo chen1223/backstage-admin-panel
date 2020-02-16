@@ -28,7 +28,7 @@
 /*** Menu wrapper ***/
 .menu-wrapper {
   margin-top: 2rem;
-  color: $white;
+  color: white;
   .menu-text {
     font-size: 1.2rem;
     color: $menuTitleColor;
@@ -48,7 +48,7 @@
       opacity: .4;
       &.active {
         opacity: 1;
-        color: $white;
+        color: white;
       }
       &:hover {
         opacity: 1;
