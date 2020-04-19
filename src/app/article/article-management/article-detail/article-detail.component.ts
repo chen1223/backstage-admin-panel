@@ -222,6 +222,11 @@ export class ArticleDetailComponent implements OnInit, AfterViewInit {
                       this.articleForm.disable();
                       this.mode = 'view';
                       this.location.go(`/articles/view/${data['id']}`);
+                      this.articleId = data['id'];
+                      this.setBreadcrumb({
+                        link: '',
+                        text: 'View Article'
+                      });
                     },
                     err => {
                       this.loadingService.hideLoading();
