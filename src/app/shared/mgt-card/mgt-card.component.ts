@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mgt-card',
@@ -9,12 +10,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MgtCardComponent implements OnInit {
 
   @Input() data: MgtData = null;
+  @Input() canNavigate = true;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onClick(e) {
+    if (!this.canNavigate) {
+      e.preventDefault();
+      return false;
+    } else {
+      this.router.navigateByUrl(this.data.link);
+    }
+  }
 }
 
 export interface MgtData {

@@ -6,6 +6,7 @@ import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 import { VideoService } from './../video.service';
 import { map } from 'rxjs/operators';
 import { LoadingService } from './../../shared/loading-animation/loading.service';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-video-management',
@@ -16,6 +17,8 @@ export class VideoManagementComponent implements OnInit {
 
   // Determine current mode
   mode = 'view';
+
+  previousIndex;
 
   categoryData;
   categoryForm = this.fb.group({
@@ -88,6 +91,37 @@ export class VideoManagementComponent implements OnInit {
   onEdit(): void {
     this.categoryForm.enable();
     this.mode = 'edit';
+  }
+
+  // On user clicks on the order video button
+  toggleOrder(): void {
+    if (this.mode === 'view') {
+      this.mode = 'order';
+    } else {
+      // Save video order to Backend
+      const body = {
+        videos: this.filteredVideolist
+      };
+      this.loadingService.showLoading();
+      this.videoService.saveOrder(body)
+          .subscribe(
+            res => {
+              this.loadingService.hideLoading();
+            },
+            err => {
+              this.loadingService.hideLoading();
+            }
+          );
+      this.mode = 'view';
+    }
+  }
+
+  onDrop(e: CdkDragDrop<MgtData[]>): void {
+    moveItemInArray(this.filteredVideolist, this.previousIndex, e.currentIndex);
+  }
+
+  onDragStarted(e, index): void {
+    this.previousIndex = index;
   }
 
   // On user clicks on the add button

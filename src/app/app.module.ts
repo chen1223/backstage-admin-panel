@@ -37,6 +37,7 @@ import { RoleManagementComponent } from './role-management/role-management.compo
 import { ReelManagementComponent } from './reel-management/reel-management.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LoadingAnimationComponent } from './shared/loading-animation/loading-animation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { LoadingAnimationComponent } from './shared/loading-animation/loading-an
     FontAwesomeModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

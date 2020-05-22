@@ -31,13 +31,18 @@ export class VideoService {
     const url = this.apiService.API.videos;
     return this.http.get(url);
   }
+  // Save video order
+  saveOrder(body: Object): Observable<Object> {
+    const url = this.apiService.API.videoOrder;
+    return this.http.patch(url, body);
+  }
   // Get single video details
   getVideo(videoId): Observable<Object> {
     const url = `${this.apiService.API.video}/${videoId}`;
     return this.http.get(url);
   }
   // Save video
-  createVideo(body): Observable<Object> {
+  createVideo(body: Object): Observable<Object> {
     const url = this.apiService.API.video;
     return this.http.post(url, body);
   }

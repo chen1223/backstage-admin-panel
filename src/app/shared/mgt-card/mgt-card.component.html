@@ -1,5 +1,5 @@
 <a class="card-link"
-  [routerLink]="data?.link"
+  (click)="onClick($event)"
   [ngClass]="{'draft': data?.status === 'draft'}">
   <span class="status" *ngIf="data?.status === 'published';else draft">{{ 'Published on ' + data?.datePublished }}</span>
   <ng-template #draft>

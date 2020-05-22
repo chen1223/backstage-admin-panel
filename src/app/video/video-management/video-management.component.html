@@ -68,7 +68,17 @@
       <span class="stat-detail">{{ totalDrafts }}</span>
     </div><!-- End of total drafts -->
     <!-- New Video Button -->
-    <a routerLink="/videos/new" class="btn --md new-video" aria-label="New video">New Video</a>
+    <div class="ctrl-wrapper">
+      <button
+        (click)="toggleOrder()"
+        class="btn --md order-video"
+        [ngClass]="{
+          '--sub': mode !== 'order'
+        }"
+        aria-label="order-video"
+        type="button">{{ mode === 'view' ? 'Order Video' : 'Done' }}</button>
+      <a routerLink="/videos/new" class="btn --md new-video" aria-label="New video" *ngIf="mode !== 'order'">New Video</a>
+    </div><!-- End of ctrl-wrapper -->
   </div><!-- End of video statistic -->
   <!-- Filter row -->
   <div class="filter-row">
@@ -92,7 +102,21 @@
       </select>
     </div><!-- End of video type menu -->
   </div><!-- End of filter row -->
-  <div class="video-list">
-    <mgt-card *ngFor="let video of filteredVideolist" [data]="video"></mgt-card>
+  <div
+    class="video-list"
+    [ngClass]="{
+      'ordering': mode === 'order'
+    }"
+    cdkDropListOrientation="horizontal"
+    cdkDropList
+    (cdkDropListDropped)="onDrop($event)">
+    <mgt-card
+      class="video-card"
+      *ngFor="let video of filteredVideolist;let i = index"
+      [data]="video"
+      cdkDrag
+      [canNavigate]="mode !== 'order'"
+      (cdkDragStarted)="onDragStarted($event, i)"
+      [cdkDragDisabled]="mode === 'view'"></mgt-card>
   </div>
 </section><!-- End of video section -->

@@ -5,6 +5,7 @@ import { VideoRoutingModule } from './video-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VideoDetailComponent } from './video-management/video-detail/video-detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     VideoRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class VideoModule { }
