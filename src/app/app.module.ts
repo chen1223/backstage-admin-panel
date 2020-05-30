@@ -38,6 +38,7 @@ import { ReelManagementComponent } from './reel-management/reel-management.compo
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { LoadingAnimationComponent } from './shared/loading-animation/loading-animation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SortablejsModule } from 'ngx-sortablejs';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     SweetAlert2Module.forRoot(),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [
     {

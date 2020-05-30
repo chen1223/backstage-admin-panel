@@ -1,12 +1,12 @@
 import { SweetAlertService } from './../../shared/sweet-alert.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { toCamelCase } from '../../shared/utility';
 import { MgtData } from '../../shared/mgt-card/mgt-card.component';
 import { VideoService } from './../video.service';
 import { map } from 'rxjs/operators';
 import { LoadingService } from './../../shared/loading-animation/loading.service';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { SortablejsOptions } from 'ngx-sortablejs';
 
 @Component({
   selector: 'app-video-management',
@@ -37,6 +37,8 @@ export class VideoManagementComponent implements OnInit {
   fullVideoList: MgtData[] = [];
   // Video list shown after filter
   filteredVideolist: MgtData[] = [];
+
+  sortableOptions: SortablejsOptions = { disabled: true };
 
   constructor(private fb: FormBuilder,
               private sweetAlertService: SweetAlertService,
@@ -94,34 +96,30 @@ export class VideoManagementComponent implements OnInit {
   }
 
   // On user clicks on the order video button
-  toggleOrder(): void {
+  toggleOrder(sendAPI): void {
     if (this.mode === 'view') {
       this.mode = 'order';
+      this.sortableOptions = { disabled: false };
     } else {
-      // Save video order to Backend
-      const body = {
-        videos: this.filteredVideolist
-      };
-      this.loadingService.showLoading();
-      this.videoService.saveOrder(body)
-          .subscribe(
-            res => {
-              this.loadingService.hideLoading();
-            },
-            err => {
-              this.loadingService.hideLoading();
-            }
-          );
+      this.sortableOptions = { disabled: true };
       this.mode = 'view';
+      if (sendAPI) {
+        // Save video order to Backend
+        const body = {
+          videos: this.filteredVideolist
+        };
+        this.loadingService.showLoading();
+        this.videoService.saveOrder(body)
+            .subscribe(
+              res => {
+                this.loadingService.hideLoading();
+              },
+              err => {
+                this.loadingService.hideLoading();
+              }
+            );
+      }
     }
-  }
-
-  onDrop(e: CdkDragDrop<MgtData[]>): void {
-    moveItemInArray(this.filteredVideolist, this.previousIndex, e.currentIndex);
-  }
-
-  onDragStarted(e, index): void {
-    this.previousIndex = index;
   }
 
   // On user clicks on the add button

@@ -69,7 +69,8 @@
   margin-left: auto;
 }
 .new-video,
-.order-video {
+.order-video,
+.cancel-order {
   margin-left: 10px;
   text-decoration: none;
   font-size: 1rem;
@@ -190,7 +191,8 @@
       margin-top: 10px;
     }
     .new-video,
-    .order-video {
+    .order-video,
+    .cancel-order {
       position: absolute;
       margin-top: 20px;
       max-width: 85px;
